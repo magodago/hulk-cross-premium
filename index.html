@@ -443,40 +443,66 @@ section { position: relative; overflow: hidden; }
 .schedule-header { text-align: center; margin-bottom: 40px; }
 .schedule-grid {
   display: grid;
-  grid-template-columns: 80px repeat(5, 1fr) 1fr;
-  gap: 6px; max-width: 100%; overflow-x: auto;
-}
-.schedule-cell {
-  padding: 10px 8px; text-align: center;
-  font-size: 0.75rem; border-radius: 8px;
-  min-height: 50px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
+  grid-template-columns: 70px repeat(6, 1fr);
+  gap: 4px; max-width: 100%; overflow-x: auto;
   background: var(--card-bg); border: 1px solid var(--border);
-  transition: all 0.3s ease;
+  border-radius: 16px; padding: 8px;
 }
-.schedule-cell:hover { border-color: var(--border-light); }
-.schedule-cell.header {
-  font-family: var(--font-display); font-size: 0.78rem;
+.sc-header {
+  font-family: var(--font-display); font-size: 0.75rem;
   font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-  background: transparent; border-color: transparent;
-  color: var(--white); min-height: 40px;
+  color: var(--white); padding: 10px 6px;
+  text-align: center; border-bottom: 2px solid var(--red);
 }
-.schedule-cell.time {
-  font-family: var(--font-display); font-size: 0.72rem;
-  font-weight: 500; color: var(--red); background: transparent;
-  border-color: transparent; min-height: 40px;
+.sc-time {
+  font-family: var(--font-display); font-size: 0.7rem;
+  font-weight: 500; color: var(--red);
+  text-align: center; padding: 10px 4px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; line-height: 1.2;
 }
-.schedule-cell.wod { border-color: rgba(209,15,11,0.2); }
-.schedule-cell.wod .label { color: var(--red); font-weight: 600; font-size: 0.75rem; }
-.schedule-cell.jj { border-color: rgba(59,140,58,0.2); }
-.schedule-cell.jj .label { color: var(--green); font-weight: 600; font-size: 0.75rem; }
-.schedule-cell.openbox { border-color: rgba(255,255,255,0.08); }
-.schedule-cell.openbox .label { color: var(--text-dim); font-size: 0.65rem; }
-.schedule-cell .sub { color: var(--text-dim); font-size: 0.6rem; margin-top: 2px; }
-.schedule-cell.special { border-color: var(--border-light); }
-.schedule-cell.special .label { color: var(--gold, #d4af37); font-weight: 600; font-size: 0.72rem; }
-.schedule-cell.empty { background: transparent; border-color: transparent; }
-.schedule .btn { margin-top: 40px; }
+.sc-time small { font-size: 0.6rem; color: var(--text-dim); }
+.sc-wod {
+  padding: 8px 4px; text-align: center; border-radius: 6px;
+  font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+  color: var(--red); background: var(--card-bg);
+  border: 1px solid rgba(209,15,11,0.15);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.sc-wod:hover { background: rgba(209,15,11,0.06); border-color: rgba(209,15,11,0.3); }
+.sc-ob {
+  padding: 6px 4px; text-align: center; border-radius: 6px;
+  font-family: var(--font-body); font-size: 0.6rem; font-weight: 400;
+  color: var(--text-dim); background: var(--card-bg);
+  border: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.sc-ob:hover { border-color: rgba(255,255,255,0.1); }
+.sc-jj {
+  padding: 8px 4px; text-align: center; border-radius: 6px;
+  font-family: var(--font-display); font-size: 0.68rem; font-weight: 600;
+  color: var(--green); background: var(--card-bg);
+  border: 1px solid rgba(59,140,58,0.15);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.sc-jj:hover { background: rgba(59,140,58,0.06); border-color: rgba(59,140,58,0.3); }
+.sc-sp {
+  padding: 6px 4px; text-align: center; border-radius: 6px;
+  font-family: var(--font-display); font-size: 0.65rem; font-weight: 600;
+  color: var(--white); background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.sc-sp:hover { background: rgba(209,15,11,0.05); }
+.sc-empty {
+  padding: 4px; border-radius: 6px;
+  background: transparent; border: 1px solid transparent;
+}
+.schedule .btn { margin-top: 32px; }
 .gallery { padding: 100px 0; }
 .gallery-header { text-align: center; margin-bottom: 40px; }
 .gallery-grid {
@@ -680,8 +706,11 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   section { padding: 60px 0 !important; }
   .about-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .stat-card { padding: 14px; }
-  .schedule-grid { grid-template-columns: 60px repeat(5, 1fr) 1fr; gap: 4px; }
-  .schedule-cell { padding: 6px 4px; font-size: 0.65rem; min-height: 36px; }
+  .schedule-grid { grid-template-columns: 50px repeat(6, 1fr); gap: 3px; padding: 4px; }
+  .sc-header { font-size: 0.6rem; padding: 6px 2px; }
+  .sc-time { font-size: 0.6rem; padding: 6px 2px; }
+  .sc-wod, .sc-jj { font-size: 0.6rem; padding: 4px 2px; }
+  .sc-ob, .sc-sp { font-size: 0.55rem; padding: 3px 2px; }
 }
 
 /* ── SCROLL ANIMATIONS ── */
@@ -889,76 +918,135 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="section-label">Horarios</div>
       <h2 class="section-title">Clases <span class="accent">flexibles</span></h2>
       <p class="section-desc" style="margin:0 auto;">
-        Ofrecemos horarios amplios para adaptarnos a tu apretada agenda, desde temprano en la mañana hasta tarde en la noche. Además, nuestro gimnasio tiene horarios de apertura flexibles para que siempre encuentres un momento para entrenar.
+        En HULK CROSSTRAINING ofrecemos horarios amplios para adaptarnos a tu apretada agenda, desde temprano en la mañana hasta tarde en la noche. Únete a nosotros y aprovecha nuestros horarios.
       </p>
     </div>
 
-    <div class="schedule-grid reveal" style="overflow-x:auto;">
+    <div class="schedule-grid reveal">
       <!-- Header -->
-      <div class="schedule-cell header time"></div>
-      <div class="schedule-cell header">Lunes</div>
-      <div class="schedule-cell header">Martes</div>
-      <div class="schedule-cell header">Miércoles</div>
-      <div class="schedule-cell header">Jueves</div>
-      <div class="schedule-cell header">Viernes</div>
-      <div class="schedule-cell header">Sábado</div>
+      <div class="sc-time"></div>
+      <div class="sc-header">LUNES</div>
+      <div class="sc-header">MARTES</div>
+      <div class="sc-header">MIÉRCOLES</div>
+      <div class="sc-header">JUEVES</div>
+      <div class="sc-header">VIERNES</div>
+      <div class="sc-header">SÁBADO</div>
 
-      <!-- 09:00 -->
-      <div class="schedule-cell time">09:00</div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+      <!-- 09:00-10:30 / 10:30-12:00 - Sábado JIU -->
+      <div class="sc-time">09:00<br><small>12:00</small></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-jj">JIU-JITSU</div>
 
-      <!-- 10:00 -->
-      <div class="schedule-cell time">10:00</div>
-      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+      <!-- 10:00-11:30 -->
+      <div class="sc-time">10:00<br><small>11:30</small></div>
+      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-empty"></div>
+      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-empty"></div>
+      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-empty"></div>
 
-      <!-- 10:30 -->
-      <div class="schedule-cell time">10:30</div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell empty"></div>
-      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+      <!-- 16:15 WOD + OPEN BOX (x8 slots) -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
 
-      <!-- 16:15 -->
-      <div class="schedule-cell time">16:15</div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
 
-      <!-- 16:15 (2nd) -->
-      <div class="schedule-cell time">16:15</div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
-      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+      <!-- Repeat: 16:15 WOD + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
 
-      <!-- Especiales -->
-      <div class="schedule-cell time">16:15</div>
-      <div class="schedule-cell special"><span class="label">GIMNÁSTICOS</span></div>
-      <div class="schedule-cell special"><span class="label">DEKA</span></div>
-      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
-      <div class="schedule-cell special"><span class="label">STRONGMAN</span></div>
-      <div class="schedule-cell special"><span class="label">HALTEROFILIA</span></div>
-      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- Repeat: 16:15 WOD + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- Specials row 1: GIMN+OPEN / STRONGMAN / DEKA / WOD / HALTERO -->
+      <div class="sc-time"></div>
+      <div class="sc-sp">GIMNÁSTICOS</div>
+      <div class="sc-sp">STRONGMAN</div>
+      <div class="sc-sp">DEKA</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-sp">HALTEROFILIA</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 WOD + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- Specials row 2 -->
+      <div class="sc-time"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-sp">STRONGMAN</div>
+      <div class="sc-sp">DEKA</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+
+      <!-- 19:15 evening -->
+      <div class="sc-time">19:15</div>
+      <div class="sc-sp">GIMNÁSTICOS</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-sp">HALTEROFILIA</div>
+      <div class="sc-empty"></div>
     </div>
 
-    <div style="text-align:center;margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+    <div style="text-align:center;margin-top:32px;">
       <a href="#contacto" class="btn btn-primary">Reserva tu clase</a>
     </div>
   </div>
