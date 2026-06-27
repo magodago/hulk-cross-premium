@@ -728,36 +728,48 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 .hulk-crack {
   position: fixed; inset: 0; z-index: 9997;
   pointer-events: none; opacity: 0;
-  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(59,140,58,0.02) 60%, transparent 70%);
-  transition: opacity 0.15s ease;
+  transition: opacity 0.08s ease;
 }
 .hulk-crack.active { opacity: 1; }
 .hulk-impact-flash {
   position: fixed; inset: 0; z-index: 9999;
   pointer-events: none; opacity: 0;
   background: radial-gradient(ellipse at var(--flash-x, 50%) var(--flash-y, 50%),
-    rgba(59,140,58,0.15) 0%,
-    rgba(209,15,11,0.08) 20%,
-    transparent 50%
+    rgba(59,140,58,0.2) 0%,
+    rgba(209,15,11,0.12) 15%,
+    rgba(209,15,11,0.04) 30%,
+    transparent 55%
   );
-  transition: opacity 0.1s ease;
+  transition: opacity 0.08s ease;
 }
 .hulk-impact-flash.active { opacity: 1; }
 
-/* ── SCREEN SHAKE ── */
-@keyframes shake {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-3px, 2px); }
-  20% { transform: translate(3px, -1px); }
-  30% { transform: translate(-2px, 3px); }
-  40% { transform: translate(2px, -2px); }
-  50% { transform: translate(-1px, 1px); }
-  60% { transform: translate(1px, -1px); }
-  70% { transform: translate(-2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  90% { transform: translate(-1px, 1px); }
+/* ── SCREEN SHAKE (HULK MODE) ── */
+@keyframes hulk-shake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  5%   { transform: translate(-12px, 5px) rotate(-1.5deg); }
+  10%  { transform: translate(10px, -8px) rotate(1.2deg); }
+  15%  { transform: translate(-8px, 10px) rotate(-0.8deg); }
+  20%  { transform: translate(6px, -12px) rotate(1deg); }
+  25%  { transform: translate(-10px, 4px) rotate(-1.3deg); }
+  30%  { transform: translate(8px, 6px) rotate(0.7deg); }
+  35%  { transform: translate(-5px, -9px) rotate(-0.5deg); }
+  40%  { transform: translate(12px, -4px) rotate(1.1deg); }
+  45%  { transform: translate(-7px, 8px) rotate(-0.9deg); }
+  50%  { transform: translate(3px, -6px) rotate(0.3deg); }
+  55%  { transform: translate(-9px, 3px) rotate(-0.7deg); }
+  60%  { transform: translate(5px, 7px) rotate(0.5deg); }
+  65%  { transform: translate(-11px, -5px) rotate(-1.1deg); }
+  70%  { transform: translate(7px, -7px) rotate(0.8deg); }
+  75%  { transform: translate(-4px, 9px) rotate(-0.4deg); }
+  80%  { transform: translate(9px, -3px) rotate(0.6deg); }
+  85%  { transform: translate(-6px, 4px) rotate(-0.3deg); }
+  90%  { transform: translate(4px, -10px) rotate(0.9deg); }
+  95%  { transform: translate(-3px, 2px) rotate(-0.2deg); }
 }
-.shaking section { animation: shake 0.3s ease-in-out; }
+.hulk-shaking {
+  animation: hulk-shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
 
 /* ── AMBIENT DEBRIS ── */
 .hulk-debris {
@@ -1451,6 +1463,49 @@ let debrisTimer = setInterval(() => {
 const sections = document.querySelectorAll('section');
 let lastSectionHit = -1;
 
+function generateCracks(sectionIndex) {
+  // Generate random red crack SVG overlay
+  const rect = sections[sectionIndex].getBoundingClientRect();
+  const cx = (rect.left + rect.width / 2) / W * 100;
+  const cy = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 15), 85);
+
+  // Build SVG paths — 4-7 crack lines radiating from impact point
+  const numCracks = Math.floor(Math.random() * 4) + 4;
+  let paths = '';
+  for (let i = 0; i < numCracks; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const length = (Math.random() * 40 + 20); // % of screen
+    const segments = Math.floor(Math.random() * 4) + 3;
+    let d = `M${cx},${cy}`;
+    let x = cx, y = cy;
+    for (let s = 0; s < segments; s++) {
+      const segLen = length / segments;
+      const jitter = (Math.random() - 0.5) * 15;
+      const a = angle + (Math.random() - 0.5) * 0.6;
+      x += Math.cos(a) * segLen;
+      y += Math.sin(a) * segLen + jitter;
+      d += ` L${Math.max(0, Math.min(100, x))},${Math.max(0, Math.min(100, y))}`;
+    }
+    const thickness = Math.random() * 2 + 1.5;
+    const opacity = Math.random() * 0.5 + 0.3;
+    paths += `<path d="${d}" stroke="rgba(255,40,30,${opacity})" stroke-width="${thickness}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // Add a thinner secondary crack alongside
+    const d2 = d.replace(/^M/, 'M'); // same start
+    paths += `<path d="${d}" stroke="rgba(255,80,60,${opacity * 0.4})" stroke-width="${thickness * 0.4}" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(${(Math.random()-0.5)*4},${(Math.random()-0.5)*4})"/>`;
+  }
+
+  // Add some small fragment pieces near the impact
+  for (let i = 0; i < 6; i++) {
+    const fx = cx + (Math.random() - 0.5) * 20;
+    const fy = cy + (Math.random() - 0.5) * 15;
+    const size = Math.random() * 4 + 2;
+    const rot = Math.random() * 360;
+    paths += `<polygon points="${-size},${-size} ${size},0 ${-size},${size}" fill="rgba(255,40,30,${Math.random()*0.3+0.1})" transform="translate(${fx},${fy}) rotate(${rot})"/>`;
+  }
+
+  crackEl.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;position:absolute;inset:0;">${paths}</svg>`;
+}
+
 function triggerImpact(sectionIndex) {
   if (sectionIndex === lastSectionHit) return;
   lastSectionHit = sectionIndex;
@@ -1458,6 +1513,9 @@ function triggerImpact(sectionIndex) {
   const rect = sections[sectionIndex].getBoundingClientRect();
   const flashX = (rect.left + rect.width / 2) / W * 100;
   const flashY = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 10), 90);
+
+  // Generate real red cracks
+  generateCracks(sectionIndex);
 
   // Flash
   flashEl.style.setProperty('--flash-x', flashX + '%');
@@ -1467,11 +1525,15 @@ function triggerImpact(sectionIndex) {
 
   // Crack overlay
   crackEl.classList.add('active');
-  setTimeout(() => crackEl.classList.remove('active'), 400);
+  setTimeout(() => {
+    crackEl.classList.remove('active');
+    // Clear SVG after fade out to save memory
+    setTimeout(() => { crackEl.innerHTML = ''; }, 100);
+  }, 500);
 
-  // Screen shake
-  document.body.classList.add('shaking');
-  setTimeout(() => document.body.classList.remove('shaking'), 300);
+  // Screen shake — HULK MODE
+  document.body.classList.add('hulk-shaking');
+  setTimeout(() => document.body.classList.remove('hulk-shaking'), 580);
 
   // Spawn debris burst
   spawnDebris(Math.floor(Math.random() * 8) + 5);
