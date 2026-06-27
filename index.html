@@ -747,28 +747,28 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 /* ── SCREEN SHAKE (HULK MODE) ── */
 @keyframes hulk-shake {
   0%   { transform: translate(0, 0) rotate(0deg); }
-  5%   { transform: translate(-12px, 5px) rotate(-1.5deg); }
-  10%  { transform: translate(10px, -8px) rotate(1.2deg); }
-  15%  { transform: translate(-8px, 10px) rotate(-0.8deg); }
-  20%  { transform: translate(6px, -12px) rotate(1deg); }
-  25%  { transform: translate(-10px, 4px) rotate(-1.3deg); }
-  30%  { transform: translate(8px, 6px) rotate(0.7deg); }
-  35%  { transform: translate(-5px, -9px) rotate(-0.5deg); }
-  40%  { transform: translate(12px, -4px) rotate(1.1deg); }
-  45%  { transform: translate(-7px, 8px) rotate(-0.9deg); }
-  50%  { transform: translate(3px, -6px) rotate(0.3deg); }
-  55%  { transform: translate(-9px, 3px) rotate(-0.7deg); }
-  60%  { transform: translate(5px, 7px) rotate(0.5deg); }
-  65%  { transform: translate(-11px, -5px) rotate(-1.1deg); }
-  70%  { transform: translate(7px, -7px) rotate(0.8deg); }
-  75%  { transform: translate(-4px, 9px) rotate(-0.4deg); }
-  80%  { transform: translate(9px, -3px) rotate(0.6deg); }
-  85%  { transform: translate(-6px, 4px) rotate(-0.3deg); }
-  90%  { transform: translate(4px, -10px) rotate(0.9deg); }
-  95%  { transform: translate(-3px, 2px) rotate(-0.2deg); }
+  5%   { transform: translate(-6px, 3px) rotate(-0.7deg); }
+  10%  { transform: translate(5px, -4px) rotate(0.6deg); }
+  15%  { transform: translate(-4px, 5px) rotate(-0.4deg); }
+  20%  { transform: translate(3px, -6px) rotate(0.5deg); }
+  25%  { transform: translate(-5px, 2px) rotate(-0.6deg); }
+  30%  { transform: translate(4px, 3px) rotate(0.3deg); }
+  35%  { transform: translate(-3px, -5px) rotate(-0.3deg); }
+  40%  { transform: translate(6px, -2px) rotate(0.5deg); }
+  45%  { transform: translate(-4px, 4px) rotate(-0.4deg); }
+  50%  { transform: translate(2px, -3px) rotate(0.2deg); }
+  55%  { transform: translate(-5px, 2px) rotate(-0.3deg); }
+  60%  { transform: translate(3px, 4px) rotate(0.3deg); }
+  65%  { transform: translate(-6px, -3px) rotate(-0.5deg); }
+  70%  { transform: translate(4px, -4px) rotate(0.4deg); }
+  75%  { transform: translate(-2px, 5px) rotate(-0.2deg); }
+  80%  { transform: translate(5px, -2px) rotate(0.3deg); }
+  85%  { transform: translate(-3px, 2px) rotate(-0.2deg); }
+  90%  { transform: translate(2px, -5px) rotate(0.4deg); }
+  95%  { transform: translate(-2px, 1px) rotate(-0.1deg); }
 }
 .hulk-shaking {
-  animation: hulk-shake 0.55s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: hulk-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
 }
 
 /* ── AMBIENT DEBRIS ── */
@@ -784,7 +784,113 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   0% { transform: translateY(0) rotate(0deg); opacity: 0; }
   5% { opacity: 0.6; }
   100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}/* ── CROSSFIT GLOSSARY ── */
+.crossfit-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+  position: relative;
+  overflow: hidden;
 }
+.crossfit-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, var(--red-glow) 0%, transparent 60%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.crossfit-intro {
+  max-width: 800px; margin: 0 auto 56px; text-align: center;
+}
+.crossfit-intro p {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  line-height: 1.8; color: var(--text-muted);
+}
+.crossfit-grid {
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 900px; margin: 0 auto;
+}
+.crossfit-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 32px;
+  display: flex; align-items: flex-start; gap: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.crossfit-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--red), var(--green));
+  opacity: 0.6;
+}
+.crossfit-card:hover {
+  border-color: var(--border-light);
+  background: var(--card-hover);
+  transform: translateX(4px);
+}
+.crossfit-card-number {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: var(--white); background: var(--red);
+  border-radius: 10px;
+  position: relative; z-index: 1;
+}
+.crossfit-card-content { flex: 1; }
+.crossfit-card-title {
+  font-family: var(--font-display); font-size: 1.15rem;
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--white);
+  margin-bottom: 8px;
+}
+.crossfit-card-title .accent { color: var(--red); }
+.crossfit-card-title .green-accent { color: var(--green); }
+.crossfit-card-desc {
+  font-size: 0.92rem; line-height: 1.7; color: var(--text-muted);
+}
+.crossfit-card-desc strong { color: var(--text); }
+.crossfit-card-tag {
+  display: inline-block;
+  font-family: var(--font-display); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 50px;
+  margin-bottom: 8px;
+}
+.crossfit-card-tag.red { background: rgba(209,15,11,0.15); color: var(--red); }
+.crossfit-card-tag.green { background: rgba(59,140,58,0.15); color: var(--green); }
+.crossfit-card-tag.gray { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+
+/* ── TIMELINE DIVIDER ── */
+.crossfit-divider {
+  text-align: center; padding: 40px 0;
+  position: relative;
+}
+.crossfit-divider::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 2px; height: 40px;
+  background: linear-gradient(180deg, var(--red), var(--green));
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+.crossfit-divider-label {
+  font-family: var(--font-display); font-size: 0.8rem;
+  font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 4px;
+}
+.crossfit-divider-title {
+  font-family: var(--font-display); font-size: 1.4rem;
+  font-weight: 700; text-transform: uppercase;
+  color: var(--white);
+}
+.crossfit-divider-title span { color: var(--red); }
+
+@media (max-width: 768px) {
+  .crossfit-card { flex-direction: column; gap: 12px; padding: 24px; }
+  .crossfit-card-number { width: 36px; height: 36px; font-size: 1rem; }
+}
+
 </style>
 </head>
 <body>
@@ -802,6 +908,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <li><a href="#horarios">Horarios</a></li>
       <li><a href="#pilates">Pilates</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#crossfit">CrossFit</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a href="tel:647766198" class="nav-cta">647 766 198</a>
@@ -819,6 +926,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   <a href="#horarios" class="mobile-link">Horarios</a>
   <a href="#pilates" class="mobile-link">Pilates</a>
   <a href="#galeria" class="mobile-link">Galería</a>
+  <a href="#crossfit" class="mobile-link">CrossFit</a>
   <a href="#contacto" class="mobile-link">Contacto</a>
   <a href="tel:647766198" class="nav-cta-mobile">647 766 198</a>
 </div>
@@ -1186,6 +1294,197 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   </div>
 </section>
 
+<!-- CROSSFIT GLOSARIO -->
+<section class="crossfit-section" id="crossfit">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label" style="text-align:center;">CrossFit</div>
+      <h2 class="section-title" style="text-align:center;">Guía de <span class="accent">terminología</span></h2>
+    </div>
+
+    <div class="crossfit-intro reveal">
+      <p>El CrossFit nació en el año 2000 de la mano de <strong>Greg Glassman</strong> en Santa Cruz, California. Lo que empezó como un pequeño gimnasio en un garaje se convirtió en un movimiento global que hoy cuenta con más de <strong>15.000 boxes afiliados</strong> en todo el mundo. Su filosofía: entrenamientos constantemente variados, movimientos funcionales ejecutados a alta intensidad. Esto no es un deporte de espectadores — esto se vive, se sufre y se celebra en comunidad.</p>
+    </div>
+
+    <!-- History timeline -->
+    <div class="crossfit-divider reveal">
+      <div class="crossfit-divider-label">Origen</div>
+      <div class="crossfit-divider-title">⚡ Historia del <span>CrossFit</span></div>
+    </div>
+
+    <div class="crossfit-grid">
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">01</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Origen</div>
+          <div class="crossfit-card-title">El <span class="accent">Garage</span> Gym</div>
+          <div class="crossfit-card-desc">
+            <strong>1995-2000</strong> — Greg Glassman, ex-gimnasta y entrenador personal, comienza a desarrollar un sistema de entrenamiento que combina levantamiento olímpico, gimnasia y ejercicio cardiovascular. En 1995 entrena al departamento de policía de Santa Cruz y los resultados llaman la atención. En 2000 funda <strong>CrossFit Inc.</strong> y lanza crossfit.com con la publicación diaria del WOD (Workout of the Day).
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">02</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Expansión</div>
+          <div class="crossfit-card-title">El <span class="green-accent">Boom</span> Militar</div>
+          <div class="crossfit-card-desc">
+            <strong>2002-2007</strong> — CrossFit es adoptado por entrenadores de élite de los <strong>Marines, Navy SEALs y Fuerzas Especiales</strong> de EE.UU. Glassman desarrolla el programa <strong>CrossFit Level 1 Certificate Course</strong> para formar coaches. En 2005 abre el primer box afiliado en California. Para 2007 hay más de 200 boxes en todo el mundo.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">03</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Global</div>
+          <div class="crossfit-card-title">Los <span class="accent">CrossFit Games</span></div>
+          <div class="crossfit-card-desc">
+            <strong>2007-presente</strong> — La primera edición de los <strong>CrossFit Games</strong> se celebra en un rancho en Aromas, California, con apenas 70 participantes. Hoy es un evento mundial con premios millonarios que determina al <strong>"Fittest on Earth"</strong>. En 2011 CrossFit llega a España; hoy hay más de 500 boxes en nuestro país. En 2020, CrossFit es adquirido por <strong>Eric Roza</strong>, marcando una nueva era de profesionalización.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminology -->
+    <div class="crossfit-divider reveal">
+      <div class="crossfit-divider-label">Vocabulario</div>
+      <div class="crossfit-divider-title">📖 Diccionario del <span>Box</span></div>
+    </div>
+
+    <div class="crossfit-grid">
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">W</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Formato</div>
+          <div class="crossfit-card-title">WOD · Workout of the <span class="accent">Day</span></div>
+          <div class="crossfit-card-desc">
+            El entrenamiento del día. Cada día se publica un WOD diferente que todos los miembros del box realizan. Puede ser un <strong>AMRAP</strong>, <strong>For Time</strong>, <strong>EMOM</strong> o <strong>RFT</strong>. La variación constante es la clave: nunca haces el mismo entrenamiento dos días seguidos.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">A</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Formato</div>
+          <div class="crossfit-card-title">AMRAP · As Many Rounds As <span class="green-accent">Possible</span></div>
+          <div class="crossfit-card-desc">
+            En un tiempo fijo (ej. 12 minutos), completas tantas rondas del circuito como puedas. Anotas tu resultado para superarlo la próxima vez. Ejemplo: <strong>12 min AMRAP</strong> de 5 pull-ups, 10 push-ups, 15 air squats.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">E</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Formato</div>
+          <div class="crossfit-card-title">EMOM · Every Minute On the <span class="accent">Minute</span></div>
+          <div class="crossfit-card-desc">
+            Al empezar cada minuto, realizas un número determinado de repeticiones. El tiempo restante del minuto es tu descanso. Si terminas en 30 segundos, descansas 30 segundos. Si no completas el trabajo en 60 segundos, se considera <strong>"failure"</strong> (no completado).
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">F</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Formato</div>
+          <div class="crossfit-card-title">For Time · Contra el <span class="green-accent">Reloj</span></div>
+          <div class="crossfit-card-desc">
+            Completas un número fijo de rondas y ejercicios <strong>lo más rápido posible</strong>. Tu tiempo es tu resultado. Ejemplo: <strong>21-15-9</strong> de thrusters y pull-ups. Terminas cuando haces la última repetición. Duele.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">R</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Formato</div>
+          <div class="crossfit-card-title">RFT · Rounds For <span class="accent">Time</span></div>
+          <div class="crossfit-card-desc">
+            Variante de For Time. Debes completar un número fijo de rondas (ej. 5 rounds) de ejercicios específicos lo más rápido posible. Anotas tu tiempo total. Ejemplo: <strong>5 RFT</strong> de 400m run + 30 box jumps.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">G</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Ejercicio</div>
+          <div class="crossfit-card-title">Gimnásticos · <span class="accent">Bodyweight</span></div>
+          <div class="crossfit-card-desc">
+            Movimientos que usan tu propio peso corporal. Incluyen: <strong>Pull-ups</strong> (dominadas), <strong>Muscle-ups</strong> (salida de anillas), <strong>Handstand Push-ups</strong> (flexiones de pino), <strong>Burpees</strong>, <strong>Air Squats</strong>, <strong>Toes-to-Bar</strong>, <strong>Ring Dips</strong> y <strong>Rope Climbs</strong> (cuerda).
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">L</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Ejercicio</div>
+          <div class="crossfit-card-title">Levantamiento · <span class="green-accent">Weightlifting</span></div>
+          <div class="crossfit-card-desc">
+            Técnicas de halterofilia adaptadas al CrossFit. Las más comunes: <strong>Squat Clean</strong>, <strong>Power Clean</strong>, <strong>Snatch</strong>, <strong>Clean & Jerk</strong>, <strong>Deadlift</strong>, <strong>Front Squat</strong>, <strong>Overhead Squat</strong>, <strong>Thruster</strong> (front squat + press). La técnica es prioritaria antes que el peso.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">M</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Ejercicio</div>
+          <div class="crossfit-card-title">Monostructural · <span class="accent">Cardio</span></div>
+          <div class="crossfit-card-desc">
+            Ejercicios cardiovasculares que mantienen una estructura de movimiento constante. Incluyen: <strong>Running</strong> (correr), <strong>Row</strong> (remo), <strong>Assault Bike</strong> (bici), <strong>SkiErg</strong>, <strong>Jump Rope</strong> (cuerda), <strong>Box Jumps</strong> y <strong>Wall Balls</strong>. Son los que más queman y los que más duelen al final del WOD.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">H</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Concepto</div>
+          <div class="crossfit-card-title">Hero WOD · Entrenamiento <span class="green-accent">Héroe</span></div>
+          <div class="crossfit-card-desc">
+            WODs diseñados en honor a militares, bomberos y policías caídos en acto de servicio. Son conocidos por ser <strong>extremadamente duros</strong> y se realizan en fechas señaladas. Ejemplos famosos: <strong>Murph</strong> (1 milla, 100 pull-ups, 200 push-ups, 300 squats, 1 milla), <strong>Fight Gone Bad</strong>, <strong>Linda</strong> ("Three Bars of Death").
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">P</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Concepto</div>
+          <div class="crossfit-card-title">PR · Personal <span class="accent">Record</span></div>
+          <div class="crossfit-card-desc">
+            Tu mejor marca personal en un ejercicio o WOD. Puede ser el peso máximo que levantas en un <strong>1RM</strong> (1 Rep Max), tu mejor tiempo en un For Time, o la mayor cantidad de rondas en un AMRAP. En CrossFit, cada PR se celebra como un logro colectivo — todo el box aplaude.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">C</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Concepto</div>
+          <div class="crossfit-card-title">CNS · Central Nervous System <span class="accent">Recovery</span></div>
+          <div class="crossfit-card-desc">
+            El CrossFit trabaja a intensidades que agotan el <strong>Sistema Nervioso Central</strong>. Por eso es fundamental el descanso activo, la movilidad, el <strong>foam rolling</strong> y los días de recuperación. El sobreentrenamiento es real: si tu rendimiento baja sistemáticamente, necesitas un <strong>deload week</strong> (semana de descarga). Escucha a tu cuerpo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <p style="color:var(--text-muted);font-size:0.95rem;max-width:600px;margin:0 auto 20px;line-height:1.7;">
+        ¿Quieres probarlo? Ven al box y descubre por qué el CrossFit es mucho más que un entrenamiento — es una comunidad.
+      </p>
+      <a href="#contacto" class="btn btn-primary">Primera clase gratis</a>
+    </div>
+  </div>
+</section>
+
 <!-- LOCATION -->
 <section class="location">
   <div class="inner">
@@ -1464,7 +1763,7 @@ const sections = document.querySelectorAll('section');
 let lastSectionHit = -1;
 
 function generateCracks(sectionIndex) {
-  // Generate random red crack SVG overlay
+  // Generate bright red crack SVG overlay
   const rect = sections[sectionIndex].getBoundingClientRect();
   const cx = (rect.left + rect.width / 2) / W * 100;
   const cy = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 15), 85);
@@ -1474,36 +1773,45 @@ function generateCracks(sectionIndex) {
   let paths = '';
   for (let i = 0; i < numCracks; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const length = (Math.random() * 40 + 20); // % of screen
+    const length = (Math.random() * 35 + 15); // % of screen
     const segments = Math.floor(Math.random() * 4) + 3;
     let d = `M${cx},${cy}`;
     let x = cx, y = cy;
     for (let s = 0; s < segments; s++) {
       const segLen = length / segments;
-      const jitter = (Math.random() - 0.5) * 15;
-      const a = angle + (Math.random() - 0.5) * 0.6;
+      const jitter = (Math.random() - 0.5) * 12;
+      const a = angle + (Math.random() - 0.5) * 0.5;
       x += Math.cos(a) * segLen;
       y += Math.sin(a) * segLen + jitter;
       d += ` L${Math.max(0, Math.min(100, x))},${Math.max(0, Math.min(100, y))}`;
     }
-    const thickness = Math.random() * 2 + 1.5;
-    const opacity = Math.random() * 0.5 + 0.3;
-    paths += `<path d="${d}" stroke="rgba(255,40,30,${opacity})" stroke-width="${thickness}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-    // Add a thinner secondary crack alongside
-    const d2 = d.replace(/^M/, 'M'); // same start
-    paths += `<path d="${d}" stroke="rgba(255,80,60,${opacity * 0.4})" stroke-width="${thickness * 0.4}" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="translate(${(Math.random()-0.5)*4},${(Math.random()-0.5)*4})"/>`;
+    const thickness = Math.random() * 3 + 4; // 4-7px in viewBox units
+    const opacity = Math.random() * 0.3 + 0.7; // 0.7-1.0
+    // Main crack — bright red
+    paths += `<path d="${d}" stroke="rgba(255,50,40,${opacity})" stroke-width="${thickness}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // Inner bright core
+    paths += `<path d="${d}" stroke="rgba(255,180,160,${opacity * 0.5})" stroke-width="${thickness * 0.35}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // Glow
+    paths += `<path d="${d}" stroke="rgba(255,30,20,${opacity * 0.3})" stroke-width="${thickness * 2.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#blur)"/>`;
   }
 
-  // Add some small fragment pieces near the impact
-  for (let i = 0; i < 6; i++) {
-    const fx = cx + (Math.random() - 0.5) * 20;
-    const fy = cy + (Math.random() - 0.5) * 15;
-    const size = Math.random() * 4 + 2;
+  // Central impact glow
+  paths += `<circle cx="${cx}" cy="${cy}" r="${Math.random()*3+5}" fill="rgba(255,60,40,0.6)"/>`;
+  paths += `<circle cx="${cx}" cy="${cy}" r="${Math.random()*5+8}" fill="rgba(255,30,20,0.2)"/>`;
+
+  // Add small fragment pieces near the impact
+  for (let i = 0; i < 8; i++) {
+    const fx = cx + (Math.random() - 0.5) * 25;
+    const fy = cy + (Math.random() - 0.5) * 20;
+    const size = Math.random() * 5 + 2;
     const rot = Math.random() * 360;
-    paths += `<polygon points="${-size},${-size} ${size},0 ${-size},${size}" fill="rgba(255,40,30,${Math.random()*0.3+0.1})" transform="translate(${fx},${fy}) rotate(${rot})"/>`;
+    paths += `<polygon points="${-size},${-size} ${size},0 ${-size},${size}" fill="rgba(255,60,40,${Math.random()*0.4+0.2})" transform="translate(${fx},${fy}) rotate(${rot})"/>`;
   }
 
-  crackEl.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;position:absolute;inset:0;">${paths}</svg>`;
+  // Add filter defs
+  crackEl.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;position:absolute;inset:0;">
+    <defs><filter id="blur"><feGaussianBlur stdDeviation="0.5"/></filter></defs>
+    ${paths}</svg>`;
 }
 
 function triggerImpact(sectionIndex) {
