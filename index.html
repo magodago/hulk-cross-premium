@@ -438,7 +438,45 @@ section { position: relative; overflow: hidden; }
 }
 .service-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
 
-/* ── GALLERY ── */
+/* ── SCHEDULE ── */
+.schedule { padding: 100px 0; background: var(--bg2); }
+.schedule-header { text-align: center; margin-bottom: 40px; }
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(5, 1fr) 1fr;
+  gap: 6px; max-width: 100%; overflow-x: auto;
+}
+.schedule-cell {
+  padding: 10px 8px; text-align: center;
+  font-size: 0.75rem; border-radius: 8px;
+  min-height: 50px; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: var(--card-bg); border: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+.schedule-cell:hover { border-color: var(--border-light); }
+.schedule-cell.header {
+  font-family: var(--font-display); font-size: 0.78rem;
+  font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  background: transparent; border-color: transparent;
+  color: var(--white); min-height: 40px;
+}
+.schedule-cell.time {
+  font-family: var(--font-display); font-size: 0.72rem;
+  font-weight: 500; color: var(--red); background: transparent;
+  border-color: transparent; min-height: 40px;
+}
+.schedule-cell.wod { border-color: rgba(209,15,11,0.2); }
+.schedule-cell.wod .label { color: var(--red); font-weight: 600; font-size: 0.75rem; }
+.schedule-cell.jj { border-color: rgba(59,140,58,0.2); }
+.schedule-cell.jj .label { color: var(--green); font-weight: 600; font-size: 0.75rem; }
+.schedule-cell.openbox { border-color: rgba(255,255,255,0.08); }
+.schedule-cell.openbox .label { color: var(--text-dim); font-size: 0.65rem; }
+.schedule-cell .sub { color: var(--text-dim); font-size: 0.6rem; margin-top: 2px; }
+.schedule-cell.special { border-color: var(--border-light); }
+.schedule-cell.special .label { color: var(--gold, #d4af37); font-weight: 600; font-size: 0.72rem; }
+.schedule-cell.empty { background: transparent; border-color: transparent; }
+.schedule .btn { margin-top: 40px; }
 .gallery { padding: 100px 0; }
 .gallery-header { text-align: center; margin-bottom: 40px; }
 .gallery-grid {
@@ -642,6 +680,8 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   section { padding: 60px 0 !important; }
   .about-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .stat-card { padding: 14px; }
+  .schedule-grid { grid-template-columns: 60px repeat(5, 1fr) 1fr; gap: 4px; }
+  .schedule-cell { padding: 6px 4px; font-size: 0.65rem; min-height: 36px; }
 }
 
 /* ── SCROLL ANIMATIONS ── */
@@ -664,6 +704,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
     <ul class="nav-links">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#horarios">Horarios</a></li>
       <li><a href="#pilates">Pilates</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#contacto">Contacto</a></li>
@@ -680,6 +721,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 <div class="mobile-nav" id="mobileNav">
   <a href="#inicio" class="mobile-link">Inicio</a>
   <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#horarios" class="mobile-link">Horarios</a>
   <a href="#pilates" class="mobile-link">Pilates</a>
   <a href="#galeria" class="mobile-link">Galería</a>
   <a href="#contacto" class="mobile-link">Contacto</a>
@@ -836,6 +878,88 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="about-image reveal">
         <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/470687728_18076477906612552_9023940464934763786_n__msi___jpg-1920w.webp" alt="Pilates Illescas" loading="lazy">
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="horarios">
+  <div class="inner">
+    <div class="schedule-header reveal">
+      <div class="section-label">Horarios</div>
+      <h2 class="section-title">Clases <span class="accent">flexibles</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        Ofrecemos horarios amplios para adaptarnos a tu apretada agenda, desde temprano en la mañana hasta tarde en la noche. Además, nuestro gimnasio tiene horarios de apertura flexibles para que siempre encuentres un momento para entrenar.
+      </p>
+    </div>
+
+    <div class="schedule-grid reveal" style="overflow-x:auto;">
+      <!-- Header -->
+      <div class="schedule-cell header time"></div>
+      <div class="schedule-cell header">Lunes</div>
+      <div class="schedule-cell header">Martes</div>
+      <div class="schedule-cell header">Miércoles</div>
+      <div class="schedule-cell header">Jueves</div>
+      <div class="schedule-cell header">Viernes</div>
+      <div class="schedule-cell header">Sábado</div>
+
+      <!-- 09:00 -->
+      <div class="schedule-cell time">09:00</div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+
+      <!-- 10:00 -->
+      <div class="schedule-cell time">10:00</div>
+      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+
+      <!-- 10:30 -->
+      <div class="schedule-cell time">10:30</div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell empty"></div>
+      <div class="schedule-cell jj"><span class="label">JIU-JITSU</span></div>
+
+      <!-- 16:15 -->
+      <div class="schedule-cell time">16:15</div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+
+      <!-- 16:15 (2nd) -->
+      <div class="schedule-cell time">16:15</div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell wod"><span class="label">WOD</span><span class="sub">OPEN BOX</span></div>
+      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+
+      <!-- Especiales -->
+      <div class="schedule-cell time">16:15</div>
+      <div class="schedule-cell special"><span class="label">GIMNÁSTICOS</span></div>
+      <div class="schedule-cell special"><span class="label">DEKA</span></div>
+      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+      <div class="schedule-cell special"><span class="label">STRONGMAN</span></div>
+      <div class="schedule-cell special"><span class="label">HALTEROFILIA</span></div>
+      <div class="schedule-cell openbox"><span class="label">OPEN BOX</span></div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+      <a href="#contacto" class="btn btn-primary">Reserva tu clase</a>
     </div>
   </div>
 </section>
