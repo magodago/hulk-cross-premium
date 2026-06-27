@@ -719,6 +719,60 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── HULK IMPACT EFFECTS ── */
+#hulk-canvas {
+  position: fixed; inset: 0; z-index: 9998;
+  pointer-events: none;
+}
+.hulk-crack {
+  position: fixed; inset: 0; z-index: 9997;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(59,140,58,0.02) 60%, transparent 70%);
+  transition: opacity 0.15s ease;
+}
+.hulk-crack.active { opacity: 1; }
+.hulk-impact-flash {
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at var(--flash-x, 50%) var(--flash-y, 50%),
+    rgba(59,140,58,0.15) 0%,
+    rgba(209,15,11,0.08) 20%,
+    transparent 50%
+  );
+  transition: opacity 0.1s ease;
+}
+.hulk-impact-flash.active { opacity: 1; }
+
+/* ── SCREEN SHAKE ── */
+@keyframes shake {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-3px, 2px); }
+  20% { transform: translate(3px, -1px); }
+  30% { transform: translate(-2px, 3px); }
+  40% { transform: translate(2px, -2px); }
+  50% { transform: translate(-1px, 1px); }
+  60% { transform: translate(1px, -1px); }
+  70% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  90% { transform: translate(-1px, 1px); }
+}
+.shaking section { animation: shake 0.3s ease-in-out; }
+
+/* ── AMBIENT DEBRIS ── */
+.hulk-debris {
+  position: fixed; top: -20px; z-index: 9997;
+  pointer-events: none;
+  width: 6px; height: 6px;
+  background: rgba(59,140,58,0.2);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: debrisFall linear forwards;
+}
+@keyframes debrisFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  5% { opacity: 0.6; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
 </style>
 </head>
 <body>
@@ -1267,6 +1321,11 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<!-- HULK EFFECTS OVERLAYS -->
+<div class="hulk-crack" id="hulkCrack"></div>
+<div class="hulk-impact-flash" id="hulkFlash"></div>
+<canvas id="hulk-canvas"></canvas>
+
 <script>
 // ── HAMBURGER ──
 const hamburger = document.getElementById('hamburger');
@@ -1312,6 +1371,173 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) target.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+// ═══════════════════════════════════════════════
+// HULK EFFECTS — Gamma impact, debris, energy
+// ═══════════════════════════════════════════════
+
+const canvas = document.getElementById('hulk-canvas');
+const ctx = canvas.getContext('2d');
+const crackEl = document.getElementById('hulkCrack');
+const flashEl = document.getElementById('hulkFlash');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── AMBIENT ENERGY PARTICLES ──
+class EnergyParticle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -Math.random() * 0.4 - 0.1;
+    this.alpha = Math.random() * 0.4 + 0.1;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.02 + 0.01;
+    this.color = Math.random() > 0.5 ? '59,140,58' : '209,15,11';
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.pulse += this.pulseSpeed;
+    if (this.y < -10 || this.x < -10 || this.x > W + 10) this.reset();
+    if (this.y < 0) { this.x = Math.random() * W; this.y = H + 10; }
+  }
+  draw() {
+    const a = this.alpha * (0.6 + 0.4 * Math.sin(this.pulse));
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color},${a})`;
+    ctx.fill();
+  }
+}
+
+const particles = [];
+for (let i = 0; i < 35; i++) particles.push(new EnergyParticle());
+
+// ── DEBRIS SYSTEM ──
+function spawnDebris(count) {
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'hulk-debris';
+    const size = Math.random() * 8 + 3;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.left = (Math.random() * 90 + 5) + '%';
+    el.style.background = Math.random() > 0.5
+      ? `rgba(59,140,58,${Math.random() * 0.25 + 0.1})`
+      : `rgba(209,15,11,${Math.random() * 0.15 + 0.05})`;
+    el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+
+// Spawn ambient debris periodically
+let debrisTimer = setInterval(() => {
+  if (document.hidden) return;
+  spawnDebris(Math.floor(Math.random() * 3) + 1);
+}, 3000);
+
+// ── SECTION IMPACT DETECTION ──
+const sections = document.querySelectorAll('section');
+let lastSectionHit = -1;
+
+function triggerImpact(sectionIndex) {
+  if (sectionIndex === lastSectionHit) return;
+  lastSectionHit = sectionIndex;
+
+  const rect = sections[sectionIndex].getBoundingClientRect();
+  const flashX = (rect.left + rect.width / 2) / W * 100;
+  const flashY = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 10), 90);
+
+  // Flash
+  flashEl.style.setProperty('--flash-x', flashX + '%');
+  flashEl.style.setProperty('--flash-y', flashY + '%');
+  flashEl.classList.add('active');
+  setTimeout(() => flashEl.classList.remove('active'), 150);
+
+  // Crack overlay
+  crackEl.classList.add('active');
+  setTimeout(() => crackEl.classList.remove('active'), 400);
+
+  // Screen shake
+  document.body.classList.add('shaking');
+  setTimeout(() => document.body.classList.remove('shaking'), 300);
+
+  // Spawn debris burst
+  spawnDebris(Math.floor(Math.random() * 8) + 5);
+}
+
+// Watch for section entries with IntersectionObserver
+const impactObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = Array.from(sections).indexOf(e.target);
+      if (idx > 0) triggerImpact(idx);
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(s => impactObserver.observe(s));
+
+// ── CANVAS LOOP ──
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw energy particles
+  particles.forEach(p => { p.update(); p.draw(); });
+
+  // Draw connecting lines between nearby particles
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        const a = (1 - dist / 120) * 0.08;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(59,140,58,${a})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Ground pulse effect at bottom
+  const grad = ctx.createLinearGradient(0, H - 60, 0, H);
+  grad.addColorStop(0, 'transparent');
+  grad.addColorStop(0.5, `rgba(59,140,58,${0.03 + 0.02 * Math.sin(Date.now() / 2000)})`);
+  grad.addColorStop(1, `rgba(59,140,58,${0.06 + 0.04 * Math.sin(Date.now() / 2000)})`);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, H - 60, W, 60);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// ── SCROLL-BASED DEBRIS TRIGGER ──
+let scrollThrottle = 0;
+window.addEventListener('scroll', () => {
+  const now = Date.now();
+  if (now - scrollThrottle < 500) return;
+  scrollThrottle = now;
+  const scrollSpeed = Math.abs(window.scrollY - lastScroll);
+  if (scrollSpeed > 200) {
+    spawnDebris(Math.floor(scrollSpeed / 100) + 2);
+  }
+}, { passive: true });
 </script>
 </body>
 </html>
