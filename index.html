@@ -17,7 +17,9 @@
   --bg3: #1a1a1a;
   --red: #d10f0b;
   --red-dark: #a00c08;
-  --red-glow: rgba(209,15,11,0.3);
+  --red-glow: rgba(209,15,11,0.35);
+  --green: #3b8c3a;
+  --green-glow: rgba(59,140,58,0.25);
   --white: #ffffff;
   --text: rgba(255,255,255,0.88);
   --text-muted: rgba(255,255,255,0.55);
@@ -75,6 +77,7 @@ nav {
   color: var(--white);
 }
 .nav-logo-text span { color: var(--red); }
+.nav-logo-text .green { color: var(--green); }
 .nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
 .nav-links a {
   font-family: var(--font-display); font-size: 0.78rem;
@@ -169,14 +172,14 @@ section { position: relative; overflow: hidden; }
 }
 .hero-bg img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: brightness(0.3) saturate(0.9) contrast(1.1);
+  filter: brightness(0.6) saturate(1.1) contrast(1.05);
 }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(180deg,
-    rgba(10,10,10,0.2) 0%,
-    rgba(10,10,10,0.5) 40%,
-    rgba(10,10,10,0.85) 80%,
+    rgba(10,10,10,0.1) 0%,
+    rgba(10,10,10,0.35) 40%,
+    rgba(10,10,10,0.7) 80%,
     var(--bg) 100%
   );
 }
@@ -186,6 +189,94 @@ section { position: relative; overflow: hidden; }
     linear-gradient(rgba(209,15,11,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(209,15,11,0.04) 1px, transparent 1px);
   background-size: 60px 60px;
+}
+
+/* ── HULK GAMMA RADIATION EFFECT ── */
+.hero-gamma {
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none; overflow: hidden;
+}
+.hero-gamma::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: -10%;
+  width: 120%; height: 60%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(59,140,58,0.08) 0%,
+    rgba(59,140,58,0.03) 30%,
+    transparent 60%);
+  animation: gammaPulse 4s ease-in-out infinite;
+}
+.hero-gamma::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; right: -10%;
+  width: 80%; height: 50%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(209,15,11,0.06) 0%,
+    transparent 50%);
+  animation: gammaPulse 4s ease-in-out infinite 2s;
+}
+@keyframes gammaPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ── COMIC BURST BEHIND TITLE ── */
+.hero-burst {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  z-index: 1; pointer-events: none;
+  opacity: 0.08;
+  background: radial-gradient(circle at 50% 50%,
+    transparent 25%,
+    rgba(59,140,58,0.08) 25%,
+    rgba(59,140,58,0.04) 35%,
+    transparent 45%,
+    rgba(209,15,11,0.06) 45%,
+    transparent 55%,
+    rgba(59,140,58,0.04) 55%,
+    transparent 65%
+  );
+  animation: burstSpin 20s linear infinite;
+}
+@keyframes burstSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ── HULK POWER TEXT EFFECT ── */
+.hero-title .hulk-text {
+  display: inline-block;
+  color: var(--white);
+  text-shadow:
+    0 0 20px rgba(59,140,58,0.3),
+    0 0 40px rgba(59,140,58,0.15),
+    0 0 80px rgba(59,140,58,0.08);
+  animation: hulkPulse 3s ease-in-out infinite;
+}
+@keyframes hulkPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(59,140,58,0.3), 0 0 40px rgba(59,140,58,0.15); }
+  50% { text-shadow: 0 0 30px rgba(59,140,58,0.5), 0 0 60px rgba(59,140,58,0.25), 0 0 100px rgba(59,140,58,0.1); }
+}
+
+/* ── POWER LINE DECORATIONS ── */
+.hero-power-line {
+  position: absolute; z-index: 2; pointer-events: none;
+  height: 2px; width: 80px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0.15;
+  animation: powerLineSlide 4s ease-in-out infinite;
+}
+.hero-power-line:nth-child(1) { top: 20%; left: 5%; animation-delay: 0s; }
+.hero-power-line:nth-child(2) { top: 35%; right: 8%; animation-delay: 1s; }
+.hero-power-line:nth-child(3) { bottom: 30%; left: 3%; animation-delay: 2s; }
+.hero-power-line:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 3s; }
+@keyframes powerLineSlide {
+  0%, 100% { opacity: 0.05; transform: scaleX(0.5); }
+  50% { opacity: 0.2; transform: scaleX(1.2); }
 }
 .hero-content {
   position: relative; z-index: 2;
@@ -328,6 +419,14 @@ section { position: relative; overflow: hidden; }
 }
 .service-card:hover { border-color: var(--border-light); transform: translateY(-4px); background: var(--card-hover); }
 .service-card:hover::after { height: 100%; }
+.service-card::before {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(59,140,58,0.06) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.service-card:hover::before { opacity: 1; }
 .service-icon {
   font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
   color: var(--red); margin-bottom: 14px; line-height: 1;
@@ -560,7 +659,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining" loading="eager">
-      <span class="nav-logo-text">HULK<span>CROSS</span></span>
+      <span class="nav-logo-text"><span class="hulk-text">HULK</span><span class="green">CROSS</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#inicio">Inicio</a></li>
@@ -594,9 +693,15 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-grid"></div>
+  <div class="hero-gamma"></div>
+  <div class="hero-burst"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-power-line"></div>
   <div class="hero-content">
     <div class="hero-tag">Centro Deportivo en Illescas</div>
-    <h1 class="hero-title">HULK <span class="accent">CROSSTRAINING</span></h1>
+    <h1 class="hero-title"><span class="hulk-text">HULK</span> <span class="accent">CROSSTRAINING</span></h1>
     <p class="hero-sub">Cross Training · Pilates · Taekwondo · Jiu-Jitsu Brasileño</p>
     <p class="hero-quote">"Haz hoy lo que otros no se atreven, para hacer mañana lo que ellos NO PUEDEN..."</p>
     <div class="hero-actions">
@@ -916,7 +1021,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="footer-brand">
         <a href="#" class="nav-logo">
           <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining" loading="lazy">
-          <span class="nav-logo-text">HULK<span>CROSS</span></span>
+          <span class="nav-logo-text"><span class="hulk-text">HULK</span><span class="green">CROSS</span></span>
         </a>
         <p>Centro deportivo líder en Illescas especializado en cross training, pilates, taekwondo y jiu-jitsu brasileño. Transformamos tu condición física desde 2022.</p>
       </div>
