@@ -891,6 +891,121 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   .crossfit-card-number { width: 36px; height: 36px; font-size: 1rem; }
 }
 
+/* ── PODCAST PLAYER ── */
+.hero-podcast {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 60px;
+  padding: 8px 8px 8px 20px;
+  max-width: 480px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.hero-podcast:hover {
+  border-color: var(--red-glow);
+  background: rgba(255,255,255,0.05);
+}
+.hero-podcast-info {
+  flex: 1;
+  min-width: 0;
+}
+.hero-podcast-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.hero-podcast-title {
+  font-size: 0.85rem;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+.hero-podcast-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--red);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.hero-podcast-btn:hover {
+  background: var(--red-dark);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--red-glow);
+}
+.hero-podcast-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+  margin-left: 2px;
+}
+.hero-podcast-btn.playing svg {
+  margin-left: 0;
+}
+.hero-podcast-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+.hero-podcast-wave span {
+  width: 3px;
+  height: 100%;
+  background: var(--red);
+  border-radius: 2px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.hero-podcast-wave.active span {
+  opacity: 0.6;
+}
+.hero-podcast-wave span:nth-child(1) { height: 30%; }
+.hero-podcast-wave span:nth-child(2) { height: 60%; }
+.hero-podcast-wave span:nth-child(3) { height: 40%; }
+.hero-podcast-wave span:nth-child(4) { height: 80%; }
+.hero-podcast-wave span:nth-child(5) { height: 20%; }
+.hero-podcast-wave span:nth-child(6) { height: 55%; }
+.hero-podcast-wave span:nth-child(7) { height: 35%; }
+.hero-podcast-wave span:nth-child(8) { height: 70%; }
+.hero-podcast-wave.active span {
+  animation: wave-anim 0.8s ease-in-out infinite alternate;
+}
+.hero-podcast-wave.active span:nth-child(1) { animation-delay: 0s; }
+.hero-podcast-wave.active span:nth-child(2) { animation-delay: 0.1s; }
+.hero-podcast-wave.active span:nth-child(3) { animation-delay: 0.2s; }
+.hero-podcast-wave.active span:nth-child(4) { animation-delay: 0.3s; }
+.hero-podcast-wave.active span:nth-child(5) { animation-delay: 0.4s; }
+.hero-podcast-wave.active span:nth-child(6) { animation-delay: 0.5s; }
+.hero-podcast-wave.active span:nth-child(7) { animation-delay: 0.6s; }
+.hero-podcast-wave.active span:nth-child(8) { animation-delay: 0.7s; }
+@keyframes wave-anim {
+  0% { opacity: 0.3; transform: scaleY(0.6); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+@media (max-width: 480px) {
+  .hero-podcast { flex-wrap: wrap; padding: 10px 14px; border-radius: 16px; gap: 10px; }
+  .hero-podcast-info { width: 100%; }
+  .hero-podcast-wave { display: none; }
+}
+
 </style>
 </head>
 <body>
@@ -952,6 +1067,21 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
     <div class="hero-actions">
       <a href="#contacto" class="btn btn-primary">Contáctanos</a>
       <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+    </div>
+
+    <!-- PODCAST PLAYER -->
+    <div class="hero-podcast">
+      <div class="hero-podcast-wave" id="podcastWave">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="hero-podcast-info">
+        <div class="hero-podcast-label">Podcast</div>
+        <div class="hero-podcast-title">Historia del CrossFit</div>
+      </div>
+      <button class="hero-podcast-btn" id="podcastBtn" aria-label="Reproducir podcast">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1908,6 +2038,34 @@ window.addEventListener('scroll', () => {
     spawnDebris(Math.floor(scrollSpeed / 100) + 2);
   }
 }, { passive: true });
+
+// ── PODCAST PLAYER ──
+const podcastAudio = new Audio('assets/audio/historia-crossfit.mp3');
+const podcastBtn = document.getElementById('podcastBtn');
+const podcastWave = document.getElementById('podcastWave');
+let isPlaying = false;
+
+podcastBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    podcastAudio.pause();
+    podcastBtn.classList.remove('playing');
+    podcastWave.classList.remove('active');
+    podcastBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+  } else {
+    podcastAudio.play();
+    podcastBtn.classList.add('playing');
+    podcastWave.classList.add('active');
+    podcastBtn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+  }
+  isPlaying = !isPlaying;
+});
+
+podcastAudio.addEventListener('ended', () => {
+  isPlaying = false;
+  podcastBtn.classList.remove('playing');
+  podcastWave.classList.remove('active');
+  podcastBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+});
 </script>
 </body>
 </html>
