@@ -891,6 +891,143 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   .crossfit-card-number { width: 36px; height: 36px; font-size: 1rem; }
 }
 
+/* ── TARIFAS / PRICING ── */
+.tarifas {
+  padding: 100px 0;
+  background: var(--bg2);
+  position: relative;
+}
+.tarifas::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red-glow), transparent);
+}
+.tarifas-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.tarifas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.tarifas-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+.tarifas-card:hover {
+  border-color: var(--red-glow);
+  background: var(--card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+.tarifas-card.featured {
+  border-color: var(--red);
+  background: linear-gradient(180deg, rgba(209,15,11,0.06), transparent);
+  box-shadow: 0 0 40px rgba(209,15,11,0.08);
+}
+.tarifas-card.featured::after {
+  content: 'MÁS ELEGIDO';
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+.tarifas-card-name {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.tarifas-card-price {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tarifas-card-price span {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.tarifas-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 12px 0 24px;
+  flex: 1;
+}
+.tarifas-card-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+}
+.tarifas-card-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 0 20px var(--red-glow);
+}
+.tarifas-card.featured .tarifas-card-btn {
+  background: var(--red);
+  border-color: var(--red);
+}
+.tarifas-card.featured .tarifas-card-btn:hover {
+  background: var(--red-dark);
+  box-shadow: 0 0 30px var(--red-glow);
+}
+.tarifas-sub {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.tarifas-sub a {
+  color: var(--red);
+  text-decoration: none;
+}
+.tarifas-sub a:hover {
+  text-decoration: underline;
+}
+.tarifas-subnote {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+@media (max-width: 600px) {
+  .tarifas-grid { grid-template-columns: 1fr; }
+  .tarifas { padding: 60px 0; }
+}
+
 /* ── PODCAST PLAYER ── */
 .hero-podcast {
   margin-top: 24px;
@@ -1021,6 +1158,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#tarifas">Tarifas</a></li>
       <li><a href="#pilates">Pilates</a></li>
       <li><a href="#galeria">Galería</a></li>
       <li><a href="#crossfit">CrossFit</a></li>
@@ -1039,6 +1177,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   <a href="#inicio" class="mobile-link">Inicio</a>
   <a href="#servicios" class="mobile-link">Servicios</a>
   <a href="#horarios" class="mobile-link">Horarios</a>
+  <a href="#tarifas" class="mobile-link">Tarifas</a>
   <a href="#pilates" class="mobile-link">Pilates</a>
   <a href="#galeria" class="mobile-link">Galería</a>
   <a href="#crossfit" class="mobile-link">CrossFit</a>
@@ -1352,6 +1491,61 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 
     <div style="text-align:center;margin-top:32px;">
       <a href="#contacto" class="btn btn-primary">Reserva tu clase</a>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFAS -->
+<section class="tarifas" id="tarifas">
+  <div class="inner">
+    <div class="tarifas-header reveal">
+      <div class="section-label">Tarifas</div>
+      <h2 class="section-title">Planes <span class="accent">flexibles</span></h2>
+      <p class="section-desc" style="margin:0 auto;">Elige el plan que mejor se adapte a ti. Clases limitadas, personalizadas, monitores profesionales.</p>
+    </div>
+
+    <div class="tarifas-grid">
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Inicio</div>
+        <div class="tarifas-card-price">35<span>€/mes</span></div>
+        <div class="tarifas-card-desc">5 WOD al mes. Clases limitadas y personalizadas. Perfecto para empezar.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Progreso</div>
+        <div class="tarifas-card-price">45<span>€/mes</span></div>
+        <div class="tarifas-card-desc">8 WOD al mes. Más entrenamiento para avanzar a tu ritmo.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Ritmo</div>
+        <div class="tarifas-card-price">50<span>€/mes</span></div>
+        <div class="tarifas-card-desc">12 WOD al mes. Entrena tres veces por semana con constancia.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Intensivo</div>
+        <div class="tarifas-card-price">60<span>€/mes</span></div>
+        <div class="tarifas-card-desc">16 WOD al mes. Para quienes buscan resultados más rápido.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card featured reveal">
+        <div class="tarifas-card-name">Ilimitado</div>
+        <div class="tarifas-card-price">70<span>€/mes</span></div>
+        <div class="tarifas-card-desc">Todas las clases que quieras. Sin límites. Acceso completo a Cross Training, Pilates y más.</div>
+        <a href="#contacto" class="tarifas-card-btn">Elegir plan</a>
+      </div>
+    </div>
+
+    <div class="tarifas-sub reveal">
+      <p>También ofrecemos <strong>Taekwondo</strong> — Infantil 35€/mes · Adultos 40€/mes</p>
+    </div>
+    <div class="tarifas-subnote reveal">
+      <p>¿Dudas? <a href="#contacto">Contáctanos</a> sin compromiso</p>
     </div>
   </div>
 </section>
