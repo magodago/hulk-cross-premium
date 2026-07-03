@@ -439,70 +439,68 @@ section { position: relative; overflow: hidden; }
 .service-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
 
 /* ── SCHEDULE ── */
-.schedule { padding: 100px 0; background: var(--bg2); }
-.schedule-header { text-align: center; margin-bottom: 40px; }
+.schedule { padding: 80px 0; background: var(--bg2); }
+.schedule-header { text-align: center; margin-bottom: 28px; }
+.schedule-header .section-desc { font-size: 0.85rem; }
 .schedule-grid {
   display: grid;
-  grid-template-columns: 70px repeat(6, 1fr);
-  gap: 4px; max-width: 100%; overflow-x: auto;
+  grid-template-columns: 55px repeat(6, 1fr);
+  gap: 3px; max-width: 100%; overflow-x: auto;
   background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: 16px; padding: 8px;
+  border-radius: 12px; padding: 6px;
 }
 .sc-header {
-  font-family: var(--font-display); font-size: 0.75rem;
+  font-family: var(--font-display); font-size: 0.65rem;
   font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
-  color: var(--white); padding: 10px 6px;
-  text-align: center; border-bottom: 2px solid var(--red);
+  color: var(--white); padding: 6px 4px;
+  text-align: center; border-bottom: 1px solid var(--red);
 }
 .sc-time {
-  font-family: var(--font-display); font-size: 0.7rem;
+  font-family: var(--font-display); font-size: 0.6rem;
   font-weight: 500; color: var(--red);
-  text-align: center; padding: 10px 4px;
+  text-align: center; padding: 4px 2px;
   display: flex; align-items: center; justify-content: center;
-  flex-direction: column; line-height: 1.2;
+  flex-direction: column; line-height: 1.1;
 }
-.sc-time small { font-size: 0.6rem; color: var(--text-dim); }
+.sc-time small { font-size: 0.5rem; color: var(--text-dim); }
 .sc-wod {
-  padding: 8px 4px; text-align: center; border-radius: 6px;
-  font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
-  color: var(--red); background: var(--card-bg);
-  border: 1px solid rgba(209,15,11,0.15);
+  padding: 4px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-display); font-size: 0.6rem; font-weight: 600;
+  color: var(--red); background: rgba(209,15,11,0.04);
+  border: 1px solid rgba(209,15,11,0.12);
   display: flex; align-items: center; justify-content: center;
   transition: all 0.2s ease;
 }
-.sc-wod:hover { background: rgba(209,15,11,0.06); border-color: rgba(209,15,11,0.3); }
+.sc-wod:hover { background: rgba(209,15,11,0.08); border-color: rgba(209,15,11,0.25); }
 .sc-ob {
-  padding: 6px 4px; text-align: center; border-radius: 6px;
-  font-family: var(--font-body); font-size: 0.6rem; font-weight: 400;
-  color: var(--text-dim); background: var(--card-bg);
-  border: 1px solid rgba(255,255,255,0.04);
+  padding: 3px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-body); font-size: 0.5rem; font-weight: 400;
+  color: var(--text-dim); background: transparent;
+  border: 1px solid rgba(255,255,255,0.03);
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s ease;
 }
-.sc-ob:hover { border-color: rgba(255,255,255,0.1); }
+.sc-ob:hover { border-color: rgba(255,255,255,0.08); }
 .sc-jj {
-  padding: 8px 4px; text-align: center; border-radius: 6px;
-  font-family: var(--font-display); font-size: 0.68rem; font-weight: 600;
-  color: var(--green); background: var(--card-bg);
-  border: 1px solid rgba(59,140,58,0.15);
+  padding: 4px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-display); font-size: 0.58rem; font-weight: 600;
+  color: var(--green); background: rgba(59,140,58,0.04);
+  border: 1px solid rgba(59,140,58,0.12);
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s ease;
 }
-.sc-jj:hover { background: rgba(59,140,58,0.06); border-color: rgba(59,140,58,0.3); }
+.sc-jj:hover { background: rgba(59,140,58,0.06); border-color: rgba(59,140,58,0.25); }
 .sc-sp {
-  padding: 6px 4px; text-align: center; border-radius: 6px;
-  font-family: var(--font-display); font-size: 0.65rem; font-weight: 600;
-  color: var(--white); background: var(--card-bg);
+  padding: 3px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-display); font-size: 0.55rem; font-weight: 600;
+  color: var(--white); background: rgba(255,255,255,0.02);
   border: 1px solid var(--border-light);
   display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s ease;
 }
 .sc-sp:hover { background: rgba(209,15,11,0.05); }
 .sc-empty {
-  padding: 4px; border-radius: 6px;
+  padding: 2px; border-radius: 4px;
   background: transparent; border: 1px solid transparent;
 }
-.schedule .btn { margin-top: 32px; }
+.schedule .btn { margin-top: 20px; }
 .gallery { padding: 100px 0; }
 .gallery-header { text-align: center; margin-bottom: 40px; }
 .gallery-grid {
@@ -706,11 +704,12 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   section { padding: 60px 0 !important; }
   .about-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   .stat-card { padding: 14px; }
-  .schedule-grid { grid-template-columns: 50px repeat(6, 1fr); gap: 3px; padding: 4px; }
-  .sc-header { font-size: 0.6rem; padding: 6px 2px; }
-  .sc-time { font-size: 0.6rem; padding: 6px 2px; }
-  .sc-wod, .sc-jj { font-size: 0.6rem; padding: 4px 2px; }
-  .sc-ob, .sc-sp { font-size: 0.55rem; padding: 3px 2px; }
+  .schedule-grid { grid-template-columns: 40px repeat(6, 1fr); gap: 2px; padding: 4px; }
+  .sc-header { font-size: 0.5rem; padding: 4px 2px; }
+  .sc-time { font-size: 0.5rem; padding: 3px 1px; }
+  .sc-wod, .sc-jj { font-size: 0.5rem; padding: 3px 1px; }
+  .sc-ob, .sc-sp { font-size: 0.45rem; padding: 2px 1px; }
+  .schedule { padding: 40px 0; }
 }
 
 /* ── SCROLL ANIMATIONS ── */
@@ -1384,7 +1383,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="sc-empty"></div>
       <div class="sc-jj">JIU-JITSU</div>
 
-      <!-- 10:00-11:30 -->
+      <!-- 10:00-11:30 JIU-JITSU L-X-V -->
       <div class="sc-time">10:00<br><small>11:30</small></div>
       <div class="sc-jj">JIU-JITSU</div>
       <div class="sc-empty"></div>
@@ -1393,7 +1392,7 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="sc-jj">JIU-JITSU</div>
       <div class="sc-empty"></div>
 
-      <!-- 16:15 WOD + OPEN BOX (x8 slots) -->
+      <!-- 16:15 - WOD L-V + OPEN BOX -->
       <div class="sc-time">16:15</div>
       <div class="sc-wod">WOD</div>
       <div class="sc-wod">WOD</div>
@@ -1410,41 +1409,6 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="sc-ob">OPEN BOX</div>
       <div class="sc-empty"></div>
 
-      <!-- Repeat: 16:15 WOD + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- Repeat: 16:15 WOD + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- Specials row 1: GIMN+OPEN / STRONGMAN / DEKA / WOD / HALTERO -->
       <div class="sc-time"></div>
       <div class="sc-sp">GIMNÁSTICOS</div>
       <div class="sc-sp">STRONGMAN</div>
@@ -1453,24 +1417,6 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="sc-sp">HALTEROFILIA</div>
       <div class="sc-empty"></div>
 
-      <!-- 16:15 WOD + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- Specials row 2 -->
       <div class="sc-time"></div>
       <div class="sc-empty"></div>
       <div class="sc-sp">STRONGMAN</div>
