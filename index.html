@@ -746,28 +746,19 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 /* ── SCREEN SHAKE (HULK MODE) ── */
 @keyframes hulk-shake {
   0%   { transform: translate(0, 0) rotate(0deg); }
-  5%   { transform: translate(-3px, 1.5px) rotate(-0.35deg); }
-  10%  { transform: translate(2.5px, -2px) rotate(0.3deg); }
-  15%  { transform: translate(-2px, 2.5px) rotate(-0.2deg); }
-  20%  { transform: translate(1.5px, -3px) rotate(0.25deg); }
-  25%  { transform: translate(-2.5px, 1px) rotate(-0.3deg); }
-  30%  { transform: translate(2px, 1.5px) rotate(0.15deg); }
-  35%  { transform: translate(-1.5px, -2.5px) rotate(-0.15deg); }
-  40%  { transform: translate(3px, -1px) rotate(0.25deg); }
-  45%  { transform: translate(-2px, 2px) rotate(-0.2deg); }
-  50%  { transform: translate(1px, -1.5px) rotate(0.1deg); }
-  55%  { transform: translate(-2.5px, 1px) rotate(-0.15deg); }
-  60%  { transform: translate(1.5px, 2px) rotate(0.15deg); }
-  65%  { transform: translate(-3px, -1.5px) rotate(-0.25deg); }
-  70%  { transform: translate(2px, -2px) rotate(0.2deg); }
-  75%  { transform: translate(-1px, 2.5px) rotate(-0.1deg); }
-  80%  { transform: translate(2.5px, -1px) rotate(0.15deg); }
-  85%  { transform: translate(-1.5px, 1px) rotate(-0.1deg); }
-  90%  { transform: translate(1px, -2.5px) rotate(0.2deg); }
-  95%  { transform: translate(-1px, 0.5px) rotate(-0.05deg); }
+  10%  { transform: translate(-0.5px, 0.3px) rotate(-0.08deg); }
+  20%  { transform: translate(0.4px, -0.3px) rotate(0.06deg); }
+  30%  { transform: translate(-0.3px, 0.4px) rotate(-0.05deg); }
+  40%  { transform: translate(0.5px, -0.2px) rotate(0.06deg); }
+  50%  { transform: translate(-0.4px, 0.2px) rotate(-0.04deg); }
+  60%  { transform: translate(0.3px, 0.3px) rotate(0.04deg); }
+  70%  { transform: translate(-0.5px, -0.3px) rotate(-0.06deg); }
+  80%  { transform: translate(0.4px, -0.3px) rotate(0.04deg); }
+  90%  { transform: translate(-0.3px, 0.2px) rotate(-0.03deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
 }
 .hulk-shaking {
-  animation: hulk-shake 0.4s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  animation: hulk-shake 0.3s ease-out both;
 }
 
 /* ── AMBIENT DEBRIS ── */
