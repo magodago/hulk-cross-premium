@@ -162,7 +162,7 @@ const DIAS_SHORT = ["DOM","LUN","MAR","MIÉ","JUE","VIE","SÁB"];
 const DIA_KEY = [0,1,2,3,4,5,6]; // 0=domingo...6=sábado - para mapeo con API
 
 async function api(path, opts={}) {
-  const headers = {"Content-Type": "application/json"};
+  const headers = {"Content-Type": "application/json", "ngrok-skip-browser-warning": "true"};
   if (token) headers["Authorization"] = `Bearer ${token}`;
   try {
     const r = await fetch(API + path, { ...opts, headers });
