@@ -1,291 +1,2364 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Hulk CrossFit - Box de CrossFit en Illescas, Toledo. Entrenamientos de alta intensidad, comunidad fitness y transformación física.">
-    <title>Hulk CrossFit</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HULK CROSSTRAINING - Centro Deportivo en Illescas | Cross Training, Pilates, Taekwondo</title>
+<meta name="description" content="Centro deportivo líder en Illescas. Cross Training, Pilates, Taekwondo y Jiu-Jitsu Brasileño. Entrenamientos funcionales con coaches expertos. ¡Reserva tu primera clase!">
+<link rel="icon" type="image/x-icon" href="https://de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/site_favicon_16_1747993620696.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #1a1a1a;
+  --red: #d10f0b;
+  --red-dark: #a00c08;
+  --red-glow: rgba(209,15,11,0.35);
+  --green: #3b8c3a;
+  --green-glow: rgba(59,140,58,0.25);
+  --white: #ffffff;
+  --text: rgba(255,255,255,0.88);
+  --text-muted: rgba(255,255,255,0.55);
+  --text-dim: rgba(255,255,255,0.3);
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(209,15,11,0.25);
+  --card-bg: rgba(255,255,255,0.03);
+  --card-hover: rgba(209,15,11,0.05);
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.4s ease;
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 70px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.nav-logo img { height: 42px; width: auto; }
+.nav-logo-text {
+  font-family: var(--font-display); font-size: 1.2rem;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white);
+}
+.nav-logo-text span { color: var(--red); }
+.nav-logo-text .green { color: var(--green); }
+.nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--font-display); font-size: 0.78rem;
+  font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  padding: 8px 18px; transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
+  height: 2px; background: var(--red);
+  transform: scaleX(0); transition: transform 0.3s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--red); color: var(--white) !important;
+  border-radius: 50px; padding: 10px 24px !important; margin-left: 8px;
+  font-weight: 600 !important; letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 20px var(--red-glow); }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 8px;
+}
+.nav-hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: rgba(255,255,255,0.7); border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* ── MOBILE NAV ── */
+.mobile-nav {
+  position: fixed; top: 0; right: -100%; width: 75vw; max-width: 360px;
+  height: 100vh; z-index: 200;
+  background: var(--bg2); border-left: 1px solid var(--border);
+  padding: 90px 32px 32px;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mobile-nav.open { right: 0; }
+.mobile-nav a {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-weight: 500; color: rgba(255,255,255,0.7);
+  text-decoration: none; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: color 0.2s; letter-spacing: 1px; text-transform: uppercase;
+}
+.mobile-nav a:hover { color: var(--red); }
+.mobile-nav .nav-cta-mobile {
+  margin-top: 20px; background: var(--red); color: #fff;
+  text-align: center; border-radius: 50px; padding: 14px;
+  font-weight: 600; font-size: 1rem; letter-spacing: 1px;
+}
+.mobile-overlay {
+  position: fixed; inset: 0; z-index: 150;
+  background: rgba(0,0,0,0.7); opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mobile-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* ── SECTIONS ── */
+section { position: relative; overflow: hidden; }
+.section-label {
+  font-family: var(--font-display); font-size: 0.75rem;
+  letter-spacing: 4px; color: var(--red);
+  text-transform: uppercase; margin-bottom: 12px; font-weight: 500;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700; line-height: 1.08;
+  letter-spacing: -0.5px; margin-bottom: 16px;
+  color: var(--white); text-transform: uppercase;
+}
+.section-title .accent { color: var(--red); }
+.section-desc {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.75; color: var(--text-muted);
+  max-width: 640px;
+}
+.inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; padding-top: 70px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.6) saturate(1.1) contrast(1.05);
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(10,10,10,0.1) 0%,
+    rgba(10,10,10,0.35) 40%,
+    rgba(10,10,10,0.7) 80%,
+    var(--bg) 100%
+  );
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(209,15,11,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(209,15,11,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── HULK GAMMA RADIATION EFFECT ── */
+.hero-gamma {
+  position: absolute; inset: 0; z-index: 1;
+  pointer-events: none; overflow: hidden;
+}
+.hero-gamma::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: -10%;
+  width: 120%; height: 60%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(59,140,58,0.08) 0%,
+    rgba(59,140,58,0.03) 30%,
+    transparent 60%);
+  animation: gammaPulse 4s ease-in-out infinite;
+}
+.hero-gamma::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; right: -10%;
+  width: 80%; height: 50%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(209,15,11,0.06) 0%,
+    transparent 50%);
+  animation: gammaPulse 4s ease-in-out infinite 2s;
+}
+@keyframes gammaPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ── COMIC BURST BEHIND TITLE ── */
+.hero-burst {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px; height: 500px;
+  z-index: 1; pointer-events: none;
+  opacity: 0.08;
+  background: radial-gradient(circle at 50% 50%,
+    transparent 25%,
+    rgba(59,140,58,0.08) 25%,
+    rgba(59,140,58,0.04) 35%,
+    transparent 45%,
+    rgba(209,15,11,0.06) 45%,
+    transparent 55%,
+    rgba(59,140,58,0.04) 55%,
+    transparent 65%
+  );
+  animation: burstSpin 20s linear infinite;
+}
+@keyframes burstSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ── HULK POWER TEXT EFFECT ── */
+.hero-title .hulk-text {
+  display: inline-block;
+  color: var(--white);
+  text-shadow:
+    0 0 20px rgba(59,140,58,0.3),
+    0 0 40px rgba(59,140,58,0.15),
+    0 0 80px rgba(59,140,58,0.08);
+  animation: hulkPulse 3s ease-in-out infinite;
+}
+@keyframes hulkPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(59,140,58,0.3), 0 0 40px rgba(59,140,58,0.15); }
+  50% { text-shadow: 0 0 30px rgba(59,140,58,0.5), 0 0 60px rgba(59,140,58,0.25), 0 0 100px rgba(59,140,58,0.1); }
+}
+
+/* ── POWER LINE DECORATIONS ── */
+.hero-power-line {
+  position: absolute; z-index: 2; pointer-events: none;
+  height: 2px; width: 80px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0.15;
+  animation: powerLineSlide 4s ease-in-out infinite;
+}
+.hero-power-line:nth-child(1) { top: 20%; left: 5%; animation-delay: 0s; }
+.hero-power-line:nth-child(2) { top: 35%; right: 8%; animation-delay: 1s; }
+.hero-power-line:nth-child(3) { bottom: 30%; left: 3%; animation-delay: 2s; }
+.hero-power-line:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 3s; }
+@keyframes powerLineSlide {
+  0%, 100% { opacity: 0.05; transform: scaleX(0.5); }
+  50% { opacity: 0.2; transform: scaleX(1.2); }
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px;
+  width: 100%;
+}
+.hero-tag {
+  display: inline-block; font-family: var(--font-display);
+  font-size: 0.72rem; letter-spacing: 4px; color: var(--red);
+  border: 1px solid var(--border-light); font-weight: 500;
+  border-radius: 50px; padding: 6px 18px;
+  margin-bottom: 24px; text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700; line-height: 1.02;
+  letter-spacing: -1px; color: var(--white);
+  margin-bottom: 4px; text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-title .accent { color: var(--red); }
+.hero-sub {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-muted); margin-bottom: 8px;
+  font-weight: 300; letter-spacing: 0.5px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.hero-quote {
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.7); margin-bottom: 40px;
+  max-width: 620px; line-height: 1.4;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 0.85rem;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; padding: 14px 32px;
+  border-radius: 50px; transition: all 0.3s ease;
+  cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--red); color: var(--white);
+  box-shadow: 0 4px 20px var(--red-glow);
+}
+.btn-primary:hover {
+  background: var(--red-dark); transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--red-glow);
+}
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-outline:hover {
+  border-color: var(--red); color: var(--red);
+  transform: translateY(-2px);
+}
+
+/* ── QUICK LINKS ── */
+.quick-links { padding: 60px 0; background: var(--bg2); }
+.quick-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.quick-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 32px 24px;
+  text-align: center; text-decoration: none;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.quick-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--red);
+  transform: translateX(-100%); transition: transform 0.5s ease;
+}
+.quick-card:hover { background: var(--card-hover); border-color: var(--border-light); transform: translateY(-4px); }
+.quick-card:hover::before { transform: translateX(100%); }
+.quick-num {
+  font-family: var(--font-display); font-size: 1.8rem; font-weight: 700;
+  color: var(--red); margin-bottom: 6px; opacity: 0.5;
+  line-height: 1;
+}
+.quick-card h3 {
+  font-family: var(--font-display); font-size: 1rem;
+  font-weight: 600; color: var(--white); margin-bottom: 6px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.quick-card p { font-size: 0.78rem; color: var(--text-dim); margin-bottom: 16px; }
+.quick-arrow { font-size: 1.2rem; color: var(--red); transition: transform 0.3s ease; }
+.quick-card:hover .quick-arrow { transform: translateX(4px); }
+
+/* ── ABOUT ── */
+.about { padding: 100px 0; }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.about-image {
+  position: relative; border-radius: 16px; overflow: hidden;
+}
+.about-image img { width: 100%; height: 500px; object-fit: cover; border-radius: 16px; }
+.about-image::after {
+  content: ''; position: absolute; inset: 0; border-radius: 16px;
+  box-shadow: inset 0 0 60px rgba(10,10,10,0.5);
+}
+.about-stats {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 32px;
+}
+.stat-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px; text-align: center;
+  transition: all 0.3s ease;
+}
+.stat-card:hover { border-color: var(--border-light); background: var(--card-hover); }
+.stat-card .num {
+  font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+  color: var(--red); margin-bottom: 2px;
+}
+.stat-card .label { font-size: 0.75rem; color: var(--text-dim); }
+
+/* ── SERVICES ── */
+.services { padding: 100px 0; background: var(--bg2); }
+.services-header { text-align: center; margin-bottom: 48px; }
+.services-header .section-desc { margin: 0 auto; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 36px 28px; position: relative;
+  overflow: hidden; transition: all 0.3s ease;
+}
+.service-card::after {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 0; background: var(--red);
+  transition: height 0.4s ease;
+}
+.service-card:hover { border-color: var(--border-light); transform: translateY(-4px); background: var(--card-hover); }
+.service-card:hover::after { height: 100%; }
+.service-card::before {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(59,140,58,0.06) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.service-card:hover::before { opacity: 1; }
+.service-icon {
+  font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
+  color: var(--red); margin-bottom: 14px; line-height: 1;
+}
+.service-card h3 {
+  font-family: var(--font-display); font-size: 1.15rem;
+  font-weight: 600; color: var(--white); margin-bottom: 10px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.service-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+
+/* ── SCHEDULE ── */
+.schedule { padding: 80px 0; background: var(--bg2); }
+.schedule-header { text-align: center; margin-bottom: 28px; }
+.schedule-header .section-desc { font-size: 0.85rem; }
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 55px repeat(6, 1fr);
+  gap: 3px; max-width: 100%; overflow-x: auto;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 6px;
+}
+.sc-header {
+  font-family: var(--font-display); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--white); padding: 6px 4px;
+  text-align: center; border-bottom: 1px solid var(--red);
+}
+.sc-time {
+  font-family: var(--font-display); font-size: 0.6rem;
+  font-weight: 500; color: var(--red);
+  text-align: center; padding: 4px 2px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; line-height: 1.1;
+}
+.sc-time small { font-size: 0.5rem; color: var(--text-dim); }
+.sc-wod {
+  padding: 4px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-display); font-size: 0.6rem; font-weight: 600;
+  color: var(--red); background: rgba(209,15,11,0.04);
+  border: 1px solid rgba(209,15,11,0.12);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease;
+}
+.sc-wod:hover { background: rgba(209,15,11,0.08); border-color: rgba(209,15,11,0.25); }
+.sc-ob {
+  padding: 3px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-body); font-size: 0.5rem; font-weight: 400;
+  color: var(--text-dim); background: transparent;
+  border: 1px solid rgba(255,255,255,0.03);
+  display: flex; align-items: center; justify-content: center;
+}
+.sc-ob:hover { border-color: rgba(255,255,255,0.08); }
+.sc-jj {
+  padding: 4px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-display); font-size: 0.58rem; font-weight: 600;
+  color: var(--green); background: rgba(59,140,58,0.04);
+  border: 1px solid rgba(59,140,58,0.12);
+  display: flex; align-items: center; justify-content: center;
+}
+.sc-jj:hover { background: rgba(59,140,58,0.06); border-color: rgba(59,140,58,0.25); }
+.sc-sp {
+  padding: 3px 2px; text-align: center; border-radius: 4px;
+  font-family: var(--font-display); font-size: 0.55rem; font-weight: 600;
+  color: var(--white); background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-light);
+  display: flex; align-items: center; justify-content: center;
+}
+.sc-sp:hover { background: rgba(209,15,11,0.05); }
+.sc-empty {
+  padding: 2px; border-radius: 4px;
+  background: transparent; border: 1px solid transparent;
+}
+.schedule .btn { margin-top: 20px; }
+.gallery { padding: 100px 0; }
+.gallery-header { text-align: center; margin-bottom: 40px; }
+.gallery-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.gallery-item {
+  position: relative; border-radius: 14px; overflow: hidden;
+  aspect-ratio: 1; cursor: pointer;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.gallery-item:hover img { transform: scale(1.06); }
+.gallery-item .overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(10,10,10,0.5) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.gallery-item:hover .overlay { opacity: 1; }
+
+/* ── PILATES ── */
+.pilates { padding: 100px 0; background: var(--bg2); }
+.pilates-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.pilates-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px;
+}
+.pilates-feat {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; text-align: center;
+  transition: all 0.3s ease;
+}
+.pilates-feat:hover { border-color: var(--border-light); }
+.pilates-feat .num {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--red); margin-bottom: 4px; opacity: 0.6;
+}
+.pilates-feat h4 {
+  font-family: var(--font-display); font-size: 0.82rem;
+  font-weight: 600; color: var(--white); letter-spacing: 0.5px;
+}
+
+/* ── TRAINING ── */
+.training { padding: 100px 0; }
+.training-content { text-align: center; max-width: 720px; margin: 0 auto; }
+
+/* ── LOCATION ── */
+.location { padding: 80px 0; background: var(--bg2); text-align: center; }
+.location-tags {
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.location-tag {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 50px; padding: 8px 18px;
+  font-size: 0.82rem; color: var(--text-muted); transition: all 0.3s;
+}
+.location-tag:hover { border-color: var(--border-light); color: var(--white); }
+.location-info {
+  margin-top: 40px; display: flex; justify-content: center;
+  gap: 48px; flex-wrap: wrap;
+}
+.location-item { text-align: center; }
+.location-item .icon {
+  font-family: var(--font-display); font-size: 1.8rem;
+  color: var(--red); margin-bottom: 8px; font-weight: 700;
+}
+.location-item h4 {
+  font-family: var(--font-display); font-size: 0.75rem;
+  font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+  letter-spacing: 2px; margin-bottom: 4px;
+}
+.location-item p { font-size: 0.92rem; color: var(--white); }
+
+/* ── CONTACT ── */
+.contact { padding: 100px 0; }
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+}
+.contact-form {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 40px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block; font-size: 0.75rem; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 12px 16px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; color: var(--white); font-family: var(--font-body);
+  font-size: 0.9rem; transition: border-color 0.2s; outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--red); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group.checkbox { display: flex; align-items: flex-start; gap: 10px; }
+.form-group.checkbox input { width: 18px; margin-top: 3px; }
+.form-group.checkbox label { color: var(--text-muted); text-transform: none; letter-spacing: 0; font-size: 0.82rem; }
+.btn-submit {
+  width: 100%; padding: 16px;
+  background: var(--red); color: #fff; border: none;
+  border-radius: 50px; font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-submit:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 4px 20px var(--red-glow); }
+
+/* ── FOOTER ── */
+footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px;
+}
+.footer-brand .nav-logo img { height: 38px; }
+.footer-brand p {
+  font-size: 0.82rem; color: var(--text-dim);
+  margin-top: 12px; line-height: 1.6; max-width: 320px;
+}
+.footer-col h4 {
+  font-family: var(--font-display); font-size: 0.78rem;
+  font-weight: 600; color: var(--white); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; font-size: 0.82rem;
+  color: var(--text-dim); text-decoration: none;
+  padding: 5px 0; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--red); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 0.72rem; color: var(--text-dim); }
+.footer-social { display: flex; gap: 10px; }
+.footer-social a {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--card-bg); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; color: var(--text-muted); font-size: 0.78rem;
+  transition: all 0.3s; font-family: var(--font-display); font-weight: 600;
+}
+.footer-social a:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 50;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  transition: all 0.3s ease;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
+.whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseRed {
+  0%, 100% { box-shadow: 0 4px 20px var(--red-glow); }
+  50% { box-shadow: 0 4px 35px var(--red-glow), 0 0 60px rgba(209,15,11,0.15); }
+}
+
+.hero-actions .btn-primary { animation: pulseRed 3s ease-in-out infinite; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .quick-grid { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pilates-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .quick-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .quick-card { padding: 24px 16px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .about-image img { height: 280px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .contact-form { padding: 24px; }
+  .location-info { gap: 24px; }
+  .pilates-features { grid-template-columns: 1fr; }
+  .hero-content { padding: 100px 24px 60px; }
+  section { padding: 60px 0 !important; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .stat-card { padding: 14px; }
+  .schedule-grid { grid-template-columns: 40px repeat(6, 1fr); gap: 2px; padding: 4px; }
+  .sc-header { font-size: 0.5rem; padding: 4px 2px; }
+  .sc-time { font-size: 0.5rem; padding: 3px 1px; }
+  .sc-wod, .sc-jj { font-size: 0.5rem; padding: 3px 1px; }
+  .sc-ob, .sc-sp { font-size: 0.45rem; padding: 2px 1px; }
+  .schedule { padding: 40px 0; }
+}
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── HULK IMPACT EFFECTS ── */
+#hulk-canvas {
+  position: fixed; inset: 0; z-index: 9998;
+  pointer-events: none;
+}
+.hulk-crack {
+  position: fixed; inset: 0; z-index: 9997;
+  pointer-events: none; opacity: 0;
+  transition: opacity 0.08s ease;
+}
+.hulk-crack.active { opacity: 1; }
+.hulk-impact-flash {
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none; opacity: 0;
+  background: radial-gradient(ellipse at var(--flash-x, 50%) var(--flash-y, 50%),
+    rgba(59,140,58,0.2) 0%,
+    rgba(209,15,11,0.12) 15%,
+    rgba(209,15,11,0.04) 30%,
+    transparent 55%
+  );
+  transition: opacity 0.08s ease;
+}
+.hulk-impact-flash.active { opacity: 1; }
+
+/* ── SCREEN SHAKE (HULK MODE) ── */
+@keyframes hulk-shake {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  10%  { transform: translate(-0.5px, 0.3px) rotate(-0.08deg); }
+  20%  { transform: translate(0.4px, -0.3px) rotate(0.06deg); }
+  30%  { transform: translate(-0.3px, 0.4px) rotate(-0.05deg); }
+  40%  { transform: translate(0.5px, -0.2px) rotate(0.06deg); }
+  50%  { transform: translate(-0.4px, 0.2px) rotate(-0.04deg); }
+  60%  { transform: translate(0.3px, 0.3px) rotate(0.04deg); }
+  70%  { transform: translate(-0.5px, -0.3px) rotate(-0.06deg); }
+  80%  { transform: translate(0.4px, -0.3px) rotate(0.04deg); }
+  90%  { transform: translate(-0.3px, 0.2px) rotate(-0.03deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+.hulk-shaking {
+  animation: hulk-shake 0.3s ease-out both;
+}
+
+/* ── AMBIENT DEBRIS ── */
+.hulk-debris {
+  position: fixed; top: -20px; z-index: 9997;
+  pointer-events: none;
+  width: 6px; height: 6px;
+  background: rgba(59,140,58,0.2);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  animation: debrisFall linear forwards;
+}
+@keyframes debrisFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  5% { opacity: 0.6; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}/* ── CROSSFIT GLOSSARY ── */
+.crossfit-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 50%, var(--bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.crossfit-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, var(--red-glow) 0%, transparent 60%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+.crossfit-intro {
+  max-width: 800px; margin: 0 auto 56px; text-align: center;
+}
+.crossfit-intro p {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  line-height: 1.8; color: var(--text-muted);
+}
+.crossfit-grid {
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 900px; margin: 0 auto;
+}
+.crossfit-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 32px;
+  display: flex; align-items: flex-start; gap: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.crossfit-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--red), var(--green));
+  opacity: 0.6;
+}
+.crossfit-card:hover {
+  border-color: var(--border-light);
+  background: var(--card-hover);
+  transform: translateX(4px);
+}
+.crossfit-card-number {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: var(--white); background: var(--red);
+  border-radius: 10px;
+  position: relative; z-index: 1;
+}
+.crossfit-card-content { flex: 1; }
+.crossfit-card-title {
+  font-family: var(--font-display); font-size: 1.15rem;
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 1px; color: var(--white);
+  margin-bottom: 8px;
+}
+.crossfit-card-title .accent { color: var(--red); }
+.crossfit-card-title .green-accent { color: var(--green); }
+.crossfit-card-desc {
+  font-size: 0.92rem; line-height: 1.7; color: var(--text-muted);
+}
+.crossfit-card-desc strong { color: var(--text); }
+.crossfit-card-tag {
+  display: inline-block;
+  font-family: var(--font-display); font-size: 0.65rem;
+  font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 50px;
+  margin-bottom: 8px;
+}
+.crossfit-card-tag.red { background: rgba(209,15,11,0.15); color: var(--red); }
+.crossfit-card-tag.green { background: rgba(59,140,58,0.15); color: var(--green); }
+.crossfit-card-tag.gray { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+
+/* ── TIMELINE DIVIDER ── */
+.crossfit-divider {
+  text-align: center; padding: 40px 0;
+  position: relative;
+}
+.crossfit-divider::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 2px; height: 40px;
+  background: linear-gradient(180deg, var(--red), var(--green));
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+.crossfit-divider-label {
+  font-family: var(--font-display); font-size: 0.8rem;
+  font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 4px;
+}
+.crossfit-divider-title {
+  font-family: var(--font-display); font-size: 1.4rem;
+  font-weight: 700; text-transform: uppercase;
+  color: var(--white);
+}
+.crossfit-divider-title span { color: var(--red); }
+
+@media (max-width: 768px) {
+  .crossfit-card { flex-direction: column; gap: 12px; padding: 24px; }
+  .crossfit-card-number { width: 36px; height: 36px; font-size: 1rem; }
+}
+
+/* ── TARIFAS / PRICING ── */
+.tarifas {
+  padding: 100px 0;
+  background: var(--bg2);
+  position: relative;
+}
+.tarifas::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--red-glow), transparent);
+}
+.tarifas-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+.tarifas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.tarifas-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+.tarifas-card:hover {
+  border-color: var(--red-glow);
+  background: var(--card-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+}
+.tarifas-card.featured {
+  border-color: var(--red);
+  background: linear-gradient(180deg, rgba(209,15,11,0.06), transparent);
+  box-shadow: 0 0 40px rgba(209,15,11,0.08);
+}
+.tarifas-card.featured::after {
+  content: 'MÁS ELEGIDO';
+  position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  padding: 4px 16px;
+  border-radius: 20px;
+}
+.tarifas-card-name {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+.tarifas-card-price {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tarifas-card-price span {
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.tarifas-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 12px 0 24px;
+  flex: 1;
+}
+.tarifas-card-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+}
+.tarifas-card-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 0 20px var(--red-glow);
+}
+.tarifas-card.featured .tarifas-card-btn {
+  background: var(--red);
+  border-color: var(--red);
+}
+.tarifas-card.featured .tarifas-card-btn:hover {
+  background: var(--red-dark);
+  box-shadow: 0 0 30px var(--red-glow);
+}
+.tarifas-sub {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.tarifas-sub a {
+  color: var(--red);
+  text-decoration: none;
+}
+.tarifas-sub a:hover {
+  text-decoration: underline;
+}
+.tarifas-subnote {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+@media (max-width: 600px) {
+  .tarifas-grid { grid-template-columns: 1fr; }
+  .tarifas { padding: 60px 0; }
+}
+
+/* ── PODCAST PLAYER ── */
+.hero-podcast {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 60px;
+  padding: 8px 8px 8px 20px;
+  max-width: 480px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+.hero-podcast:hover {
+  border-color: var(--red-glow);
+  background: rgba(255,255,255,0.05);
+}
+.hero-podcast-info {
+  flex: 1;
+  min-width: 0;
+}
+.hero-podcast-label {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.hero-podcast-title {
+  font-size: 0.85rem;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+.hero-podcast-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--red);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  position: relative;
+}
+.hero-podcast-btn:hover {
+  background: var(--red-dark);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px var(--red-glow);
+}
+.hero-podcast-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+  margin-left: 2px;
+}
+.hero-podcast-btn.playing svg {
+  margin-left: 0;
+}
+.hero-podcast-wave {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+.hero-podcast-wave span {
+  width: 3px;
+  height: 100%;
+  background: var(--red);
+  border-radius: 2px;
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.hero-podcast-wave.active span {
+  opacity: 0.6;
+}
+.hero-podcast-wave span:nth-child(1) { height: 30%; }
+.hero-podcast-wave span:nth-child(2) { height: 60%; }
+.hero-podcast-wave span:nth-child(3) { height: 40%; }
+.hero-podcast-wave span:nth-child(4) { height: 80%; }
+.hero-podcast-wave span:nth-child(5) { height: 20%; }
+.hero-podcast-wave span:nth-child(6) { height: 55%; }
+.hero-podcast-wave span:nth-child(7) { height: 35%; }
+.hero-podcast-wave span:nth-child(8) { height: 70%; }
+.hero-podcast-wave.active span {
+  animation: wave-anim 0.8s ease-in-out infinite alternate;
+}
+.hero-podcast-wave.active span:nth-child(1) { animation-delay: 0s; }
+.hero-podcast-wave.active span:nth-child(2) { animation-delay: 0.1s; }
+.hero-podcast-wave.active span:nth-child(3) { animation-delay: 0.2s; }
+.hero-podcast-wave.active span:nth-child(4) { animation-delay: 0.3s; }
+.hero-podcast-wave.active span:nth-child(5) { animation-delay: 0.4s; }
+.hero-podcast-wave.active span:nth-child(6) { animation-delay: 0.5s; }
+.hero-podcast-wave.active span:nth-child(7) { animation-delay: 0.6s; }
+.hero-podcast-wave.active span:nth-child(8) { animation-delay: 0.7s; }
+@keyframes wave-anim {
+  0% { opacity: 0.3; transform: scaleY(0.6); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+@media (max-width: 480px) {
+  .hero-podcast { flex-wrap: wrap; padding: 10px 14px; border-radius: 16px; gap: 10px; }
+  .hero-podcast-info { width: 100%; }
+  .hero-podcast-wave { display: none; }
+}
+
+</style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1 class="logo">HULK CROSSFIT</h1>
-            <p class="tagline">Box de CrossFit en Illescas, Toledo</p>
-        </div>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <h2>¡Ven a conocernos!</h2>
-            <p>El Box es como se llama al lugar donde entrenamos, pero no es solo eso, es un sitio para divertirse, compartir esfuerzo y conocer gente que comparte tu pasión.</p>
-            <div class="cta-buttons">
-                <a href="mailto:info@hulkcrossfit.com" class="btn btn-primary">Contactar</a>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining" loading="eager">
+      <span class="nav-logo-text"><span class="hulk-text">HULK</span><span class="green">CROSS</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#tarifas">Tarifas</a></li>
+      <li><a href="#pilates">Pilates</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#crossfit">CrossFit</a></li>
+      <li><a href="reservas.html" style="color:var(--green);font-weight:600;">Reservas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a href="tel:647766198" class="nav-cta">647 766 198</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-    <section class="services">
-        <div class="container">
-            <h2>Nuestros Servicios</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>CrossFit Tradicional</h3>
-                    <p>Entrenamiento de alta intensidad con WODs diarios</p>
-                </div>
-                <div class="service-card">
-                    <h3>Halterofilia</h3>
-                    <p>Deporte olímpico: levantamiento de pesas</p>
-                </div>
-                <div class="service-card">
-                    <h3>Clases de Grupo</h3>
-                    <p>Clases personalizadas con entrenadores certificados</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- MOBILE NAV -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#inicio" class="mobile-link">Inicio</a>
+  <a href="#servicios" class="mobile-link">Servicios</a>
+  <a href="#horarios" class="mobile-link">Horarios</a>
+  <a href="#tarifas" class="mobile-link">Tarifas</a>
+  <a href="#pilates" class="mobile-link">Pilates</a>
+  <a href="#galeria" class="mobile-link">Galería</a>
+  <a href="#crossfit" class="mobile-link">CrossFit</a>
+  <a href="#contacto" class="mobile-link">Contacto</a>
+  <a href="tel:647766198" class="nav-cta-mobile">647 766 198</a>
+</div>
 
-    <section class="horarios">
-        <div class="container">
-            <h2>Horarios de Clases</h2>
-            <div class="schedule">
-                <div class="schedule-item">
-                    <span class="day">Lunes</span>
-                    <span class="time">07:00 - 21:00</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day">Martes</span>
-                    <span class="time">07:00 - 21:00</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day">Miércoles</span>
-                    <span class="time">07:00 - 21:00</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day">Jueves</span>
-                    <span class="time">07:00 - 21:00</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day">Viernes</span>
-                    <span class="time">07:00 - 21:00</span>
-                </div>
-                <div class="schedule-item">
-                    <span class="day">Sábado</span>
-                    <span class="time">08:00 - 20:00</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-centro-deportivo-2__msi___jpg-1920w.webp" alt="Hulk Crosstraining Illescas" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-gamma"></div>
+  <div class="hero-burst"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-power-line"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Centro Deportivo en Illescas</div>
+    <h1 class="hero-title"><span class="hulk-text">HULK</span> <span class="accent">CROSSTRAINING</span></h1>
+    <p class="hero-sub">Cross Training · Pilates · Taekwondo · Jiu-Jitsu Brasileño</p>
+    <p class="hero-quote">"Haz hoy lo que otros no se atreven, para hacer mañana lo que ellos NO PUEDEN..."</p>
+    <div class="hero-actions">
+      <a href="reservas.html" class="btn btn-primary" style="background:var(--green);border-color:var(--green);">Reservar clase</a>
+      <a href="#contacto" class="btn btn-primary">Contáctanos</a>
+      <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+    </div>
 
-    <section class="ubicacion">
-        <div class="container">
-            <h2>Ubicación</h2>
-            <p><strong>Dirección:</strong> Av. Sarmiento 1815, Villa María, Illescas (Toledo)</p>
-            <p><strong>Horario de apertura:</strong> Lunes a Domingo 07:00 - 21:00</p>
-        </div>
-    </section>
+    <!-- PODCAST PLAYER -->
+    <div class="hero-podcast">
+      <div class="hero-podcast-wave" id="podcastWave">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="hero-podcast-info">
+        <div class="hero-podcast-label">Podcast</div>
+        <div class="hero-podcast-title">Historia del CrossFit</div>
+      </div>
+      <button class="hero-podcast-btn" id="podcastBtn" aria-label="Reproducir podcast">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
 
-    <section class="contact">
-        <div class="container">
-            <h2>Contacto</h2>
-            <div class="contact-info">
-                <p><strong>Email:</strong> <a href="mailto:info@hulkcrossfit.com">info@hulkcrossfit.com</a></p>
-                <p><strong>Teléfono:</strong> <a href="tel:+34XXX">XXX XXX XXX</a></p>
-            </div>
-        </div>
-    </section>
+<!-- QUICK LINKS -->
+<section class="quick-links">
+  <div class="inner">
+    <div class="quick-grid">
+      <a href="#servicios" class="quick-card reveal">
+        <div class="quick-num">01</div>
+        <h3>Clases</h3>
+        <p>Cross Training, Pilates y más</p>
+        <span class="quick-arrow">→</span>
+      </a>
+      <a href="#contacto" class="quick-card reveal">
+        <div class="quick-num">02</div>
+        <h3>Tarifas</h3>
+        <p>Planes flexibles para ti</p>
+        <span class="quick-arrow">→</span>
+      </a>
+      <a href="#contacto" class="quick-card reveal">
+        <div class="quick-num">03</div>
+        <h3>Horarios</h3>
+        <p>Entrenamientos diarios</p>
+        <span class="quick-arrow">→</span>
+      </a>
+      <a href="#contacto" class="quick-card reveal">
+        <div class="quick-num">04</div>
+        <h3>Contacto</h3>
+        <p>Reserva tu primera clase</p>
+        <span class="quick-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Hulk CrossFit. Todos los derechos reservados.</p>
+<!-- ABOUT -->
+<section class="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="about-image reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-hombre-alzando-pesa__msi___jpg-1920w.webp" alt="Cross Training Illescas" loading="lazy">
+      </div>
+      <div class="reveal">
+        <div class="section-label">Cross Training en Illescas</div>
+        <h2 class="section-title">Entrenamiento <span class="accent">personal</span> de élite</h2>
+        <p class="section-desc">
+          En nuestro centro deportivo en Illescas, te ofrecemos entrenamientos de fuerza y acondicionamiento físico basados en ejercicios funcionales. Nuestra variedad de programas incluye cross training, hit core, mobility y más.
+        </p>
+        <p class="section-desc" style="margin-top:16px;">
+          Nuestros coaches altamente calificados lideran cada sesión, programando y explicando los entrenamientos diarios. No esperes más, reserva tu primera clase y comienza tu viaje hacia un estado físico óptimo.
+        </p>
+        <div class="about-stats">
+          <div class="stat-card reveal"><div class="num">Flexibles</div><div class="label">Horarios</div></div>
+          <div class="stat-card reveal"><div class="num">Máxima</div><div class="label">Calidad</div></div>
+          <div class="stat-card reveal"><div class="num">Total</div><div class="label">Profesionalidad</div></div>
+          <div class="stat-card reveal"><div class="num">100%</div><div class="label">Atención personalizada</div></div>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f5f5f5;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #ff0044 0%, #00ff41 100%);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        
-        .logo {
-            font-size: 2.5rem;
-            font-weight: bold;
-            letter-spacing: 2px;
-        }
-        
-        .tagline {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-top: 5px;
-        }
-        
-        .hero {
-            background: url('https://images.unsplash.com/photo-1571010443974-6bca0e2a3d3a?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
-            position: relative;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        
-        .hero > .container {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary {
-            background: #ff0044;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #e6003a;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(255, 0, 68, 0.4);
-        }
-        
-        section {
-            padding: 60px 20px;
-        }
-        
-        section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #222;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-card h3 {
-            color: #ff0044;
-            margin-bottom: 10px;
-        }
-        
-        .schedule {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .schedule-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px;
-            background: white;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .day {
-            font-weight: bold;
-            color: #ff0044;
-        }
-        
-        .time {
-            color: #666;
-        }
-        
-        .contact-info p {
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 1.8rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="inner">
+    <div class="services-header reveal">
+      <div class="section-label">Nuestros Servicios</div>
+      <h2 class="section-title">Descubre <span class="accent">tu disciplina</span></h2>
+      <p class="section-desc">Entrenamientos diseñados para desafiarte y transformarte</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">CT</div>
+        <h3>Cross Training</h3>
+        <p>Entrenamientos de fuerza y acondicionamiento físico basados en ejercicios funcionales. Desafía tus límites y alcanza tus metas de acondicionamiento físico con nuestros programas de cross training, hit core y mobility.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">PI</div>
+        <h3>Pilates</h3>
+        <p>Entrenamiento basado en el control del cuerpo a través de movimientos fluidos y una respiración profunda y constante. Mejora tu coordinación, equilibrio y estabilidad fortaleciendo todos los grupos musculares.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">TK</div>
+        <h3>Taekwondo</h3>
+        <p>Arte marcial coreano que combina técnicas de patadas, puños y defensa personal. Desarrolla disciplina, respeto y condición física en un ambiente de superación constante.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">JJ</div>
+        <h3>Jiu-Jitsu Brasileño</h3>
+        <p>Arte marcial de sumisión centrado en el combate cuerpo a tierra. Técnica sobre fuerza. Ideal para defensa personal y condición física completa. Apto para todos los niveles.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">HI</div>
+        <h3>HIIT Core</h3>
+        <p>Entrenamiento de alta intensidad enfocado en el core y la quema de calorías. Sesiones cortas pero intensas para resultados visibles en tiempo récord.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">MO</div>
+        <h3>Mobility</h3>
+        <p>Movilidad articular y flexibilidad. Trabajo específico para mejorar el rango de movimiento y prevenir lesiones en tu entrenamiento diario.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILATES -->
+<section class="pilates" id="pilates">
+  <div class="inner">
+    <div class="pilates-grid">
+      <div class="reveal">
+        <div class="section-label">Pilates en Illescas</div>
+        <h2 class="section-title">Control, <span class="accent">respiración</span> y movimiento</h2>
+        <p class="section-desc">
+          El Pilates es un entrenamiento basado en el control del cuerpo a través de movimientos fluidos y una respiración profunda y constante. Su práctica mejora la coordinación, el equilibrio y la estabilidad, fortaleciendo tanto los músculos principales como los más pequeños que contribuyen a un movimiento armonioso.
+        </p>
+        <p class="section-desc" style="margin-top:12px;">
+          En cada sesión, trabajamos con accesorios como pelotas, aros y ladrillos para potenciar los ejercicios y hacerlos más efectivos.
+        </p>
+        <div class="pilates-features">
+          <div class="pilates-feat reveal"><div class="num">01</div><h4>Respiración consciente</h4></div>
+          <div class="pilates-feat reveal"><div class="num">02</div><h4>Fortalecimiento integral</h4></div>
+          <div class="pilates-feat reveal"><div class="num">03</div><h4>Equilibrio y coordinación</h4></div>
+          <div class="pilates-feat reveal"><div class="num">04</div><h4>Movimientos fluidos</h4></div>
+        </div>
+      </div>
+      <div class="about-image reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/470687728_18076477906612552_9023940464934763786_n__msi___jpg-1920w.webp" alt="Pilates Illescas" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="horarios">
+  <div class="inner">
+    <div class="schedule-header reveal">
+      <div class="section-label">Horarios</div>
+      <h2 class="section-title">Clases <span class="accent">flexibles</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        En HULK CROSSTRAINING ofrecemos horarios amplios para adaptarnos a tu apretada agenda, desde temprano en la mañana hasta tarde en la noche. Únete a nosotros y aprovecha nuestros horarios.
+      </p>
+    </div>
+
+    <div class="schedule-grid reveal">
+      <!-- Header -->
+      <div class="sc-time"></div>
+      <div class="sc-header">LUNES</div>
+      <div class="sc-header">MARTES</div>
+      <div class="sc-header">MIÉRCOLES</div>
+      <div class="sc-header">JUEVES</div>
+      <div class="sc-header">VIERNES</div>
+      <div class="sc-header">SÁBADO</div>
+
+      <!-- 09:00-10:30 / 10:30-12:00 - Sábado JIU -->
+      <div class="sc-time">09:00<br><small>12:00</small></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-jj">JIU-JITSU</div>
+
+      <!-- 10:00-11:30 JIU-JITSU L-X-V -->
+      <div class="sc-time">10:00<br><small>11:30</small></div>
+      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-empty"></div>
+      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-empty"></div>
+      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 + OPEN BOX x3 -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- Specials -->
+      <div class="sc-time"></div>
+      <div class="sc-sp">GIMNÁSTICOS</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-sp">HALTEROFILIA</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-sp">STRONGMAN</div>
+      <div class="sc-sp">DEKA</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 - WOD solo Lun-Mie-Vie -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 - OPEN BOX en Mie + DEKA -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-sp">DEKA</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-empty"></div>
+      <div class="sc-sp">STRONGMAN</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 + OPEN BOX -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+
+      <!-- 16:15 - sin Viernes ni Sáb -->
+      <div class="sc-time">16:15</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-sp">WOOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+
+      <div class="sc-time"></div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-empty"></div>
+      <div class="sc-empty"></div>
+
+      <!-- 19:15 evening -->
+      <div class="sc-time">19:15</div>
+      <div class="sc-sp">GIMNÁSTICOS</div>
+      <div class="sc-ob">OPEN BOX</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-wod">WOD</div>
+      <div class="sc-sp">HALTEROFILIA</div>
+      <div class="sc-empty"></div>
+    </div>
+
+    <div style="text-align:center;margin-top:32px;">
+      <a href="#contacto" class="btn btn-primary">Reserva tu clase</a>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFAS -->
+<section class="tarifas" id="tarifas">
+  <div class="inner">
+    <div class="tarifas-header reveal">
+      <div class="section-label">Tarifas</div>
+      <h2 class="section-title">Planes <span class="accent">flexibles</span></h2>
+      <p class="section-desc" style="margin:0 auto;">Elige el plan que mejor se adapte a ti. Clases limitadas, personalizadas, monitores profesionales.</p>
+    </div>
+
+    <div class="tarifas-grid">
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Inicio</div>
+        <div class="tarifas-card-price">35<span>€/mes</span></div>
+        <div class="tarifas-card-desc">5 WOD al mes. Clases limitadas y personalizadas. Perfecto para empezar.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Progreso</div>
+        <div class="tarifas-card-price">45<span>€/mes</span></div>
+        <div class="tarifas-card-desc">8 WOD al mes. Más entrenamiento para avanzar a tu ritmo.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Ritmo</div>
+        <div class="tarifas-card-price">50<span>€/mes</span></div>
+        <div class="tarifas-card-desc">12 WOD al mes. Entrena tres veces por semana con constancia.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card reveal">
+        <div class="tarifas-card-name">Intensivo</div>
+        <div class="tarifas-card-price">60<span>€/mes</span></div>
+        <div class="tarifas-card-desc">16 WOD al mes. Para quienes buscan resultados más rápido.</div>
+        <a href="#contacto" class="tarifas-card-btn">Reservar</a>
+      </div>
+
+      <div class="tarifas-card featured reveal">
+        <div class="tarifas-card-name">Ilimitado</div>
+        <div class="tarifas-card-price">70<span>€/mes</span></div>
+        <div class="tarifas-card-desc">Todas las clases que quieras. Sin límites. Acceso completo a Cross Training, Pilates y más.</div>
+        <a href="#contacto" class="tarifas-card-btn">Elegir plan</a>
+      </div>
+    </div>
+
+    <div class="tarifas-sub reveal">
+      <p>También ofrecemos <strong>Taekwondo</strong> — Infantil 35€/mes · Adultos 40€/mes</p>
+    </div>
+    <div class="tarifas-subnote reveal">
+      <p>¿Dudas? <a href="#contacto">Contáctanos</a> sin compromiso</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galeria">
+  <div class="inner">
+    <div class="gallery-header reveal">
+      <div class="section-label">Galería</div>
+      <h2 class="section-title">Nuestro <span class="accent">centro</span></h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/1__msi___jpg-1080w.webp" alt="Cross Training Illescas" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/2__msi___jpg-1080w.webp" alt="Entrenamiento funcional" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/4__msi___jpg-1080w.webp" alt="Centro deportivo Illescas" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/5__msi___jpg-1080w.webp" alt="Instalaciones" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-centro-deportivo-3__msi___jpg-1920w.webp" alt="Instalaciones" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-centro-deportivo-4__msi___jpg-1920w.webp" alt="Zona cross training" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-centro-deportivo-5__msi___jpg-1920w.webp" alt="Instalaciones" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-centro-deportivo-1__msi___jpg-1920w.webp" alt="Hulk Crosstraining" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+      <div class="gallery-item reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/469065412_18075045004612552_3306176605921134975_n__msi___jpg-1920w.webp" alt="Comunidad Hulk Cross" loading="lazy">
+        <div class="overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="training">
+  <div class="inner">
+    <div class="training-content reveal">
+      <div class="section-label">Entrenamientos Diarios</div>
+      <h2 class="section-title">Superación <span class="accent">constante</span></h2>
+      <p class="section-desc" style="margin:0 auto;">
+        Nuestro centro se dedica a ofrecer entrenamientos diarios que motivan a mejorar la fuerza y el acondicionamiento físico. Cada sesión está dirigida por nuestros experimentados coaches, lo que garantiza una experiencia personalizada y eficaz. Nos enorgullece destacar nuestro programa de cross training, que se centra en desafiar tus límites y alcanzar tus metas de acondicionamiento físico.
+      </p>
+      <p class="section-desc" style="margin:16px auto 0;">
+        Únete a nosotros para descubrir la diferencia que una atención personalizada y entrenamientos diarios de calidad pueden marcar en tu bienestar físico.
+      </p>
+      <div style="margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+        <a href="#contacto" class="btn btn-primary">Quiero empezar</a>
+        <a href="https://www.instagram.com/hulkcrosstraining/" target="_blank" class="btn btn-outline">Síguenos en IG</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CROSSFIT GLOSARIO -->
+<section class="crossfit-section" id="crossfit">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label" style="text-align:center;">CrossFit</div>
+      <h2 class="section-title" style="text-align:center;">Guía de <span class="accent">terminología</span></h2>
+    </div>
+
+    <div class="crossfit-intro reveal">
+      <p>El CrossFit nació en el año 2000 de la mano de <strong>Greg Glassman</strong> en Santa Cruz, California. Lo que empezó como un pequeño gimnasio en un garaje se convirtió en un movimiento global que hoy cuenta con más de <strong>15.000 boxes afiliados</strong> en todo el mundo. Su filosofía: entrenamientos constantemente variados, movimientos funcionales ejecutados a alta intensidad. Esto no es un deporte de espectadores — esto se vive, se sufre y se celebra en comunidad.</p>
+    </div>
+
+    <!-- History timeline -->
+    <div class="crossfit-divider reveal">
+      <div class="crossfit-divider-label">Origen</div>
+      <div class="crossfit-divider-title">⚡ Historia del <span>CrossFit</span></div>
+    </div>
+
+    <div class="crossfit-grid">
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">01</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Origen</div>
+          <div class="crossfit-card-title">El <span class="accent">Garage</span> Gym</div>
+          <div class="crossfit-card-desc">
+            <strong>1995-2000</strong> — Greg Glassman, ex-gimnasta y entrenador personal, comienza a desarrollar un sistema de entrenamiento que combina levantamiento olímpico, gimnasia y ejercicio cardiovascular. En 1995 entrena al departamento de policía de Santa Cruz y los resultados llaman la atención. En 2000 funda <strong>CrossFit Inc.</strong> y lanza crossfit.com con la publicación diaria del WOD (Workout of the Day).
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">02</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Expansión</div>
+          <div class="crossfit-card-title">El <span class="green-accent">Boom</span> Militar</div>
+          <div class="crossfit-card-desc">
+            <strong>2002-2007</strong> — CrossFit es adoptado por entrenadores de élite de los <strong>Marines, Navy SEALs y Fuerzas Especiales</strong> de EE.UU. Glassman desarrolla el programa <strong>CrossFit Level 1 Certificate Course</strong> para formar coaches. En 2005 abre el primer box afiliado en California. Para 2007 hay más de 200 boxes en todo el mundo.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">03</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Global</div>
+          <div class="crossfit-card-title">Los <span class="accent">CrossFit Games</span></div>
+          <div class="crossfit-card-desc">
+            <strong>2007-presente</strong> — La primera edición de los <strong>CrossFit Games</strong> se celebra en un rancho en Aromas, California, con apenas 70 participantes. Hoy es un evento mundial con premios millonarios que determina al <strong>"Fittest on Earth"</strong>. En 2011 CrossFit llega a España; hoy hay más de 500 boxes en nuestro país. En 2020, CrossFit es adquirido por <strong>Eric Roza</strong>, marcando una nueva era de profesionalización.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminology -->
+    <div class="crossfit-divider reveal">
+      <div class="crossfit-divider-label">Vocabulario</div>
+      <div class="crossfit-divider-title">📖 Diccionario del <span>Box</span></div>
+    </div>
+
+    <div class="crossfit-grid">
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">W</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Formato</div>
+          <div class="crossfit-card-title">WOD · Workout of the <span class="accent">Day</span></div>
+          <div class="crossfit-card-desc">
+            El entrenamiento del día. Cada día se publica un WOD diferente que todos los miembros del box realizan. Puede ser un <strong>AMRAP</strong>, <strong>For Time</strong>, <strong>EMOM</strong> o <strong>RFT</strong>. La variación constante es la clave: nunca haces el mismo entrenamiento dos días seguidos.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">A</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Formato</div>
+          <div class="crossfit-card-title">AMRAP · As Many Rounds As <span class="green-accent">Possible</span></div>
+          <div class="crossfit-card-desc">
+            En un tiempo fijo (ej. 12 minutos), completas tantas rondas del circuito como puedas. Anotas tu resultado para superarlo la próxima vez. Ejemplo: <strong>12 min AMRAP</strong> de 5 pull-ups, 10 push-ups, 15 air squats.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">E</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Formato</div>
+          <div class="crossfit-card-title">EMOM · Every Minute On the <span class="accent">Minute</span></div>
+          <div class="crossfit-card-desc">
+            Al empezar cada minuto, realizas un número determinado de repeticiones. El tiempo restante del minuto es tu descanso. Si terminas en 30 segundos, descansas 30 segundos. Si no completas el trabajo en 60 segundos, se considera <strong>"failure"</strong> (no completado).
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">F</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Formato</div>
+          <div class="crossfit-card-title">For Time · Contra el <span class="green-accent">Reloj</span></div>
+          <div class="crossfit-card-desc">
+            Completas un número fijo de rondas y ejercicios <strong>lo más rápido posible</strong>. Tu tiempo es tu resultado. Ejemplo: <strong>21-15-9</strong> de thrusters y pull-ups. Terminas cuando haces la última repetición. Duele.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">R</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Formato</div>
+          <div class="crossfit-card-title">RFT · Rounds For <span class="accent">Time</span></div>
+          <div class="crossfit-card-desc">
+            Variante de For Time. Debes completar un número fijo de rondas (ej. 5 rounds) de ejercicios específicos lo más rápido posible. Anotas tu tiempo total. Ejemplo: <strong>5 RFT</strong> de 400m run + 30 box jumps.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">G</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Ejercicio</div>
+          <div class="crossfit-card-title">Gimnásticos · <span class="accent">Bodyweight</span></div>
+          <div class="crossfit-card-desc">
+            Movimientos que usan tu propio peso corporal. Incluyen: <strong>Pull-ups</strong> (dominadas), <strong>Muscle-ups</strong> (salida de anillas), <strong>Handstand Push-ups</strong> (flexiones de pino), <strong>Burpees</strong>, <strong>Air Squats</strong>, <strong>Toes-to-Bar</strong>, <strong>Ring Dips</strong> y <strong>Rope Climbs</strong> (cuerda).
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">L</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Ejercicio</div>
+          <div class="crossfit-card-title">Levantamiento · <span class="green-accent">Weightlifting</span></div>
+          <div class="crossfit-card-desc">
+            Técnicas de halterofilia adaptadas al CrossFit. Las más comunes: <strong>Squat Clean</strong>, <strong>Power Clean</strong>, <strong>Snatch</strong>, <strong>Clean & Jerk</strong>, <strong>Deadlift</strong>, <strong>Front Squat</strong>, <strong>Overhead Squat</strong>, <strong>Thruster</strong> (front squat + press). La técnica es prioritaria antes que el peso.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">M</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Ejercicio</div>
+          <div class="crossfit-card-title">Monostructural · <span class="accent">Cardio</span></div>
+          <div class="crossfit-card-desc">
+            Ejercicios cardiovasculares que mantienen una estructura de movimiento constante. Incluyen: <strong>Running</strong> (correr), <strong>Row</strong> (remo), <strong>Assault Bike</strong> (bici), <strong>SkiErg</strong>, <strong>Jump Rope</strong> (cuerda), <strong>Box Jumps</strong> y <strong>Wall Balls</strong>. Son los que más queman y los que más duelen al final del WOD.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">H</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag green">Concepto</div>
+          <div class="crossfit-card-title">Hero WOD · Entrenamiento <span class="green-accent">Héroe</span></div>
+          <div class="crossfit-card-desc">
+            WODs diseñados en honor a militares, bomberos y policías caídos en acto de servicio. Son conocidos por ser <strong>extremadamente duros</strong> y se realizan en fechas señaladas. Ejemplos famosos: <strong>Murph</strong> (1 milla, 100 pull-ups, 200 push-ups, 300 squats, 1 milla), <strong>Fight Gone Bad</strong>, <strong>Linda</strong> ("Three Bars of Death").
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">P</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag red">Concepto</div>
+          <div class="crossfit-card-title">PR · Personal <span class="accent">Record</span></div>
+          <div class="crossfit-card-desc">
+            Tu mejor marca personal en un ejercicio o WOD. Puede ser el peso máximo que levantas en un <strong>1RM</strong> (1 Rep Max), tu mejor tiempo en un For Time, o la mayor cantidad de rondas en un AMRAP. En CrossFit, cada PR se celebra como un logro colectivo — todo el box aplaude.
+          </div>
+        </div>
+      </div>
+
+      <div class="crossfit-card reveal">
+        <div class="crossfit-card-number">C</div>
+        <div class="crossfit-card-content">
+          <div class="crossfit-card-tag gray">Concepto</div>
+          <div class="crossfit-card-title">CNS · Central Nervous System <span class="accent">Recovery</span></div>
+          <div class="crossfit-card-desc">
+            El CrossFit trabaja a intensidades que agotan el <strong>Sistema Nervioso Central</strong>. Por eso es fundamental el descanso activo, la movilidad, el <strong>foam rolling</strong> y los días de recuperación. El sobreentrenamiento es real: si tu rendimiento baja sistemáticamente, necesitas un <strong>deload week</strong> (semana de descarga). Escucha a tu cuerpo.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <p style="color:var(--text-muted);font-size:0.95rem;max-width:600px;margin:0 auto 20px;line-height:1.7;">
+        ¿Quieres probarlo? Ven al box y descubre por qué el CrossFit es mucho más que un entrenamiento — es una comunidad.
+      </p>
+      <a href="#contacto" class="btn btn-primary">Primera clase gratis</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location">
+  <div class="inner">
+    <div class="reveal">
+      <div class="section-label">Zona de influencia</div>
+      <h2 class="section-title">Cerca de <span class="accent">ti</span></h2>
+      <p class="section-desc" style="margin:0 auto 12px;">
+        Prestamos servicio en Illescas y municipios cercanos:
+      </p>
+      <div class="location-tags reveal">
+        <span class="location-tag">Illescas</span>
+        <span class="location-tag">Yuncos</span>
+        <span class="location-tag">Yuncler</span>
+        <span class="location-tag">Pantoja</span>
+        <span class="location-tag">Carranque</span>
+        <span class="location-tag">Ugena</span>
+        <span class="location-tag">Parla</span>
+        <span class="location-tag">Seseña</span>
+        <span class="location-tag">Esquivias</span>
+      </div>
+      <div class="location-info reveal">
+        <div class="location-item">
+          <div class="icon">→</div>
+          <h4>Dirección</h4>
+          <p>Calle Lirio, 3 C<br>Illescas, Toledo 45200</p>
+        </div>
+        <div class="location-item">
+          <div class="icon">→</div>
+          <h4>Teléfono</h4>
+          <p><a href="tel:647766198" style="color:#fff;text-decoration:none;">647 766 198</a></p>
+        </div>
+        <div class="location-item">
+          <div class="icon">→</div>
+          <h4>WhatsApp</h4>
+          <p><a href="https://wa.me/34647766198" style="color:var(--red);text-decoration:none;">Escríbenos</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="inner">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title">¿Listo para <span class="accent">empezar</span>?</h2>
+        <p class="section-desc">
+          ¿Tienes preguntas o deseas obtener más información sobre nuestro centro deportivo en Illescas y nuestros entrenamientos de cross training? Estamos aquí para ayudarte. ¡Contáctanos hoy y descubre cómo podemos ayudarte a alcanzar tus metas de acondicionamiento físico!
+        </p>
+        <div style="margin-top:32px;display:flex;flex-direction:column;gap:16px;">
+          <a href="tel:647766198" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);">
+            <span style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--red);">→</span>
+            <span style="font-size:1.1rem;font-weight:500;">647 766 198</span>
+          </a>
+          <a href="https://wa.me/34647766198" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text);">
+            <span style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:#25D366;">→</span>
+            <span style="font-size:1.1rem;font-weight:500;">WhatsApp</span>
+          </a>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--red);">→</span>
+            <span style="font-size:1.1rem;">Calle Lirio, 3 C, Illescas, Toledo 45200</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <form action="https://formsubmit.co/formulasia76@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Nuevo lead Hulk Crosstraining - Web Premium">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://magodago.github.io/hulk-cross-premium/">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input type="text" name="Nombre" required>
+          </div>
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input type="text" name="Apellidos">
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input type="email" name="Email" required>
+          </div>
+          <div class="form-group">
+            <label>Teléfono</label>
+            <input type="tel" name="Telefono">
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea name="Mensaje" placeholder="Cuéntanos en qué podemos ayudarte..."></textarea>
+          </div>
+          <div class="form-group checkbox">
+            <input type="checkbox" name="Privacidad" required>
+            <label>He leído y acepto la Política de Privacidad *</label>
+          </div>
+          <div class="form-group checkbox">
+            <input type="checkbox" name="Comercial">
+            <label>Autorizo a contactarme por email o por cualquier medio con fines comerciales</label>
+          </div>
+          <button type="submit" class="btn-submit">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining" loading="lazy">
+          <span class="nav-logo-text"><span class="hulk-text">HULK</span><span class="green">CROSS</span></span>
+        </a>
+        <p>Centro deportivo líder en Illescas especializado en cross training, pilates, taekwondo y jiu-jitsu brasileño. Transformamos tu condición física desde 2022.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <a href="#servicios">Cross Training</a>
+        <a href="#pilates">Pilates</a>
+        <a href="#servicios">Taekwondo</a>
+        <a href="#servicios">Jiu-Jitsu Brasileño</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Aviso Legal</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Política de Cookies</a>
+        <a href="#">Declaración de Accesibilidad</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hulk Crosstraining. Todos los derechos reservados.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/hulkcrosstraining/" aria-label="Instagram" target="_blank">IG</a>
+        <a href="https://wa.me/34647766198" aria-label="WhatsApp" target="_blank">WA</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34647766198" class="whatsapp-float" aria-label="WhatsApp" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- HULK EFFECTS OVERLAYS -->
+<div class="hulk-crack" id="hulkCrack"></div>
+<div class="hulk-impact-flash" id="hulkFlash"></div>
+<canvas id="hulk-canvas"></canvas>
+
+<script>
+// ── HAMBURGER ──
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const overlay = document.getElementById('mobileOverlay');
+
+function toggleMenu() {
+  mobileNav.classList.toggle('open');
+  overlay.classList.toggle('open');
+  document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu);
+document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', toggleMenu));
+
+// ── NAV HIDE ON SCROLL ──
+let lastScroll = 0;
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  const current = window.scrollY;
+  if (current > lastScroll && current > 100) nav.style.transform = 'translateY(-100%)';
+  else nav.style.transform = 'translateY(0)';
+  lastScroll = current;
+}, { passive: true });
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── SMOOTH SCROLL ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(id);
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// ═══════════════════════════════════════════════
+// HULK EFFECTS — Gamma impact, debris, energy
+// ═══════════════════════════════════════════════
+
+const canvas = document.getElementById('hulk-canvas');
+const ctx = canvas.getContext('2d');
+const crackEl = document.getElementById('hulkCrack');
+const flashEl = document.getElementById('hulkFlash');
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── AMBIENT ENERGY PARTICLES ──
+class EnergyParticle {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * W;
+    this.y = Math.random() * H;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = (Math.random() - 0.5) * 0.3;
+    this.speedY = -Math.random() * 0.4 - 0.1;
+    this.alpha = Math.random() * 0.4 + 0.1;
+    this.pulse = Math.random() * Math.PI * 2;
+    this.pulseSpeed = Math.random() * 0.02 + 0.01;
+    this.color = Math.random() > 0.5 ? '59,140,58' : '209,15,11';
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.pulse += this.pulseSpeed;
+    if (this.y < -10 || this.x < -10 || this.x > W + 10) this.reset();
+    if (this.y < 0) { this.x = Math.random() * W; this.y = H + 10; }
+  }
+  draw() {
+    const a = this.alpha * (0.6 + 0.4 * Math.sin(this.pulse));
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${this.color},${a})`;
+    ctx.fill();
+  }
+}
+
+const particles = [];
+for (let i = 0; i < 35; i++) particles.push(new EnergyParticle());
+
+// ── DEBRIS SYSTEM ──
+function spawnDebris(count) {
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.className = 'hulk-debris';
+    const size = Math.random() * 8 + 3;
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.left = (Math.random() * 90 + 5) + '%';
+    el.style.background = Math.random() > 0.5
+      ? `rgba(59,140,58,${Math.random() * 0.25 + 0.1})`
+      : `rgba(209,15,11,${Math.random() * 0.15 + 0.05})`;
+    el.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+
+// Spawn ambient debris periodically
+let debrisTimer = setInterval(() => {
+  if (document.hidden) return;
+  spawnDebris(Math.floor(Math.random() * 3) + 1);
+}, 3000);
+
+// ── SECTION IMPACT DETECTION ──
+const sections = document.querySelectorAll('section');
+let lastSectionHit = -1;
+
+function generateCracks(sectionIndex) {
+  // Generate bright red crack SVG overlay
+  const rect = sections[sectionIndex].getBoundingClientRect();
+  const cx = (rect.left + rect.width / 2) / W * 100;
+  const cy = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 15), 85);
+
+  // Build SVG paths — 4-7 crack lines radiating from impact point
+  const numCracks = Math.floor(Math.random() * 4) + 4;
+  let paths = '';
+  for (let i = 0; i < numCracks; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const length = (Math.random() * 35 + 15); // % of screen
+    const segments = Math.floor(Math.random() * 4) + 3;
+    let d = `M${cx},${cy}`;
+    let x = cx, y = cy;
+    for (let s = 0; s < segments; s++) {
+      const segLen = length / segments;
+      const jitter = (Math.random() - 0.5) * 12;
+      const a = angle + (Math.random() - 0.5) * 0.5;
+      x += Math.cos(a) * segLen;
+      y += Math.sin(a) * segLen + jitter;
+      d += ` L${Math.max(0, Math.min(100, x))},${Math.max(0, Math.min(100, y))}`;
+    }
+    const thickness = Math.random() * 3 + 4; // 4-7px in viewBox units
+    const opacity = Math.random() * 0.3 + 0.7; // 0.7-1.0
+    // Main crack — bright red
+    paths += `<path d="${d}" stroke="rgba(255,50,40,${opacity})" stroke-width="${thickness}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // Inner bright core
+    paths += `<path d="${d}" stroke="rgba(255,180,160,${opacity * 0.5})" stroke-width="${thickness * 0.35}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // Glow
+    paths += `<path d="${d}" stroke="rgba(255,30,20,${opacity * 0.3})" stroke-width="${thickness * 2.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#blur)"/>`;
+  }
+
+  // Central impact glow
+  paths += `<circle cx="${cx}" cy="${cy}" r="${Math.random()*3+5}" fill="rgba(255,60,40,0.6)"/>`;
+  paths += `<circle cx="${cx}" cy="${cy}" r="${Math.random()*5+8}" fill="rgba(255,30,20,0.2)"/>`;
+
+  // Add small fragment pieces near the impact
+  for (let i = 0; i < 8; i++) {
+    const fx = cx + (Math.random() - 0.5) * 25;
+    const fy = cy + (Math.random() - 0.5) * 20;
+    const size = Math.random() * 5 + 2;
+    const rot = Math.random() * 360;
+    paths += `<polygon points="${-size},${-size} ${size},0 ${-size},${size}" fill="rgba(255,60,40,${Math.random()*0.4+0.2})" transform="translate(${fx},${fy}) rotate(${rot})"/>`;
+  }
+
+  // Add filter defs
+  crackEl.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;position:absolute;inset:0;">
+    <defs><filter id="blur"><feGaussianBlur stdDeviation="0.5"/></filter></defs>
+    ${paths}</svg>`;
+}
+
+function triggerImpact(sectionIndex) {
+  if (sectionIndex === lastSectionHit) return;
+  lastSectionHit = sectionIndex;
+
+  const rect = sections[sectionIndex].getBoundingClientRect();
+  const flashX = (rect.left + rect.width / 2) / W * 100;
+  const flashY = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 10), 90);
+
+  // Generate real red cracks
+  generateCracks(sectionIndex);
+
+  // Flash
+  flashEl.style.setProperty('--flash-x', flashX + '%');
+  flashEl.style.setProperty('--flash-y', flashY + '%');
+  flashEl.classList.add('active');
+  setTimeout(() => flashEl.classList.remove('active'), 150);
+
+  // Crack overlay
+  crackEl.classList.add('active');
+  setTimeout(() => {
+    crackEl.classList.remove('active');
+    // Clear SVG after fade out to save memory
+    setTimeout(() => { crackEl.innerHTML = ''; }, 100);
+  }, 500);
+
+  // Screen shake — HULK MODE
+  document.body.classList.add('hulk-shaking');
+  setTimeout(() => document.body.classList.remove('hulk-shaking'), 580);
+
+  // Spawn debris burst
+  spawnDebris(Math.floor(Math.random() * 8) + 5);
+}
+
+// Watch for section entries with IntersectionObserver
+const impactObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = Array.from(sections).indexOf(e.target);
+      if (idx > 0) triggerImpact(idx);
+    }
+  });
+}, { threshold: 0.15 });
+
+sections.forEach(s => impactObserver.observe(s));
+
+// ── CANVAS LOOP ──
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw energy particles
+  particles.forEach(p => { p.update(); p.draw(); });
+
+  // Draw connecting lines between nearby particles
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const dx = particles[i].x - particles[j].x;
+      const dy = particles[i].y - particles[j].y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 120) {
+        const a = (1 - dist / 120) * 0.08;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.strokeStyle = `rgba(59,140,58,${a})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Ground pulse effect at bottom
+  const grad = ctx.createLinearGradient(0, H - 60, 0, H);
+  grad.addColorStop(0, 'transparent');
+  grad.addColorStop(0.5, `rgba(59,140,58,${0.03 + 0.02 * Math.sin(Date.now() / 2000)})`);
+  grad.addColorStop(1, `rgba(59,140,58,${0.06 + 0.04 * Math.sin(Date.now() / 2000)})`);
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, H - 60, W, 60);
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+// ── SCROLL-BASED DEBRIS TRIGGER ──
+let scrollThrottle = 0;
+window.addEventListener('scroll', () => {
+  const now = Date.now();
+  if (now - scrollThrottle < 500) return;
+  scrollThrottle = now;
+  const scrollSpeed = Math.abs(window.scrollY - lastScroll);
+  if (scrollSpeed > 200) {
+    spawnDebris(Math.floor(scrollSpeed / 100) + 2);
+  }
+}, { passive: true });
+
+// ── PODCAST PLAYER ──
+const podcastAudio = new Audio('assets/audio/historia-crossfit.mp3');
+const podcastBtn = document.getElementById('podcastBtn');
+const podcastWave = document.getElementById('podcastWave');
+let isPlaying = false;
+
+podcastBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    podcastAudio.pause();
+    podcastBtn.classList.remove('playing');
+    podcastWave.classList.remove('active');
+    podcastBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+  } else {
+    podcastAudio.play();
+    podcastBtn.classList.add('playing');
+    podcastWave.classList.add('active');
+    podcastBtn.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg>';
+  }
+  isPlaying = !isPlaying;
+});
+
+podcastAudio.addEventListener('ended', () => {
+  isPlaying = false;
+  podcastBtn.classList.remove('playing');
+  podcastWave.classList.remove('active');
+  podcastBtn.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>';
+});
+</script>
 </body>
 </html>
