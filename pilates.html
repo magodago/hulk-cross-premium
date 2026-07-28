@@ -109,6 +109,16 @@ section { position: relative; overflow: hidden; }
 .pi-accessories { padding: 100px 0; }
 .pi-acc-header { text-align: center; margin-bottom: 48px; }
 .acc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 700px; margin: 0 auto; }
+.pi-schedule { padding: 80px 0; background: var(--bg2); }
+.pi-sched-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 600px; margin: 40px auto 0; }
+.pi-sched-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 32px 24px; text-align: center; transition: all 0.3s ease; }
+.pi-sched-card:hover { border-color: var(--border-light); transform: translateY(-2px); }
+.pi-sched-icon { font-size: 2rem; margin-bottom: 12px; }
+.pi-sched-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+.pi-sched-card p { font-size: 1rem; color: var(--text-muted); line-height: 1.5; }
+.pi-sched-time { font-family: var(--font-display); font-size: 1.6rem !important; font-weight: 700; color: var(--red) !important; margin-top: 8px; }
+.pi-sched-price { font-family: var(--font-display); font-size: 2.2rem !important; font-weight: 700; color: var(--green) !important; }
+.pi-sched-note { font-size: 0.85rem; color: var(--text-dim); }
 .acc-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-align: center; transition: all 0.3s ease; }
 .acc-card:hover { border-color: var(--border-light); background: var(--card-hover); }
 .acc-icon { font-size: 2rem; margin-bottom: 10px; }
@@ -306,16 +316,41 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
         <p>Aros mágicos para resistencia y tonificación muscular controlada.</p>
       </div>
       <div class="acc-card">
-        <div class="acc-icon">🧱</div>
-        <h3>Ladrillos</h3>
-        <p>Bloques de yoga para apoyo, alineación y profundización de estiramientos.</p>
+        <p>Pelotas de pilates para trabajo de core, equilibrio y estabilidad.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="pi-cta" id="cta">
+<!-- SCHEDULE & PRICE -->
+<section class="pi-schedule">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label">Horarios & Precios</div>
+      <h2 class="section-title">Clases de <span class="accent">Pilates</span></h2>
+    </div>
+    <div class="pi-sched-grid reveal">
+      <div class="pi-sched-card">
+        <div class="pi-sched-icon">📅</div>
+        <h3>Horario</h3>
+        <p><strong>Lunes</strong> y <strong>Miércoles</strong></p>
+        <p class="pi-sched-time">18:15 h</p>
+      </div>
+      <div class="pi-sched-card">
+        <div class="pi-sched-icon">💰</div>
+        <h3>Precio</h3>
+        <p class="pi-sched-price">30€</p>
+        <p class="pi-sched-note">al mes</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="https://wa.me/34647766198?text=Hola%2C%20quiero%20info%20sobre%20Pilates" class="btn btn-primary">Reserva tu plaza</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="pi-cta">
   <div class="pi-cta-bg">
     <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/banner-5__msi___jpg-2880w.jpg" alt="Pilates" loading="lazy">
   </div>
