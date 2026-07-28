@@ -183,69 +183,6 @@ section { position: relative; overflow: hidden; }
     var(--bg) 100%
   );
 }
-.hero-grid {
-  position: absolute; inset: 0; z-index: 1;
-  background-image:
-    linear-gradient(rgba(209,15,11,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(209,15,11,0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
-
-/* ── HULK GAMMA RADIATION EFFECT ── */
-.hero-gamma {
-  position: absolute; inset: 0; z-index: 1;
-  pointer-events: none; overflow: hidden;
-}
-.hero-gamma::before {
-  content: '';
-  position: absolute;
-  top: -20%; left: -10%;
-  width: 120%; height: 60%;
-  background: radial-gradient(ellipse at 50% 50%,
-    rgba(59,140,58,0.08) 0%,
-    rgba(59,140,58,0.03) 30%,
-    transparent 60%);
-  animation: gammaPulse 4s ease-in-out infinite;
-}
-.hero-gamma::after {
-  content: '';
-  position: absolute;
-  bottom: -10%; right: -10%;
-  width: 80%; height: 50%;
-  background: radial-gradient(ellipse at 50% 50%,
-    rgba(209,15,11,0.06) 0%,
-    transparent 50%);
-  animation: gammaPulse 4s ease-in-out infinite 2s;
-}
-@keyframes gammaPulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-/* ── COMIC BURST BEHIND TITLE ── */
-.hero-burst {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 500px; height: 500px;
-  z-index: 1; pointer-events: none;
-  opacity: 0.08;
-  background: radial-gradient(circle at 50% 50%,
-    transparent 25%,
-    rgba(59,140,58,0.08) 25%,
-    rgba(59,140,58,0.04) 35%,
-    transparent 45%,
-    rgba(209,15,11,0.06) 45%,
-    transparent 55%,
-    rgba(59,140,58,0.04) 55%,
-    transparent 65%
-  );
-  animation: burstSpin 20s linear infinite;
-}
-@keyframes burstSpin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
 
 /* ── HULK POWER TEXT EFFECT ── */
 .hero-title .hulk-text {
@@ -260,86 +197,6 @@ section { position: relative; overflow: hidden; }
 @keyframes hulkPulse {
   0%, 100% { text-shadow: 0 0 20px rgba(59,140,58,0.3), 0 0 40px rgba(59,140,58,0.15); }
   50% { text-shadow: 0 0 30px rgba(59,140,58,0.5), 0 0 60px rgba(59,140,58,0.25), 0 0 100px rgba(59,140,58,0.1); }
-}
-
-/* ── POWER LINE DECORATIONS ── */
-.hero-power-line {
-  position: absolute; z-index: 2; pointer-events: none;
-  height: 2px; width: 80px;
-  background: linear-gradient(90deg, transparent, var(--green), transparent);
-  opacity: 0.15;
-  animation: powerLineSlide 4s ease-in-out infinite;
-}
-.hero-power-line:nth-child(1) { top: 20%; left: 5%; animation-delay: 0s; }
-.hero-power-line:nth-child(2) { top: 35%; right: 8%; animation-delay: 1s; }
-.hero-power-line:nth-child(3) { bottom: 30%; left: 3%; animation-delay: 2s; }
-.hero-power-line:nth-child(4) { bottom: 15%; right: 5%; animation-delay: 3s; }
-@keyframes powerLineSlide {
-  0%, 100% { opacity: 0.05; transform: scaleX(0.5); }
-  50% { opacity: 0.2; transform: scaleX(1.2); }
-}
-.hero-content {
-  position: relative; z-index: 2;
-  max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px;
-  width: 100%;
-}
-.hero-tag {
-  display: inline-block; font-family: var(--font-display);
-  font-size: 0.72rem; letter-spacing: 4px; color: var(--red);
-  border: 1px solid var(--border-light); font-weight: 500;
-  border-radius: 50px; padding: 6px 18px;
-  margin-bottom: 24px; text-transform: uppercase;
-  animation: fadeUp 0.8s ease 0.2s both;
-}
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 7vw, 5.5rem);
-  font-weight: 700; line-height: 1.02;
-  letter-spacing: -1px; color: var(--white);
-  margin-bottom: 4px; text-transform: uppercase;
-  animation: fadeUp 0.8s ease 0.3s both;
-}
-.hero-title .accent { color: var(--red); }
-.hero-sub {
-  font-size: clamp(1.1rem, 2vw, 1.4rem);
-  color: var(--text-muted); margin-bottom: 8px;
-  font-weight: 300; letter-spacing: 0.5px;
-  animation: fadeUp 0.8s ease 0.4s both;
-}
-.hero-quote {
-  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
-  font-weight: 300; font-style: italic;
-  color: rgba(255,255,255,0.7); margin-bottom: 40px;
-  max-width: 620px; line-height: 1.4;
-  animation: fadeUp 0.8s ease 0.5s both;
-}
-.hero-actions {
-  display: flex; gap: 16px; flex-wrap: wrap;
-  animation: fadeUp 0.8s ease 0.6s both;
-}
-.btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: var(--font-display); font-size: 0.85rem;
-  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-  text-decoration: none; padding: 14px 32px;
-  border-radius: 50px; transition: all 0.3s ease;
-  cursor: pointer; border: none;
-}
-.btn-primary {
-  background: var(--red); color: var(--white);
-  box-shadow: 0 4px 20px var(--red-glow);
-}
-.btn-primary:hover {
-  background: var(--red-dark); transform: translateY(-2px);
-  box-shadow: 0 8px 30px var(--red-glow);
-}
-.btn-outline {
-  background: transparent; color: var(--white);
-  border: 1px solid rgba(255,255,255,0.2);
-}
-.btn-outline:hover {
-  border-color: var(--red); color: var(--red);
-  transform: translateY(-2px);
 }
 
 /* ── QUICK LINKS ── */
@@ -656,6 +513,19 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 }
 .footer-social a:hover { border-color: var(--red); color: var(--red); transform: translateY(-2px); }
 
+/* ── FLOATING QUOTES ── */
+.floating-quotes { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.fq-item { position: absolute; font-family: var(--font-display); font-size: clamp(0.7rem, 1.2vw, 1rem); letter-spacing: 2px; text-transform: uppercase; opacity: 0; animation: fqFloat 25s linear infinite; white-space: nowrap; }
+.fq-item:nth-child(1) { left: 5%; animation-delay: 0s; color: rgba(209,15,11,0.06); }
+.fq-item:nth-child(2) { left: 25%; animation-delay: -7s; color: rgba(59,140,58,0.05); }
+.fq-item:nth-child(3) { left: 50%; animation-delay: -14s; color: rgba(209,15,11,0.05); }
+.fq-item:nth-child(4) { left: 70%; animation-delay: -20s; color: rgba(59,140,58,0.04); }
+
+@keyframes fqFloat { 0% { transform: translateY(105vh) rotate(-2deg); opacity: 0; } 10% { opacity: 1; } 85% { opacity: 1; } 100% { transform: translateY(-10vh) rotate(2deg); opacity: 0; } }
+
+/* ── CANVAS PARTICLES ── */
+#hulk-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
 /* ── WHATSAPP FLOAT ── */
 .whatsapp-float {
   position: fixed; bottom: 24px; right: 24px; z-index: 50;
@@ -721,48 +591,6 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
-
-/* ── HULK IMPACT EFFECTS ── */
-#hulk-canvas {
-  position: fixed; inset: 0; z-index: 9998;
-  pointer-events: none;
-}
-.hulk-crack {
-  position: fixed; inset: 0; z-index: 9997;
-  pointer-events: none; opacity: 0;
-  transition: opacity 0.08s ease;
-}
-.hulk-crack.active { opacity: 1; }
-.hulk-impact-flash {
-  position: fixed; inset: 0; z-index: 9999;
-  pointer-events: none; opacity: 0;
-  background: radial-gradient(ellipse at var(--flash-x, 50%) var(--flash-y, 50%),
-    rgba(59,140,58,0.2) 0%,
-    rgba(209,15,11,0.12) 15%,
-    rgba(209,15,11,0.04) 30%,
-    transparent 55%
-  );
-  transition: opacity 0.08s ease;
-}
-.hulk-impact-flash.active { opacity: 1; }
-
-/* ── SCREEN SHAKE (HULK MODE) ── */
-@keyframes hulk-shake {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  10%  { transform: translate(-0.5px, 0.3px) rotate(-0.08deg); }
-  20%  { transform: translate(0.4px, -0.3px) rotate(0.06deg); }
-  30%  { transform: translate(-0.3px, 0.4px) rotate(-0.05deg); }
-  40%  { transform: translate(0.5px, -0.2px) rotate(0.06deg); }
-  50%  { transform: translate(-0.4px, 0.2px) rotate(-0.04deg); }
-  60%  { transform: translate(0.3px, 0.3px) rotate(0.04deg); }
-  70%  { transform: translate(-0.5px, -0.3px) rotate(-0.06deg); }
-  80%  { transform: translate(0.4px, -0.3px) rotate(0.04deg); }
-  90%  { transform: translate(-0.3px, 0.2px) rotate(-0.03deg); }
-  100% { transform: translate(0, 0) rotate(0deg); }
-}
-.hulk-shaking {
-  animation: hulk-shake 0.3s ease-out both;
-}
 
 /* ── AMBIENT DEBRIS ── */
 .hulk-debris {
@@ -1184,13 +1012,6 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
     <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/Gilcross-Illescas-centro-deportivo-2__msi___jpg-1920w.webp" alt="Hulk Crosstraining Illescas" loading="eager">
   </div>
   <div class="hero-overlay"></div>
-  <div class="hero-grid"></div>
-  <div class="hero-gamma"></div>
-  <div class="hero-burst"></div>
-  <div class="hero-power-line"></div>
-  <div class="hero-power-line"></div>
-  <div class="hero-power-line"></div>
-  <div class="hero-power-line"></div>
   <div class="hero-content">
     <div class="hero-tag">Centro Deportivo en Illescas</div>
     <h1 class="hero-title"><span class="hulk-text">HULK</span> <span class="accent">CROSSTRAINING</span></h1>
@@ -1799,6 +1620,15 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
 </section>
 
 <!-- FOOTER -->
+<div class="floating-quotes">
+  <div class="fq-item">NO EXCUSES</div>
+  <div class="fq-item">FORGED IN FIRE</div>
+  <div class="fq-item">EARNED NOT GIVEN</div>
+  <div class="fq-item">IRON SHARPENS IRON</div>
+</div>
+
+<canvas id="hulk-canvas"></canvas>
+
 <footer>
   <div class="inner">
     <div class="footer-grid">
@@ -1846,10 +1676,6 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<!-- HULK EFFECTS OVERLAYS -->
-<div class="hulk-crack" id="hulkCrack"></div>
-<div class="hulk-impact-flash" id="hulkFlash"></div>
-<canvas id="hulk-canvas"></canvas>
 
 <script>
 // ── HAMBURGER ──
@@ -1877,6 +1703,70 @@ window.addEventListener('scroll', () => {
   lastScroll = current;
 }, { passive: true });
 
+// ── AMBIENT ENERGY PARTICLES ──
+const canvas = document.getElementById('hulk-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  class EnergyParticle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random() * W; this.y = Math.random() * H;
+      this.size = Math.random() * 3 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = -Math.random() * 0.4 - 0.1;
+      this.alpha = Math.random() * 0.4 + 0.1;
+      this.pulse = Math.random() * Math.PI * 2;
+      this.pulseSpeed = Math.random() * 0.02 + 0.01;
+      this.color = Math.random() > 0.5 ? '59,140,58' : '209,15,11';
+    }
+    update() {
+      this.x += this.speedX; this.y += this.speedY;
+      this.pulse += this.pulseSpeed;
+      if (this.y < -10 || this.x < -10 || this.x > W + 10) this.reset();
+      if (this.y < 0) { this.x = Math.random() * W; this.y = H + 10; }
+    }
+    draw() {
+      const a = this.alpha * (0.6 + 0.4 * Math.sin(this.pulse));
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${this.color},${a})`;
+      ctx.fill();
+    }
+  }
+
+  const particles = [];
+  for (let i = 0; i < 35; i++) particles.push(new EnergyParticle());
+
+  function animate() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach(p => { p.update(); p.draw(); });
+    // Connecting lines between nearby particles
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          const a = (1 - dist / 120) * 0.08;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(59,140,58,${a})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
 // ── SCROLL REVEAL ──
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1898,230 +1788,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 // ═══════════════════════════════════════════════
-// HULK EFFECTS — Gamma impact, debris, energy
+
 // ═══════════════════════════════════════════════
-
-const canvas = document.getElementById('hulk-canvas');
-const ctx = canvas.getContext('2d');
-const crackEl = document.getElementById('hulkCrack');
-const flashEl = document.getElementById('hulkFlash');
-let W, H;
-
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-// ── AMBIENT ENERGY PARTICLES ──
-class EnergyParticle {
-  constructor() { this.reset(); }
-  reset() {
-    this.x = Math.random() * W;
-    this.y = Math.random() * H;
-    this.size = Math.random() * 3 + 1;
-    this.speedX = (Math.random() - 0.5) * 0.3;
-    this.speedY = -Math.random() * 0.4 - 0.1;
-    this.alpha = Math.random() * 0.4 + 0.1;
-    this.pulse = Math.random() * Math.PI * 2;
-    this.pulseSpeed = Math.random() * 0.02 + 0.01;
-    this.color = Math.random() > 0.5 ? '59,140,58' : '209,15,11';
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    this.pulse += this.pulseSpeed;
-    if (this.y < -10 || this.x < -10 || this.x > W + 10) this.reset();
-    if (this.y < 0) { this.x = Math.random() * W; this.y = H + 10; }
-  }
-  draw() {
-    const a = this.alpha * (0.6 + 0.4 * Math.sin(this.pulse));
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color},${a})`;
-    ctx.fill();
-  }
-}
-
-const particles = [];
-for (let i = 0; i < 35; i++) particles.push(new EnergyParticle());
-
-// ── DEBRIS SYSTEM ──
-function spawnDebris(count) {
-  for (let i = 0; i < count; i++) {
-    const el = document.createElement('div');
-    el.className = 'hulk-debris';
-    const size = Math.random() * 8 + 3;
-    el.style.width = size + 'px';
-    el.style.height = size + 'px';
-    el.style.left = (Math.random() * 90 + 5) + '%';
-    el.style.background = Math.random() > 0.5
-      ? `rgba(59,140,58,${Math.random() * 0.25 + 0.1})`
-      : `rgba(209,15,11,${Math.random() * 0.15 + 0.05})`;
-    el.style.animationDuration = (Math.random() * 3 + 2) + 's';
-    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 5000);
-  }
-}
-
-// Spawn ambient debris periodically
-let debrisTimer = setInterval(() => {
-  if (document.hidden) return;
-  spawnDebris(Math.floor(Math.random() * 3) + 1);
-}, 3000);
-
-// ── SECTION IMPACT DETECTION ──
-const sections = document.querySelectorAll('section');
-let lastSectionHit = -1;
-
-function generateCracks(sectionIndex) {
-  // Generate bright red crack SVG overlay
-  const rect = sections[sectionIndex].getBoundingClientRect();
-  const cx = (rect.left + rect.width / 2) / W * 100;
-  const cy = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 15), 85);
-
-  // Build SVG paths — 4-7 crack lines radiating from impact point
-  const numCracks = Math.floor(Math.random() * 4) + 4;
-  let paths = '';
-  for (let i = 0; i < numCracks; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const length = (Math.random() * 35 + 15); // % of screen
-    const segments = Math.floor(Math.random() * 4) + 3;
-    let d = `M${cx},${cy}`;
-    let x = cx, y = cy;
-    for (let s = 0; s < segments; s++) {
-      const segLen = length / segments;
-      const jitter = (Math.random() - 0.5) * 12;
-      const a = angle + (Math.random() - 0.5) * 0.5;
-      x += Math.cos(a) * segLen;
-      y += Math.sin(a) * segLen + jitter;
-      d += ` L${Math.max(0, Math.min(100, x))},${Math.max(0, Math.min(100, y))}`;
-    }
-    const thickness = Math.random() * 3 + 4; // 4-7px in viewBox units
-    const opacity = Math.random() * 0.3 + 0.7; // 0.7-1.0
-    // Main crack — bright red
-    paths += `<path d="${d}" stroke="rgba(255,50,40,${opacity})" stroke-width="${thickness}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-    // Inner bright core
-    paths += `<path d="${d}" stroke="rgba(255,180,160,${opacity * 0.5})" stroke-width="${thickness * 0.35}" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
-    // Glow
-    paths += `<path d="${d}" stroke="rgba(255,30,20,${opacity * 0.3})" stroke-width="${thickness * 2.5}" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#blur)"/>`;
-  }
-
-  // Central impact glow
-  paths += `<circle cx="${cx}" cy="${cy}" r="${Math.random()*3+5}" fill="rgba(255,60,40,0.6)"/>`;
-  paths += `<circle cx="${cx}" cy="${cy}" r="${Math.random()*5+8}" fill="rgba(255,30,20,0.2)"/>`;
-
-  // Add small fragment pieces near the impact
-  for (let i = 0; i < 8; i++) {
-    const fx = cx + (Math.random() - 0.5) * 25;
-    const fy = cy + (Math.random() - 0.5) * 20;
-    const size = Math.random() * 5 + 2;
-    const rot = Math.random() * 360;
-    paths += `<polygon points="${-size},${-size} ${size},0 ${-size},${size}" fill="rgba(255,60,40,${Math.random()*0.4+0.2})" transform="translate(${fx},${fy}) rotate(${rot})"/>`;
-  }
-
-  // Add filter defs
-  crackEl.innerHTML = `<svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;position:absolute;inset:0;">
-    <defs><filter id="blur"><feGaussianBlur stdDeviation="0.5"/></filter></defs>
-    ${paths}</svg>`;
-}
-
-function triggerImpact(sectionIndex) {
-  if (sectionIndex === lastSectionHit) return;
-  lastSectionHit = sectionIndex;
-
-  const rect = sections[sectionIndex].getBoundingClientRect();
-  const flashX = (rect.left + rect.width / 2) / W * 100;
-  const flashY = Math.min(Math.max((rect.top + rect.height / 2) / H * 100, 10), 90);
-
-  // Generate real red cracks
-  generateCracks(sectionIndex);
-
-  // Flash
-  flashEl.style.setProperty('--flash-x', flashX + '%');
-  flashEl.style.setProperty('--flash-y', flashY + '%');
-  flashEl.classList.add('active');
-  setTimeout(() => flashEl.classList.remove('active'), 150);
-
-  // Crack overlay
-  crackEl.classList.add('active');
-  setTimeout(() => {
-    crackEl.classList.remove('active');
-    // Clear SVG after fade out to save memory
-    setTimeout(() => { crackEl.innerHTML = ''; }, 100);
-  }, 500);
-
-  // Screen shake — HULK MODE
-  document.body.classList.add('hulk-shaking');
-  setTimeout(() => document.body.classList.remove('hulk-shaking'), 580);
-
-  // Spawn debris burst
-  spawnDebris(Math.floor(Math.random() * 8) + 5);
-}
-
-// Watch for section entries with IntersectionObserver
-const impactObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const idx = Array.from(sections).indexOf(e.target);
-      if (idx > 0) triggerImpact(idx);
-    }
-  });
-}, { threshold: 0.15 });
-
-sections.forEach(s => impactObserver.observe(s));
-
-// ── CANVAS LOOP ──
-function animate() {
-  ctx.clearRect(0, 0, W, H);
-
-  // Draw energy particles
-  particles.forEach(p => { p.update(); p.draw(); });
-
-  // Draw connecting lines between nearby particles
-  for (let i = 0; i < particles.length; i++) {
-    for (let j = i + 1; j < particles.length; j++) {
-      const dx = particles[i].x - particles[j].x;
-      const dy = particles[i].y - particles[j].y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 120) {
-        const a = (1 - dist / 120) * 0.08;
-        ctx.beginPath();
-        ctx.moveTo(particles[i].x, particles[i].y);
-        ctx.lineTo(particles[j].x, particles[j].y);
-        ctx.strokeStyle = `rgba(59,140,58,${a})`;
-        ctx.lineWidth = 0.5;
-        ctx.stroke();
-      }
-    }
-  }
-
-  // Ground pulse effect at bottom
-  const grad = ctx.createLinearGradient(0, H - 60, 0, H);
-  grad.addColorStop(0, 'transparent');
-  grad.addColorStop(0.5, `rgba(59,140,58,${0.03 + 0.02 * Math.sin(Date.now() / 2000)})`);
-  grad.addColorStop(1, `rgba(59,140,58,${0.06 + 0.04 * Math.sin(Date.now() / 2000)})`);
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, H - 60, W, 60);
-
-  requestAnimationFrame(animate);
-}
-
-animate();
-
-// ── SCROLL-BASED DEBRIS TRIGGER ──
-let scrollThrottle = 0;
-window.addEventListener('scroll', () => {
-  const now = Date.now();
-  if (now - scrollThrottle < 500) return;
-  scrollThrottle = now;
-  const scrollSpeed = Math.abs(window.scrollY - lastScroll);
-  if (scrollSpeed > 200) {
-    spawnDebris(Math.floor(scrollSpeed / 100) + 2);
-  }
-}, { passive: true });
 
 // ── PODCAST PLAYER ──
 const podcastAudio = new Audio('assets/audio/historia-crossfit.mp3');
