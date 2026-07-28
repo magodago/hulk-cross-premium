@@ -457,7 +457,7 @@ section { position: relative; overflow: hidden; }
 }
 .sc-time {
   font-family: var(--font-display); font-size: 0.6rem;
-  font-weight: 500; color: var(--red);
+  font-weight: 500; color: var(--green);
   text-align: center; padding: 4px 2px;
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; line-height: 1.1;
@@ -466,12 +466,15 @@ section { position: relative; overflow: hidden; }
 .sc-wod {
   padding: 4px 2px; text-align: center; border-radius: 4px;
   font-family: var(--font-display); font-size: 0.6rem; font-weight: 600;
-  color: var(--red); background: rgba(209,15,11,0.04);
+  background: rgba(209,15,11,0.04);
   border: 1px solid rgba(209,15,11,0.12);
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: center; justify-content: center; gap: 1px;
   transition: all 0.2s ease;
 }
 .sc-wod:hover { background: rgba(209,15,11,0.08); border-color: rgba(209,15,11,0.25); }
+.sc-wod .wod-l { color: var(--red); }
+.sc-wod .sep { color: rgba(255,255,255,0.5); }
+.sc-wod .ob-l { color: var(--red); }
 .sc-ob {
   padding: 3px 2px; text-align: center; border-radius: 4px;
   font-family: var(--font-body); font-size: 0.5rem; font-weight: 400;
@@ -1324,7 +1327,6 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
     </div>
 
     <div class="schedule-grid reveal">
-      <!-- Header -->
       <div class="sc-time"></div>
       <div class="sc-header">LUNES</div>
       <div class="sc-header">MARTES</div>
@@ -1333,234 +1335,50 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
       <div class="sc-header">VIERNES</div>
       <div class="sc-header">SÁBADO</div>
 
-      <!-- 09:00-10:30 / 10:30-12:00 - Sábado JIU -->
-      <div class="sc-time">09:00<br><small>12:00</small></div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-      <div class="sc-jj">JIU-JITSU</div>
+      <div class="sc-time">07:00</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
-      <!-- 10:00-11:30 JIU-JITSU L-X-V -->
-      <div class="sc-time">10:00<br><small>11:30</small></div>
-      <div class="sc-jj">JIU-JITSU</div>
-      <div class="sc-empty"></div>
-      <div class="sc-jj">JIU-JITSU</div>
-      <div class="sc-empty"></div>
-      <div class="sc-jj">JIU-JITSU</div>
-      <div class="sc-empty"></div>
+      <div class="sc-time">08:00</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
-      <!-- 16:15 + OPEN BOX x3 -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
+      <div class="sc-time">09:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
+      <div class="sc-time">10:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div>
+
+      <div class="sc-time">11:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div>
+
+      <div class="sc-time">13:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
+
+      <div class="sc-time">14:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
       <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
+      <div class="sc-time">17:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
+      <div class="sc-time">18:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
 
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- Specials -->
-      <div class="sc-time"></div>
-      <div class="sc-sp">GIMNÁSTICOS</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-sp">HALTEROFILIA</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-empty"></div>
-      <div class="sc-sp">STRONGMAN</div>
-      <div class="sc-sp">DEKA</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 - WOD solo Lun-Mie-Vie -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 - OPEN BOX en Mie + DEKA -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-sp">DEKA</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-empty"></div>
-      <div class="sc-sp">STRONGMAN</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 + OPEN BOX -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-
-      <!-- 16:15 - sin Viernes ni Sáb -->
-      <div class="sc-time">16:15</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-sp">WOOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-
-      <div class="sc-time"></div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-empty"></div>
-      <div class="sc-empty"></div>
-
-      <!-- 19:15 evening -->
       <div class="sc-time">19:15</div>
-      <div class="sc-sp">GIMNÁSTICOS</div>
-      <div class="sc-ob">OPEN BOX</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-wod">WOD</div>
-      <div class="sc-sp">HALTEROFILIA</div>
-      <div class="sc-empty"></div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
+
+      <div class="sc-time">20:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div>
+
+      <div class="sc-time">21:15</div>
+      <div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-wod"><span class="wod-l">WOD</span> <span class="sep">/</span> <span class="ob-l">OPEN BOX</span></div><div class="sc-empty"></div><div class="sc-empty"></div>
     </div>
 
-    <div style="text-align:center;margin-top:32px;">
-      <a href="#contacto" class="btn btn-primary">Reserva tu clase</a>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="horarios.html" class="btn btn-outline">Ver horario completo</a>
     </div>
-  </div>
-</section>
-
-<!-- TARIFAS -->
+</section><!-- TARIFAS -->
 <section class="tarifas" id="tarifas">
   <div class="inner">
     <div class="tarifas-header reveal">
