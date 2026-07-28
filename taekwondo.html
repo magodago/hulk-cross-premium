@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Taekwondo en Illescas | HULK CROSSTRAINING - Escuela Mu Duk Kwan</title>
+<meta name="description" content="Clases de Taekwondo en Illescas. Escuela Mu Duk Kwan. Infantil, juvenil y adultos. Martes y jueves. Primera clase gratuita.">
+<link rel="icon" type="image/x-icon" href="https://de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/site_favicon_16_1747993620696.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg2: #111111;
+  --bg3: #1a1a1a;
+  --red: #d10f0b;
+  --red-dark: #a00c08;
+  --red-glow: rgba(209,15,11,0.35);
+  --green: #3b8c3a;
+  --green-glow: rgba(59,140,58,0.25);
+  --white: #ffffff;
+  --text: rgba(255,255,255,0.88);
+  --text-muted: rgba(255,255,255,0.55);
+  --text-dim: rgba(255,255,255,0.3);
+  --border: rgba(255,255,255,0.08);
+  --border-light: rgba(209,15,11,0.25);
+  --card-bg: rgba(255,255,255,0.03);
+  --card-hover: rgba(209,15,11,0.05);
+  --font-display: 'Oswald', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 70px;
+}
+.nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.nav-logo img { height: 42px; width: auto; }
+.nav-logo-text {
+  font-family: var(--font-display); font-size: 1.2rem;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white);
+}
+.nav-logo-text span { color: var(--red); }
+.nav-logo-text .green { color: var(--green); }
+.nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+.nav-links a {
+  font-family: var(--font-display); font-size: 0.78rem;
+  font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.65); text-decoration: none;
+  padding: 8px 18px; transition: color 0.2s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 18px; right: 18px;
+  height: 2px; background: var(--red);
+  transform: scaleX(0); transition: transform 0.3s ease;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  background: var(--red); color: var(--white) !important;
+  border-radius: 50px; padding: 10px 24px !important; margin-left: 8px;
+  font-weight: 600 !important; letter-spacing: 1px !important;
+  transition: all 0.3s ease !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--red-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 20px var(--red-glow); }
+.nav-hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 8px;
+}
+.nav-hamburger span { display: block; width: 24px; height: 2px; background: rgba(255,255,255,0.7); border-radius: 2px; transition: all 0.3s; }
+.mobile-nav {
+  position: fixed; top: 0; right: -100%; width: 75vw; max-width: 360px;
+  height: 100vh; z-index: 200;
+  background: var(--bg2); border-left: 1px solid var(--border);
+  padding: 90px 32px 32px;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.mobile-nav.open { right: 0; }
+.mobile-nav a {
+  font-family: var(--font-display); font-size: 1.1rem;
+  font-weight: 500; color: rgba(255,255,255,0.7);
+  text-decoration: none; padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: color 0.2s; letter-spacing: 1px; text-transform: uppercase;
+}
+.mobile-nav a:hover { color: var(--red); }
+.mobile-nav .nav-cta-mobile {
+  margin-top: 20px; background: var(--red); color: #fff;
+  text-align: center; border-radius: 50px; padding: 14px;
+  font-weight: 600; font-size: 1rem; letter-spacing: 1px;
+}
+.mobile-overlay {
+  position: fixed; inset: 0; z-index: 150;
+  background: rgba(0,0,0,0.7); opacity: 0; pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.mobile-overlay.open { opacity: 1; pointer-events: auto; }
+
+/* ── SECTIONS ── */
+section { position: relative; overflow: hidden; }
+.section-label {
+  font-family: var(--font-display); font-size: 0.75rem;
+  letter-spacing: 4px; color: var(--red);
+  text-transform: uppercase; margin-bottom: 12px; font-weight: 500;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700; line-height: 1.08;
+  letter-spacing: -0.5px; margin-bottom: 16px;
+  color: var(--white); text-transform: uppercase;
+}
+.section-title .accent { color: var(--red); }
+.section-desc {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.75; color: var(--text-muted);
+  max-width: 640px;
+}
+.inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; padding-top: 70px;
+}
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+.hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.45) saturate(1.15) contrast(1.05);
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(10,10,10,0.1) 0%,
+    rgba(10,10,10,0.35) 40%,
+    rgba(10,10,10,0.7) 80%,
+    var(--bg) 100%
+  );
+}
+.hero-grid {
+  position: absolute; inset: 0; z-index: 1;
+  background-image:
+    linear-gradient(rgba(209,15,11,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(209,15,11,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden;
+}
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: -20%; left: -10%;
+  width: 120%; height: 60%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(209,15,11,0.08) 0%,
+    rgba(209,15,11,0.03) 30%,
+    transparent 60%);
+  animation: glowPulse 4s ease-in-out infinite;
+}
+.hero-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -10%; right: -10%;
+  width: 80%; height: 50%;
+  background: radial-gradient(ellipse at 50% 50%,
+    rgba(209,15,11,0.06) 0%,
+    transparent 50%);
+  animation: glowPulse 4s ease-in-out infinite 2s;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; padding: 120px 24px 80px;
+  width: 100%;
+}
+.hero-tag {
+  display: inline-block; font-family: var(--font-display);
+  font-size: 0.72rem; letter-spacing: 4px; color: var(--red);
+  border: 1px solid var(--border-light); font-weight: 500;
+  border-radius: 50px; padding: 6px 18px;
+  margin-bottom: 24px; text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.2s both;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 700; line-height: 1.02;
+  letter-spacing: -1px; color: var(--white);
+  margin-bottom: 4px; text-transform: uppercase;
+  animation: fadeUp 0.8s ease 0.3s both;
+}
+.hero-title .accent { color: var(--red); }
+.hero-title .hulk-text {
+  display: inline-block;
+  text-shadow: 0 0 20px rgba(209,15,11,0.3), 0 0 40px rgba(209,15,11,0.15);
+  animation: redPulse 3s ease-in-out infinite;
+}
+@keyframes redPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(209,15,11,0.3), 0 0 40px rgba(209,15,11,0.15); }
+  50% { text-shadow: 0 0 30px rgba(209,15,11,0.5), 0 0 60px rgba(209,15,11,0.25), 0 0 100px rgba(209,15,11,0.1); }
+}
+.hero-sub {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: var(--text-muted); margin-bottom: 8px;
+  font-weight: 300; letter-spacing: 0.5px;
+  animation: fadeUp 0.8s ease 0.4s both;
+}
+.hero-quote {
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+  font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.65); margin-bottom: 40px;
+  max-width: 620px; line-height: 1.5;
+  animation: fadeUp 0.8s ease 0.5s both;
+}
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: fadeUp 0.8s ease 0.6s both;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 0.85rem;
+  font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  text-decoration: none; padding: 14px 32px;
+  border-radius: 50px; transition: all 0.3s ease;
+  cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--red); color: var(--white);
+  box-shadow: 0 4px 20px var(--red-glow);
+}
+.btn-primary:hover {
+  background: var(--red-dark); transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--red-glow);
+}
+.btn-outline {
+  background: transparent; color: var(--white);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-outline:hover {
+  border-color: var(--red); color: var(--red);
+  transform: translateY(-2px);
+}
+
+/* ── TK INFO ── */
+.tk-info { padding: 100px 0; }
+.tk-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.tk-image { position: relative; border-radius: 16px; overflow: hidden; }
+.tk-image img { width: 100%; height: 520px; object-fit: cover; border-radius: 16px; }
+.tk-image::after {
+  content: ''; position: absolute; inset: 0; border-radius: 16px;
+  box-shadow: inset 0 0 60px rgba(10,10,10,0.5);
+}
+.tk-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 28px;
+}
+.tk-feat {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px; text-align: center;
+  transition: all 0.3s ease;
+}
+.tk-feat:hover { border-color: var(--border-light); background: var(--card-hover); }
+.tk-feat .num {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700;
+  color: var(--red); margin-bottom: 4px; opacity: 0.6;
+}
+.tk-feat h4 {
+  font-family: var(--font-display); font-size: 0.82rem;
+  font-weight: 600; color: var(--white); letter-spacing: 0.5px;
+}
+
+/* ── SCHEDULE ── */
+.tk-schedule { padding: 100px 0; background: var(--bg2); }
+.tk-schedule-header { text-align: center; margin-bottom: 48px; }
+.tk-schedule-header .section-desc { margin: 0 auto; }
+.schedule-grid {
+  max-width: 700px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.sched-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.sched-card::after {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 4px; height: 0; background: var(--red);
+  transition: height 0.4s ease;
+}
+.sched-card:hover { border-color: var(--border-light); background: var(--card-hover); }
+.sched-card:hover::after { height: 100%; }
+.sched-level {
+  font-family: var(--font-display); font-size: 1.2rem;
+  font-weight: 600; color: var(--white); letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.sched-level span { font-size: 0.7rem; color: var(--text-dim); display: block; font-weight: 400; letter-spacing: 0; text-transform: none; font-family: var(--font-body); }
+.sched-time {
+  text-align: right;
+}
+.sched-day {
+  font-family: var(--font-display); font-size: 0.9rem;
+  color: var(--red); letter-spacing: 1px; font-weight: 500;
+}
+.sched-hours {
+  font-family: var(--font-display); font-size: 1.4rem;
+  color: var(--white); font-weight: 700;
+}
+.sched-hours small { font-size: 0.7rem; color: var(--text-dim); font-weight: 400; display: block; }
+
+/* ── PRICING ── */
+.tk-pricing { padding: 100px 0; }
+.tk-pricing-header { text-align: center; margin-bottom: 48px; }
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;
+  max-width: 600px; margin: 0 auto;
+}
+.pricing-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 36px 28px; text-align: center;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.pricing-card::after {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 100%; height: 3px; background: var(--red);
+  transform: scaleX(0); transition: transform 0.4s ease;
+  transform-origin: left;
+}
+.pricing-card:hover { border-color: var(--border-light); background: var(--card-hover); }
+.pricing-card:hover::after { transform: scaleX(1); }
+.pricing-name {
+  font-family: var(--font-display); font-size: 1rem;
+  font-weight: 600; color: var(--text-muted); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.pricing-price {
+  font-family: var(--font-display); font-size: 3rem;
+  font-weight: 700; color: var(--white); line-height: 1;
+  margin-bottom: 4px;
+}
+.pricing-price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
+.pricing-desc {
+  font-size: 0.82rem; color: var(--text-dim); margin-top: 8px;
+}
+.pricing-note {
+  text-align: center; margin-top: 28px;
+  font-size: 0.9rem; color: var(--text-muted);
+}
+
+/* ── VALUES ── */
+.tk-values { padding: 100px 0; background: var(--bg2); }
+.tk-values-header { text-align: center; margin-bottom: 48px; }
+.values-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.value-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 40px 28px; text-align: center;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.value-card::before {
+  content: ''; position: absolute; top: -50%; right: -50%;
+  width: 100%; height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(209,15,11,0.06) 0%, transparent 50%);
+  opacity: 0; transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.value-card:hover { border-color: var(--border-light); background: var(--card-hover); transform: translateY(-4px); }
+.value-card:hover::before { opacity: 1; }
+.value-icon {
+  font-size: 2.5rem; margin-bottom: 16px; line-height: 1;
+}
+.value-card h3 {
+  font-family: var(--font-display); font-size: 1.15rem;
+  font-weight: 600; color: var(--white); margin-bottom: 10px;
+  letter-spacing: 0.5px; text-transform: uppercase;
+}
+.value-card p {
+  font-size: 0.85rem; color: var(--text-muted); line-height: 1.7;
+}
+.value-card .tag {
+  display: inline-block;
+  font-family: var(--font-display); font-size: 0.7rem;
+  letter-spacing: 2px; color: var(--red); margin-top: 12px;
+  border: 1px solid var(--border-light); padding: 4px 14px;
+  border-radius: 50px;
+}
+
+/* ── CTA BANNER ── */
+.tk-cta {
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+.tk-cta-bg { position: absolute; inset: 0; z-index: 0; }
+.tk-cta-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.3) saturate(1.1);
+}
+.tk-cta .hero-overlay { z-index: 1; }
+.tk-cta-content {
+  position: relative; z-index: 2;
+  text-align: center; max-width: 700px; margin: 0 auto;
+}
+.tk-cta-content h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700; color: var(--white);
+  text-transform: uppercase; margin-bottom: 16px;
+  line-height: 1.08;
+}
+.tk-cta-content h2 .accent { color: var(--red); }
+.tk-cta-content p {
+  font-size: 1.05rem; color: var(--text-muted);
+  margin-bottom: 32px; line-height: 1.7;
+}
+
+/* ── CONTACT ── */
+.tk-contact { padding: 100px 0; }
+.tk-contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+}
+.contact-form {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 16px; padding: 40px;
+}
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block; font-size: 0.75rem; font-weight: 600;
+  color: var(--text-dim); letter-spacing: 1px;
+  text-transform: uppercase; margin-bottom: 6px;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 12px 16px;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px; color: var(--white); font-family: var(--font-body);
+  font-size: 0.9rem; transition: border-color 0.2s; outline: none;
+}
+.form-group input:focus,
+.form-group textarea:focus { border-color: var(--red); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.btn-submit {
+  width: 100%; padding: 16px;
+  background: var(--red); color: #fff; border: none;
+  border-radius: 50px; font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.btn-submit:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 4px 20px var(--red-glow); }
+.contact-info {
+  display: flex; flex-direction: column; gap: 24px; justify-content: center;
+}
+.contact-item { display: flex; align-items: center; gap: 16px; }
+.contact-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--card-bg); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; color: var(--red);
+  flex-shrink: 0;
+}
+.contact-item h4 {
+  font-family: var(--font-display); font-size: 0.75rem;
+  font-weight: 600; color: var(--text-dim); text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 2px;
+}
+.contact-item p { font-size: 0.92rem; color: var(--white); }
+.contact-item a { color: var(--white); text-decoration: none; }
+.contact-item a:hover { color: var(--red); }
+
+/* ── FOOTER ── */
+footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px;
+}
+.footer-brand .nav-logo img { height: 38px; }
+.footer-brand p {
+  font-size: 0.82rem; color: var(--text-dim);
+  margin-top: 12px; line-height: 1.6; max-width: 320px;
+}
+.footer-col h4 {
+  font-family: var(--font-display); font-size: 0.78rem;
+  font-weight: 600; color: var(--white); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.footer-col a {
+  display: block; font-size: 0.82rem;
+  color: var(--text-dim); text-decoration: none;
+  padding: 5px 0; transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--red); }
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding-top: 20px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p { font-size: 0.72rem; color: var(--text-dim); }
+
+/* ── WHATSAPP FLOAT ── */
+.whatsapp-float {
+  position: fixed; bottom: 24px; right: 24px; z-index: 50;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+  transition: all 0.3s ease;
+}
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 8px 30px rgba(37,211,102,0.4); }
+.whatsapp-float svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 1024px) {
+  .tk-grid { grid-template-columns: 1fr; gap: 40px; }
+  .values-grid { grid-template-columns: 1fr; }
+  .tk-contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
+  .schedule-grid { gap: 10px; }
+  .sched-card { flex-direction: column; text-align: center; padding: 24px; gap: 12px; }
+  .sched-time { text-align: center; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: 1fr; }
+  .tk-features { grid-template-columns: 1fr; }
+  .tk-image img { height: 260px; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .contact-form { padding: 24px; }
+  .hero-content { padding: 100px 24px 60px; }
+  section { padding: 60px 0 !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining" loading="eager">
+      <span class="nav-logo-text"><span>HULK</span><span class="green">CROSS</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#horarios">Horarios</a></li>
+      <li><a href="index.html#tarifas">Tarifas</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <a href="tel:647766198" class="nav-cta">647 766 198</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html" class="mobile-link">Inicio</a>
+  <a href="index.html#servicios" class="mobile-link">Servicios</a>
+  <a href="index.html#horarios" class="mobile-link">Horarios</a>
+  <a href="index.html#tarifas" class="mobile-link">Tarifas</a>
+  <a href="index.html#contacto" class="mobile-link">Contacto</a>
+  <a href="tel:647766198" class="nav-cta-mobile">647 766 198</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/taekwondoillescas-2880w.jpeg" alt="Taekwondo Illescas" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Escuela Mu Duk Kwan</div>
+    <h1 class="hero-title"><span class="hulk-text">TAEKWONDO</span> <span class="accent">ILLESCAS</span></h1>
+    <p class="hero-sub">🥋 Clases para niños, jóvenes y adultos</p>
+    <p class="hero-quote">"Arte marcial coreano que mejora la disciplina, la fuerza, la coordinación y la defensa personal"</p>
+    <div class="hero-actions">
+      <a href="#prueba" class="btn btn-primary">Clase gratuita</a>
+      <a href="#horarios-tk" class="btn btn-outline">Ver horarios</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="tk-info" id="tk-info">
+  <div class="inner">
+    <div class="tk-grid">
+      <div class="reveal">
+        <div class="section-label">Taekwondo en Illescas</div>
+        <h2 class="section-title">Escuela de Taekwondo<br><span class="accent">Mu Duk Kwan</span></h2>
+        <p class="section-desc">
+          Hulk Crosstraining es un centro deportivo ubicado en Illescas, Toledo (España), especializado en entrenamiento funcional y de alta intensidad. Conocido por su ambiente cercano y profesional, el gimnasio combina programas de fuerza, acondicionamiento físico y artes marciales, adaptados a diferentes niveles. Su filosofía promueve la superación personal en un entorno motivador y comunitario.
+        </p>
+        <p class="section-desc" style="margin-top:12px;">
+          El Taekwondo es un arte marcial coreano que mejora la disciplina, la fuerza, la coordinación y la defensa personal. Clases adaptadas para niños, jóvenes y adultos en un ambiente deportivo y motivador.
+        </p>
+        <div class="tk-features">
+          <div class="tk-feat reveal"><div class="num">01</div><h4>Disciplina y respeto</h4></div>
+          <div class="tk-feat reveal"><div class="num">02</div><h4>Defensa personal</h4></div>
+          <div class="tk-feat reveal"><div class="num">03</div><h4>Coordinación</h4></div>
+          <div class="tk-feat reveal"><div class="num">04</div><h4>Condición física</h4></div>
+        </div>
+      </div>
+      <div class="tk-image reveal">
+        <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/taekwondoyuncos-2880w.jpeg" alt="Clases de Taekwondo" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="tk-schedule" id="horarios-tk">
+  <div class="inner">
+    <div class="tk-schedule-header reveal">
+      <div class="section-label">Horarios</div>
+      <h2 class="section-title">Martes y <span class="accent">Jueves</span></h2>
+      <p class="section-desc">Clases adaptadas por edades y niveles. Entrenamiento con maestro Mu Duk Kwan.</p>
+    </div>
+    <div class="schedule-grid reveal">
+      <div class="sched-card">
+        <div class="sched-level">Infantil <span>De 4 a 12 años</span></div>
+        <div class="sched-time">
+          <div class="sched-day">MAR · JUE</div>
+          <div class="sched-hours">17:15 <small>h</small> – 18:30 <small>h</small></div>
+        </div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-level">Adolescentes <span>De 13 a 17 años</span></div>
+        <div class="sched-time">
+          <div class="sched-day">MAR · JUE</div>
+          <div class="sched-hours">18:30 <small>h</small> – 20:00 <small>h</small></div>
+        </div>
+      </div>
+      <div class="sched-card">
+        <div class="sched-level">Adultos <span>+18 años</span></div>
+        <div class="sched-time">
+          <div class="sched-day">MAR · JUE</div>
+          <div class="sched-hours">20:00 <small>h</small> – 21:30 <small>h</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="tk-pricing" id="tarifas-tk">
+  <div class="inner">
+    <div class="tk-pricing-header reveal">
+      <div class="section-label">Tarifas</div>
+      <h2 class="section-title">Precios <span class="accent">Taekwondo</span></h2>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="pricing-name">Infantil</div>
+        <div class="pricing-price">35<span>€/mes</span></div>
+        <div class="pricing-desc">Clases adaptadas para niños. Dos días por semana.</div>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-name">Adultos</div>
+        <div class="pricing-price">40<span>€/mes</span></div>
+        <div class="pricing-desc">Juvenil y adultos. Incluye entrenamiento completo.</div>
+      </div>
+    </div>
+    <p class="pricing-note">Anímate y ven a probar una clase con nosotros <strong>sin compromiso</strong></p>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="tk-values" id="valores">
+  <div class="inner">
+    <div class="tk-values-header reveal">
+      <div class="section-label">Nuestra enseñanza</div>
+      <h2 class="section-title">Clases de Taekwondo <span class="accent">Tradicional</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">🥋</div>
+        <h3>Entrenamiento Tradicional</h3>
+        <p>Técnicas de patadas, puños, defensa personal y formas (poomsae) del Taekwondo tradicional. Trabajo de táctica y combate controlado.</p>
+        <div class="tag">MAESTRO MU DUK KWAN</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🏋️</div>
+        <h3>Entrenamiento Adaptado</h3>
+        <p>Cada alumno progresa a su ritmo. Trabajo personalizado según edad y nivel. Desde iniciación hasta cinturón negro con programa reglado.</p>
+        <div class="tag">NIÑOS · JUVENIL · ADULTOS</div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">🏆</div>
+        <h3>Valores Reglados</h3>
+        <p>Disciplina, respeto, perseverancia y autocontrol. El Taekwondo no solo fortalece el cuerpo, también forma el carácter y los valores.</p>
+        <div class="tag">CINTURÓN A CINTURÓN</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="tk-cta" id="prueba">
+  <div class="tk-cta-bg">
+    <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/pexels-photo-7990086-2880w.jpeg" alt="Taekwondo" loading="lazy">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="tk-cta-content reveal">
+    <div class="section-label">Clase gratuita</div>
+    <h2>Ven a conocernos y prueba una clase <span class="accent">gratuita</span> de Taekwondo</h2>
+    <p>y descubre las clases perfectas para ti en Illescas. Sin compromiso, solo ven y entrena.</p>
+    <a href="https://wa.me/34647766198?text=Hola%2C%20quiero%20probar%20una%20clase%20de%20Taekwondo" class="btn btn-primary">Quiero probar</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="tk-contact" id="contacto">
+  <div class="inner">
+    <div class="tk-contact-grid">
+      <div class="reveal">
+        <div class="section-label">Contacto</div>
+        <h2 class="section-title">Contácta <span class="accent">con nosotros</span></h2>
+        <p class="section-desc" style="margin-bottom:32px;">¿Tienes dudas? Escríbenos y te responderemos lo antes posible.</p>
+        <div class="contact-form">
+          <form action="https://formsubmit.io/send/your-email" method="POST" target="_blank">
+            <div class="form-group">
+              <label>Nombre *</label>
+              <input type="text" name="name" required>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" name="phone">
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea name="message" placeholder="Cuéntanos qué te gustaría saber..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar mensaje</button>
+          </form>
+        </div>
+      </div>
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Dirección</h4>
+            <p>Calle Lirio, 3 C, Illescas, TOLEDO 45200, España</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Teléfono</h4>
+            <p><a href="tel:647766198">647 766 198</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:#25D366;border-color:#25D366;color:#fff;">💬</div>
+          <div>
+            <h4>WhatsApp</h4>
+            <p><a href="https://wa.me/34647766198">Envíanos un mensaje</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <h4>Horario Taekwondo</h4>
+            <p>Martes y Jueves · 17:15 – 21:30</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo">
+          <img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining">
+          <span class="nav-logo-text"><span>HULK</span><span class="green">CROSS</span></span>
+        </a>
+        <p>Centro deportivo líder en Illescas especializado en cross training, pilates, taekwondo y jiu-jitsu brasileño. Transformamos tu condición física desde 2022.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Enlaces</h4>
+        <a href="index.html">Inicio</a>
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#horarios">Horarios</a>
+        <a href="index.html#tarifas">Tarifas</a>
+        <a href="index.html#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Aviso Legal</a>
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Política de Cookies</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hulk Crosstraining. Todos los derechos reservados.</p>
+      <p>Producido por NEO Labs</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/34647766198" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- MENU TOGGLE -->
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileOverlay = document.getElementById('mobileOverlay');
+
+function toggleMenu() {
+  mobileNav.classList.toggle('open');
+  mobileOverlay.classList.toggle('open');
+}
+hamburger.addEventListener('click', toggleMenu);
+mobileOverlay.addEventListener('click', toggleMenu);
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', toggleMenu);
+});
+
+// SCROLL REVEAL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
