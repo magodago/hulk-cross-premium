@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>HIIT Core en Illescas | HULK CROSSTRAINING</title>
+<meta name="description" content="Entrenamiento HIIT Core de alta intensidad en Illescas. Quema calorías, fortalece el core y mejora tu condición física. Sesiones cortas y efectivas.">
+<link rel="icon" type="image/x-icon" href="https://de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/site_favicon_16_1747993620696.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #0a0a0a; --bg2: #111111; --bg3: #1a1a1a; --red: #d10f0b; --red-dark: #a00c08; --red-glow: rgba(209,15,11,0.35); --green: #3b8c3a; --white: #ffffff; --text: rgba(255,255,255,0.88); --text-muted: rgba(255,255,255,0.55); --text-dim: rgba(255,255,255,0.3); --border: rgba(255,255,255,0.08); --border-light: rgba(209,15,11,0.25); --card-bg: rgba(255,255,255,0.03); --card-hover: rgba(209,15,11,0.05); --font-display: 'Oswald', sans-serif; --font-body: 'Roboto', sans-serif; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::after{content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:256px 256px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,10,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:70px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo img{height:42px}
+.nav-logo-text{font-family:var(--font-display);font-size:1.2rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--white)}
+.nav-logo-text span{color:var(--red)}.nav-logo-text .green{color:var(--green)}
+.nav-links{display:flex;gap:0;list-style:none;align-items:center}
+.nav-links a{font-family:var(--font-display);font-size:0.78rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.65);text-decoration:none;padding:8px 18px;transition:color 0.2s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:18px;right:18px;height:2px;background:var(--red);transform:scaleX(0);transition:transform 0.3s ease}
+.nav-links a:hover{color:var(--white)}.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{background:var(--red);color:var(--white)!important;border-radius:50px;padding:10px 24px!important;margin-left:8px;font-weight:600!important;letter-spacing:1px!important;transition:all 0.3s ease!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--red-dark)!important;transform:translateY(-1px);box-shadow:0 4px 20px var(--red-glow)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.nav-hamburger span{display:block;width:24px;height:2px;background:rgba(255,255,255,0.7);border-radius:2px;transition:all 0.3s}
+.mobile-nav{position:fixed;top:0;right:-100%;width:75vw;max-width:360px;height:100vh;z-index:200;background:var(--bg2);border-left:1px solid var(--border);padding:90px 32px 32px;transition:right 0.4s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column;gap:4px}
+.mobile-nav.open{right:0}
+.mobile-nav a{font-family:var(--font-display);font-size:1.1rem;font-weight:500;color:rgba(255,255,255,0.7);text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.04);transition:color 0.2s;letter-spacing:1px;text-transform:uppercase}
+.mobile-nav a:hover{color:var(--red)}
+.mobile-nav .nav-cta-mobile{margin-top:20px;background:var(--red);color:#fff;text-align:center;border-radius:50px;padding:14px;font-weight:600;font-size:1rem;letter-spacing:1px}
+.mobile-overlay{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,0.7);opacity:0;pointer-events:none;transition:opacity 0.4s ease}
+.mobile-overlay.open{opacity:1;pointer-events:auto}
+section{position:relative;overflow:hidden}
+.section-label{font-family:var(--font-display);font-size:0.75rem;letter-spacing:4px;color:var(--red);text-transform:uppercase;margin-bottom:12px;font-weight:500}
+.section-title{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-0.5px;margin-bottom:16px;color:var(--white);text-transform:uppercase}
+.section-title .accent{color:var(--red)}
+.section-desc{font-size:clamp(0.9rem,1.2vw,1.05rem);line-height:1.75;color:var(--text-muted);max-width:640px}
+.inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.hero{min-height:85vh;display:flex;align-items:center;position:relative;padding-top:70px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.45) saturate(1.1)}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(10,10,10,0.1) 0%,rgba(10,10,10,0.35) 40%,rgba(10,10,10,0.7) 80%,var(--bg) 100%)}
+.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(209,15,11,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(209,15,11,0.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-glow::before{content:'';position:absolute;top:-20%;left:-10%;width:120%;height:60%;background:radial-gradient(ellipse at 50% 50%,rgba(209,15,11,0.08) 0%,rgba(209,15,11,0.03) 30%,transparent 60%);animation:glowPulse 4s ease-in-out infinite}
+.hero-glow::after{content:'';position:absolute;bottom:-10%;right:-10%;width:80%;height:50%;background:radial-gradient(ellipse at 50% 50%,rgba(209,15,11,0.06) 0%,transparent 50%);animation:glowPulse 4s ease-in-out infinite 2s}
+@keyframes glowPulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:120px 24px 80px;width:100%}
+.hero-tag{display:inline-block;font-family:var(--font-display);font-size:0.72rem;letter-spacing:4px;color:var(--red);border:1px solid var(--border-light);border-radius:50px;padding:6px 18px;margin-bottom:24px;text-transform:uppercase;animation:fadeUp 0.8s ease 0.2s both}
+.hero-title{font-family:var(--font-display);font-size:clamp(2.5rem,7vw,5rem);font-weight:700;line-height:1.02;letter-spacing:-1px;color:var(--white);margin-bottom:4px;text-transform:uppercase;animation:fadeUp 0.8s ease 0.3s both}
+.hero-title .accent{color:var(--red)}
+.hero-title .hulk-text{display:inline-block;text-shadow:0 0 20px rgba(209,15,11,0.3),0 0 40px rgba(209,15,11,0.15);animation:redPulse 3s ease-in-out infinite}
+@keyframes redPulse{0%,100%{text-shadow:0 0 20px rgba(209,15,11,0.3),0 0 40px rgba(209,15,11,0.15)}50%{text-shadow:0 0 30px rgba(209,15,11,0.5),0 0 60px rgba(209,15,11,0.25),0 0 100px rgba(209,15,11,0.1)}}
+.hero-sub{font-size:clamp(1.1rem,2vw,1.4rem);color:var(--text-muted);margin-bottom:8px;font-weight:300;letter-spacing:0.5px;animation:fadeUp 0.8s ease 0.4s both}
+.hero-quote{font-size:clamp(0.9rem,1.4vw,1.1rem);font-weight:300;font-style:italic;color:rgba(255,255,255,0.65);margin-bottom:40px;max-width:620px;line-height:1.5;animation:fadeUp 0.8s ease 0.5s both}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;animation:fadeUp 0.8s ease 0.6s both}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:0.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;text-decoration:none;padding:14px 32px;border-radius:50px;transition:all 0.3s ease;cursor:pointer;border:none}
+.btn-primary{background:var(--red);color:var(--white);box-shadow:0 4px 20px var(--red-glow)}
+.btn-primary:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 8px 30px var(--red-glow)}
+.btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2)}
+.btn-outline:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.hi-info{padding:100px 0}
+.hi-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.hi-image{position:relative;border-radius:16px;overflow:hidden}
+.hi-image img{width:100%;height:480px;object-fit:cover;border-radius:16px}
+.hi-image::after{content:'';position:absolute;inset:0;border-radius:16px;box-shadow:inset 0 0 60px rgba(10,10,10,0.5)}
+.hi-features{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.hi-feat{background:var(--card-bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;transition:all 0.3s ease}
+.hi-feat:hover{border-color:var(--border-light);background:var(--card-hover)}
+.hi-feat .num{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--red);margin-bottom:4px;opacity:0.6}
+.hi-feat h4{font-family:var(--font-display);font-size:0.82rem;font-weight:600;color:var(--white);letter-spacing:0.5px}
+.hi-cta{padding:120px 0;position:relative;overflow:hidden}
+.hi-cta-bg{position:absolute;inset:0;z-index:0}
+.hi-cta-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.3) saturate(1.1)}
+.hi-cta .hero-overlay{z-index:1}
+.hi-cta-content{position:relative;z-index:2;text-align:center;max-width:700px;margin:0 auto}
+.hi-cta-content h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--white);text-transform:uppercase;margin-bottom:16px;line-height:1.08}
+.hi-cta-content h2 .accent{color:var(--red)}
+.hi-cta-content p{font-size:1.05rem;color:var(--text-muted);margin-bottom:32px;line-height:1.7}
+.hi-contact{padding:100px 0;background:var(--bg2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+.contact-form{background:var(--card-bg);border:1px solid var(--border);border-radius:16px;padding:40px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:0.75rem;font-weight:600;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;color:var(--white);font-family:var(--font-body);font-size:0.9rem;transition:border-color 0.2s;outline:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--red)}
+.form-group textarea{resize:vertical;min-height:100px}
+.btn-submit{width:100%;padding:16px;background:var(--red);color:#fff;border:none;border-radius:50px;font-family:var(--font-display);font-size:0.95rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all 0.3s ease}
+.btn-submit:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 4px 20px var(--red-glow)}
+.contact-info{display:flex;flex-direction:column;gap:24px;justify-content:center}
+.contact-item{display:flex;align-items:center;gap:16px}
+.contact-icon{width:48px;height:48px;border-radius:50%;background:var(--card-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--red);flex-shrink:0}
+.contact-item h4{font-family:var(--font-display);font-size:0.75rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+.contact-item p{font-size:0.92rem;color:var(--white)}
+.contact-item a{color:var(--white);text-decoration:none}.contact-item a:hover{color:var(--red)}
+footer{padding:48px 0 24px;border-top:1px solid var(--border)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
+.footer-brand .nav-logo img{height:38px}
+.footer-brand p{font-size:0.82rem;color:var(--text-dim);margin-top:12px;line-height:1.6;max-width:320px}
+.footer-col h4{font-family:var(--font-display);font-size:0.78rem;font-weight:600;color:var(--white);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.footer-col a{display:block;font-size:0.82rem;color:var(--text-dim);text-decoration:none;padding:5px 0;transition:color 0.2s}
+.footer-col a:hover{color:var(--red)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.04);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:0.72rem;color:var(--text-dim)}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:var(--card-bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;text-decoration:none;color:var(--text-muted);transition:all 0.3s}
+.footer-social a:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+.whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:50;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,0.3);transition:all 0.3s ease}
+.whatsapp-float:hover{transform:scale(1.1);box-shadow:0 8px 30px rgba(37,211,102,0.4)}
+.whatsapp-float svg{width:28px;height:28px;fill:#fff}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1024px){.hi-grid{grid-template-columns:1fr;gap:40px}.contact-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+@media(max-width:768px){.nav-links,.nav-cta{display:none}.nav-hamburger{display:flex}.hi-features{grid-template-columns:1fr}.hi-image img{height:240px}.footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;text-align:center}.contact-form{padding:24px}.hero-content{padding:100px 24px 60px}section{padding:60px 0!important}}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining"><span class="nav-logo-text"><span>HULK</span><span class="green">CROSS</span></span></a><ul class="nav-links"><li><a href="index.html">Inicio</a></li><li><a href="cross-training.html">Cross Training</a></li><li><a href="pilates.html">Pilates</a></li><li><a href="taekwondo.html">Taekwondo</a></li><li><a href="jiu-jitsu.html">Jiu-Jitsu</a></li><li><a href="horarios.html">Horarios</a></li><li><a href="index.html#tarifas">Tarifas</a></li><li><a href="#contacto">Contacto</a></li></ul><a href="tel:647766198" class="nav-cta">647 766 198</a><button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-nav" id="mobileNav"><a href="index.html">Inicio</a><a href="cross-training.html">Cross Training</a><a href="pilates.html">Pilates</a><a href="taekwondo.html">Taekwondo</a><a href="jiu-jitsu.html">Jiu-Jitsu</a><a href="horarios.html">Horarios</a><a href="index.html#tarifas">Tarifas</a><a href="#contacto">Contacto</a><a href="tel:647766198" class="nav-cta-mobile">647 766 198</a></div>
+
+<section class="hero"><div class="hero-bg"><img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/banner-5__msi___jpg-2880w.jpg" alt="HIIT Core" loading="eager"></div><div class="hero-overlay"></div><div class="hero-grid"></div><div class="hero-glow"></div><div class="hero-content"><div class="hero-tag">Alta intensidad</div><h1 class="hero-title"><span class="hulk-text">HIIT</span> <span class="accent">CORE</span></h1><p class="hero-sub">Quema calorías · Fortalece el core · Resultados visibles</p><p class="hero-quote">"Entrenamiento de alta intensidad enfocado en el core y la quema de calorías. Sesiones cortas pero intensas para resultados visibles en tiempo récord"</p><div class="hero-actions"><a href="#info" class="btn btn-primary">Descubrir</a><a href="#contacto" class="btn btn-outline">Contactar</a></div></div></section>
+
+<section class="hi-info" id="info"><div class="inner"><div class="hi-grid"><div class="reveal"><div class="section-label">HIIT Core</div><h2 class="section-title">Intensidad <span class="accent">máxima</span>, resultados <span class="accent">récord</span></h2><p class="section-desc">El HIIT (High Intensity Interval Training) Core es un entrenamiento de alta intensidad que combina intervalos de trabajo explosivo con breves períodos de descanso. Está específicamente diseñado para fortalecer el core, quemar calorías de forma acelerada y mejorar la resistencia cardiovascular.</p><p class="section-desc" style="margin-top:12px;">Cada sesión combina ejercicios como planchas, crunches, mountain climbers, Russian twists y burpees en circuitos cronometrados. El resultado: un metabolismo acelerado que sigue quemando calorías incluso horas después de terminar el entrenamiento.</p><div class="hi-features"><div class="hi-feat reveal"><div class="num">01</div><h4>Quema acelerada</h4></div><div class="hi-feat reveal"><div class="num">02</div><h4>Core fuerte</h4></div><div class="hi-feat reveal"><div class="num">03</div><h4>Sin excusas</h4></div><div class="hi-feat reveal"><div class="num">04</div><h4>Resultados rápidos</h4></div></div></div><div class="hi-image reveal"><img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/2__msi___jpg-ba115652-2880w.webp" alt="HIIT Core" loading="lazy"></div></div></div></section>
+
+<section class="hi-cta"><div class="hi-cta-bg"><img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/banner-4__msi___jpg-2880w.jpg" alt="HIIT" loading="lazy"></div><div class="hero-overlay"></div><div class="hi-cta-content reveal"><div class="section-label">Empieza hoy</div><h2>¿Listo para <span class="accent">quemar</span> calorías?</h2><p>Sesiones cortas de 20-30 minutos. Resultados visibles en semanas. Ven a probar una clase sin compromiso.</p><a href="https://wa.me/34647766198?text=Hola%2C%20quiero%20probar%20HIIT%20Core" class="btn btn-primary">Quiero probar</a></div></section>
+
+<section class="hi-contact" id="contacto"><div class="inner"><div class="contact-grid"><div class="reveal"><div class="section-label">Contacto</div><h2 class="section-title">Contácta <span class="accent">con nosotros</span></h2><p class="section-desc" style="margin-bottom:32px;">¿Tienes dudas sobre HIIT Core? Escríbenos sin compromiso.</p><div class="contact-form"><form action="#" method="POST"><div class="form-group"><label>Nombre *</label><input type="text" name="name" required></div><div class="form-group"><label>Email *</label><input type="email" name="email" required></div><div class="form-group"><label>Teléfono</label><input type="tel" name="phone"></div><div class="form-group"><label>Mensaje</label><textarea name="message" placeholder="Cuéntanos qué te gustaría saber..."></textarea></div><button type="submit" class="btn-submit">Enviar mensaje</button></form></div></div><div class="contact-info reveal"><div class="contact-item"><div class="contact-icon">📍</div><div><h4>Dirección</h4><p>Calle Lirio, 3 C, Illescas, TOLEDO 45200, España</p></div></div><div class="contact-item"><div class="contact-icon">📞</div><div><h4>Teléfono</h4><p><a href="tel:647766198">647 766 198</a></p></div></div><div class="contact-item"><div class="contact-icon" style="background:#25D366;border-color:#25D366;color:#fff;">💬</div><div><h4>WhatsApp</h4><p><a href="https://wa.me/34647766198">Envíanos un mensaje</a></p></div></div><div class="contact-item"><div class="contact-icon">⏰</div><div><h4>Horario Centro</h4><p>Lun-Vie: 07:00-21:30 · Sáb: 09:00-12:00</p></div></div></div></div></div></section>
+
+<footer><div class="inner"><div class="footer-grid"><div class="footer-brand"><a href="index.html" class="nav-logo"><img src="https://le-de.cdn-website.com/fe6ba81745ff46aab7e7a217c7ce39fc/dms3rep/multi/opt/logo-1__msi___png-226w.webp" alt="Hulk Crosstraining"><span class="nav-logo-text"><span>HULK</span><span class="green">CROSS</span></span></a><p>Centro deportivo líder en Illescas. Transformamos tu condición física desde 2022.</p></div><div class="footer-col"><h4>Enlaces</h4><a href="index.html">Inicio</a><a href="index.html#servicios">Servicios</a><a href="index.html#tarifas">Tarifas</a><a href="index.html#contacto">Contacto</a></div><div class="footer-col"><h4>Legal</h4><a href="aviso-legal.html">Aviso Legal</a><a href="politica-privacidad.html">Política de Privacidad</a><a href="politica-cookies.html">Política de Cookies</a><a href="declaracion-accesibilidad.html">Declaración de Accesibilidad</a></div></div><div class="footer-bottom"><p>&copy; 2026 Hulk Crosstraining. Todos los derechos reservados.</p><div class="footer-social"><a href="https://www.facebook.com/Gilcrossillescas" aria-label="Facebook" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="https://www.instagram.com/hulkcrosstraining/" aria-label="Instagram" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a><a href="https://wa.me/34647766198" aria-label="WhatsApp" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></div></div></div></footer>
+<a href="https://wa.me/34647766198" class="whatsapp-float" target="_blank"><svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script>
+const h=document.getElementById('hamburger'),m=document.getElementById('mobileNav'),o=document.getElementById('mobileOverlay');
+function t(){m.classList.toggle('open');o.classList.toggle('open')}
+h.addEventListener('click',t);o.addEventListener('click',t);
+document.querySelectorAll('.mobile-nav a').forEach(l=>l.addEventListener('click',t));
+document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver((e)=>{e.forEach(i=>{if(i.isIntersecting)i.target.classList.add('visible')})},{threshold:0.15}).observe(el));
+</script>
+</body>
+</html>
