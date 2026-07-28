@@ -178,27 +178,33 @@ section { position: relative; overflow: hidden; }
 .hero-overlay {
   position: absolute; inset: 0; z-index: 1;
   background: linear-gradient(180deg,
-    rgba(10,10,10,0.1) 0%,
+    rgba(10,10,10,0.15) 0%,
     rgba(10,10,10,0.35) 40%,
     rgba(10,10,10,0.7) 80%,
     var(--bg) 100%
   );
 }
+.hero-badge { display: inline-block; font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 4px; color: var(--red); border: 1px solid var(--border-light); border-radius: 50px; padding: 6px 18px; margin-bottom: 24px; text-transform: uppercase; animation: fadeUp 0.8s ease 0.2s both; }
 
 /* ── HULK POWER TEXT EFFECT ── */
 .hero-title .hulk-text {
   display: inline-block;
   color: var(--white);
   text-shadow:
-    0 0 20px rgba(59,140,58,0.3),
-    0 0 40px rgba(59,140,58,0.15),
-    0 0 80px rgba(59,140,58,0.08);
-  animation: hulkPulse 3s ease-in-out infinite;
+    0 0 20px rgba(209,15,11,0.35),
+    0 0 40px rgba(209,15,11,0.2);
+  animation: redPulse 3s ease-in-out infinite;
 }
-@keyframes hulkPulse {
-  0%, 100% { text-shadow: 0 0 20px rgba(59,140,58,0.3), 0 0 40px rgba(59,140,58,0.15); }
-  50% { text-shadow: 0 0 30px rgba(59,140,58,0.5), 0 0 60px rgba(59,140,58,0.25), 0 0 100px rgba(59,140,58,0.1); }
+@keyframes redPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(209,15,11,0.35), 0 0 40px rgba(209,15,11,0.2); }
+  50% { text-shadow: 0 0 30px rgba(209,15,11,0.5), 0 0 60px rgba(209,15,11,0.3), 0 0 100px rgba(209,15,11,0.15); }
 }
+.hero-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.02; letter-spacing: -2px; color: var(--white); margin-bottom: 8px; text-transform: uppercase; animation: fadeUp 0.8s ease 0.3s both; }
+.hero-title .accent { color: var(--red); }
+.hero-sub { font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: var(--text-muted); margin-bottom: 12px; font-weight: 300; letter-spacing: 1px; animation: fadeUp 0.8s ease 0.4s both; }
+.hero-quote { font-size: clamp(1rem, 1.4vw, 1.15rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.7); margin-bottom: 40px; max-width: 720px; line-height: 1.6; animation: fadeUp 0.8s ease 0.5s both; }
+.text-red { color: var(--red); }
+.text-green { color: var(--green); }
 
 /* ── QUICK LINKS ── */
 .quick-links { padding: 60px 0; background: var(--bg2); }
@@ -918,13 +924,13 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-tag">Centro Deportivo en Illescas</div>
+    <div class="hero-badge">🏋️ Centro Deportivo en Illescas</div>
     <h1 class="hero-title"><span class="hulk-text">HULK</span> <span class="accent">CROSSTRAINING</span></h1>
-    <p class="hero-sub">Cross Training · Pilates · Taekwondo · Jiu-Jitsu Brasileño</p>
-    <p class="hero-quote">"Haz hoy lo que otros no se atreven, para hacer mañana lo que ellos NO PUEDEN..."</p>
+    <p class="hero-sub">Donde el <span class="text-red">esfuerzo</span> encuentra su <span class="text-green">recompensa</span></p>
+    <p class="hero-quote">"Transforma tu cuerpo, forja tu carácter. Aquí no solo entrenas, te conviertes en quien siempre quisiste ser."</p>
     <div class="hero-actions">
-      <a href="#contacto" class="btn btn-primary">Contáctanos</a>
-      <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+      <a href="#contacto" class="btn btn-primary">Empieza hoy</a>
+      <a href="#servicios" class="btn btn-outline">Lo que ofrecemos</a>
     </div>
   </div>
 </section>
