@@ -184,7 +184,6 @@ section { position: relative; overflow: hidden; }
     var(--bg) 100%
   );
 }
-.hero-badge { display: inline-block; font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 4px; color: var(--red); border: 1px solid var(--border-light); border-radius: 50px; padding: 6px 18px; margin-bottom: 24px; text-transform: uppercase; animation: fadeUp 0.8s ease 0.2s both; }
 
 /* ── HULK POWER TEXT EFFECT ── */
 .hero-title .hulk-text {
@@ -199,8 +198,9 @@ section { position: relative; overflow: hidden; }
   0%, 100% { text-shadow: 0 0 20px rgba(209,15,11,0.5), 0 0 40px rgba(209,15,11,0.3); }
   50% { text-shadow: 0 0 30px rgba(209,15,11,0.6), 0 0 60px rgba(209,15,11,0.4), 0 0 100px rgba(209,15,11,0.2); }
 }
-.hero-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.02; letter-spacing: -2px; color: #ffffff; margin-bottom: 8px; text-transform: uppercase; animation: fadeUp 0.8s ease 0.3s both; }
+.hero-title { font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; line-height: 1.08; letter-spacing: -2px; color: #ffffff; margin-bottom: 4px; text-transform: uppercase; animation: fadeUp 0.8s ease 0.3s both; }
 .hero-title .accent { color: #ff3333; }
+.hero-location { font-family: var(--font-display); font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 600; color: rgba(255,255,255,0.9); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; animation: fadeUp 0.8s ease 0.35s both; }
 .hero-sub { font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: rgba(255,255,255,0.92); margin-bottom: 12px; font-weight: 400; letter-spacing: 1px; animation: fadeUp 0.8s ease 0.4s both; }
 .hero-quote { font-size: clamp(1rem, 1.4vw, 1.15rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.85); margin-bottom: 40px; max-width: 720px; line-height: 1.6; animation: fadeUp 0.8s ease 0.5s both; }
 .text-red { color: #ff4444; }
@@ -924,8 +924,8 @@ footer { padding: 48px 0 24px; border-top: 1px solid var(--border); }
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">🏋️ Centro Deportivo en Illescas</div>
-    <h1 class="hero-title"><span class="hulk-text">HULK</span> <span class="accent">CROSSTRAINING</span></h1>
+    <h1 class="hero-title"><span class="hulk-text">HULK</span> <span class="accent">CROSS</span> <span class="accent">TRAINING</span></h1>
+    <div class="hero-location">Centro Deportivo en Illescas</div>
     <p class="hero-sub">Donde el <span class="text-red">esfuerzo</span> encuentra su <span class="text-green">recompensa</span></p>
     <p class="hero-quote">"Transforma tu cuerpo, forja tu carácter. Aquí no solo entrenas, te conviertes en quien siempre quisiste ser."</p>
     <div class="hero-actions">
